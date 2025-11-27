@@ -1,0 +1,47 @@
+/* components/mahjong-tile/mahjong-tile.wxss */
+
+/* 基础麻将牌样式 */
+.mahjong-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80rpx;
+  height: 100rpx;
+  background: white;
+  border: 2rpx solid #333;
+  border-radius: 8rpx;
+  box-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* 禁用状态 */
+.mahjong-tile.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* 精灵图样式 */
+.tile-sprite {
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 6rpx;
+}
+
+/* 单张图片样式 */
+.tile-image {
+  width: 70rpx;
+  height: 90rpx;
+  border-radius: 6rpx;
+}
+
+/* 点击效果 */
+.mahjong-tile:active {
+  transform: scale(0.95);
+  box-shadow: 1rpx 1rpx 2rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 自定义类名 */
+.mahjong-tile.custom {
+  /* 允许外部自定义样式 */
+}

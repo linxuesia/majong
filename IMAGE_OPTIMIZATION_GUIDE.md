@@ -6,19 +6,22 @@
 
 ## 实现原理
 
-1. **创建映射关系**：建立麻将牌文字到图片路径的映射关系
-2. **灵活图片来源**：支持本地图片和网络图片两种模式，可根据需求切换
+1. **创建映射关系**：建立麻将牌文字到图片信息的映射关系
+2. **灵活图片加载**：支持三种图片加载方式：
+   - 单张本地图片
+   - 单张网络图片
+   - 精灵图（Sprite）技术
 3. **统一图片资源**：使用统一命名规范的麻将牌图片
-4. **修改模板**：将WXML中的文字显示改为图片显示
+4. **自定义组件**：创建麻将牌自定义组件，自动处理不同加载方式
 5. **优化样式**：调整CSS样式，确保图片正确显示
 
 ## 图片资源准备
 
-### 图片来源选择
+### 图片加载方式
 
-小程序支持两种图片来源方式，各有优缺点：
+本方案支持三种图片加载方式，可根据需求灵活切换：
 
-#### 1. 本地图片
+#### 1. 单张本地图片
 
 **优点：**
 - 加载速度快，不依赖网络
@@ -30,7 +33,7 @@
 - 微信小程序对包大小有限制（2MB，超过需分包）
 - 更新图片需要重新发布小程序
 
-#### 2. 网络图片
+#### 2. 单张网络图片
 
 **优点：**
 - 不增加小程序包体积
@@ -42,7 +45,31 @@
 - 首次加载可能较慢
 - 需要额外的服务器资源
 
-**推荐：** 考虑到小程序包大小限制，建议优先使用网络图片。
+#### 3. 精灵图（Sprite）技术
+
+**什么是精灵图？**
+精灵图是将多个小图片合并成一张大图，通过CSS背景定位来显示不同部分的技术。
+
+**优点：**
+- 减少HTTP请求次数，提高加载速度
+- 降低服务器压力
+- 可以按类别分组（如万子、条子、筒子各一张精灵图）
+- 支持本地和网络两种来源
+- 比单张图片更节省空间
+
+**缺点：**
+- 制作和维护相对复杂
+- 修改单个图片需要重新生成精灵图
+- 需要精确计算每个图片在精灵图中的位置
+
+**精灵图分组建议：**
+- 万子牌：sprites_wan.png
+- 条子牌：sprites_tiao.png
+- 筒子牌：sprites_tong.png
+- 字牌：sprites_zi.png
+- 花牌：sprites_hua.png
+
+**推荐：** 考虑到性能和维护成本，建议优先使用**按类别分组的精灵图**技术。
 
 ### 图片命名规范
 
@@ -108,119 +135,216 @@ hua_mei.png - 梅
 
 ### 1. 映射工具
 
-创建了 `utils/tileMapper.js` 文件，用于处理文字到图片的映射，支持本地图片和网络图片切换：
+创建了 `utils/tileMapper.js` 文件，支持三种图片加载方式：
 
 ```javascript
 // 麻将牌文字到图片的映射关系
 const tileMap = {
-  '一万': 'wan_1',
-  '二万': 'wan_2',
+  // 万子牌
+  '一万': { sheet: 'wan', index: 0 },
+  '二万': { sheet: 'wan', index: 1 },
   // ... 其他映射关系
 };
+
+// 配置：图片加载方式
+const LOAD_TYPE = 'sprite'; // sprite: 精灵图, single: 单张图片
 
 // 配置：图片来源类型 (local: 本地图片, network: 网络图片)
 const IMAGE_SOURCE_TYPE = 'network'; // 建议使用 network 以减小包大小
 
-// 网络图片基础URL (使用网络图片时需要配置)
-const NETWORK_IMAGE_BASE_URL = 'https://example.com/mahjong/tiles/';
+// 网络图片基础URL
+const NETWORK_IMAGE_BASE_URL = 'https://example.com/mahjong/';
 
 // 本地图片基础路径
-const LOCAL_IMAGE_BASE_PATH = '/images/tiles/';
+const LOCAL_IMAGE_BASE_PATH = '/images/';
 
-// 获取麻将牌对应的图片路径
-const getTileImage = (tileText) => {
-  const imageName = tileMap[tileText];
-  if (!imageName) return '';
+// 精灵图配置
+const SPRITE_CONFIG = {
+  // 每个麻将牌在精灵图中的尺寸
+  tileWidth: 100, // 宽度（像素）
+  tileHeight: 140, // 高度（像素）
   
-  if (IMAGE_SOURCE_TYPE === 'network') {
-    // 使用网络图片
-    return `${NETWORK_IMAGE_BASE_URL}${imageName}.png`;
-  } else {
-    // 使用本地图片
-    return `${LOCAL_IMAGE_BASE_PATH}${imageName}.png`;
+  // 精灵图文件名
+  sheets: {
+    wan: 'sprites_wan.png',
+    tiao: 'sprites_tiao.png',
+    tong: 'sprites_tong.png',
+    zi: 'sprites_zi.png',
+    hua: 'sprites_hua.png'
   }
-};
-
-module.exports = {
-  getTileImage,
-  tileMap
 };
 ```
 
 #### 配置说明
 
-1. **切换图片来源**：修改 `IMAGE_SOURCE_TYPE` 变量
+1. **切换图片加载方式**：修改 `LOAD_TYPE` 变量
+   - `'sprite'`：使用精灵图
+   - `'single'`：使用单张图片
+
+2. **切换图片来源**：修改 `IMAGE_SOURCE_TYPE` 变量
    - `'network'`：使用网络图片
    - `'local'`：使用本地图片
 
-2. **配置网络图片**：修改 `NETWORK_IMAGE_BASE_URL` 为你的图片服务器地址
+3. **配置精灵图**：修改 `SPRITE_CONFIG` 对象
+   - `tileWidth`：每个麻将牌在精灵图中的宽度
+   - `tileHeight`：每个麻将牌在精灵图中的高度
+   - `sheets`：精灵图文件名配置
 
-3. **配置本地图片**：确保图片存放在 `LOCAL_IMAGE_BASE_PATH` 指定的目录
+4. **配置图片URL**：
+   - 网络图片：修改 `NETWORK_IMAGE_BASE_URL`
+   - 本地图片：修改 `LOCAL_IMAGE_BASE_PATH`
 
 #### 示例配置
 
 ```javascript
-// 使用网络图片
+// 使用网络精灵图（推荐）
+const LOAD_TYPE = 'sprite';
 const IMAGE_SOURCE_TYPE = 'network';
-const NETWORK_IMAGE_BASE_URL = 'https://your-cdn.com/mahjong/tiles/';
+const NETWORK_IMAGE_BASE_URL = 'https://your-cdn.com/mahjong/';
 
-// 使用本地图片
+// 使用本地精灵图
+const LOAD_TYPE = 'sprite';
 const IMAGE_SOURCE_TYPE = 'local';
-const LOCAL_IMAGE_BASE_PATH = '/images/tiles/';
+const LOCAL_IMAGE_BASE_PATH = '/images/';
+
+// 使用单张网络图片
+const LOAD_TYPE = 'single';
+const IMAGE_SOURCE_TYPE = 'network';
+const NETWORK_IMAGE_BASE_URL = 'https://your-cdn.com/mahjong/';
 ```
 
-### 2. 页面修改
+### 2. 自定义组件
 
-#### 引入映射工具
+创建了 `mahjong-tile` 自定义组件，自动处理不同图片加载方式：
 
-在每个页面的JS文件中引入映射工具：
+#### 组件结构
+
+```
+components/mahjong-tile/
+├── mahjong-tile.js    # 组件逻辑
+├── mahjong-tile.wxml  # 组件模板
+├── mahjong-tile.wxss  # 组件样式
+└── mahjong-tile.json  # 组件配置
+```
+
+#### 组件使用方法
+
+1. **在页面JSON中注册组件**：
+
+```json
+{
+  "usingComponents": {
+    "mahjong-tile": "../../components/mahjong-tile/mahjong-tile"
+  }
+}
+```
+
+2. **在页面WXML中使用组件**：
+
+```html
+<!-- 基本使用 -->
+<mahjong-tile tile-text="一万" bind:tap="onTileTap"></mahjong-tile>
+
+<!-- 带自定义类名 -->
+<mahjong-tile tile-text="二万" custom-class="my-tile" bind:tap="onTileTap"></mahjong-tile>
+
+<!-- 禁用状态 -->
+<mahjong-tile tile-text="三万" disabled="true"></mahjong-tile>
+
+<!-- 在循环中使用 -->
+<view class="hand-tiles">
+  <mahjong-tile 
+    wx:for="{{handTiles}}" 
+    wx:key="index"
+    tile-text="{{item}}"
+    bind:tap="onTileTap"
+    data-index="{{index}}"
+  ></mahjong-tile>
+</view>
+```
+
+3. **在页面JS中处理点击事件**：
 
 ```javascript
+Page({
+  // ...
+  onTileTap(e) {
+    const { tileText } = e.detail;
+    const { index } = e.currentTarget.dataset;
+    console.log('点击了麻将牌:', tileText, '索引:', index);
+    // 处理点击逻辑
+  }
+});
+```
+
+### 3. 页面迁移指南
+
+如果您已经在使用旧的图片显示方式，可以按照以下步骤迁移到新的自定义组件：
+
+#### 1. 注册组件
+
+在页面JSON文件中注册mahjong-tile组件：
+
+```json
+{
+  "usingComponents": {
+    "mahjong-tile": "../../components/mahjong-tile/mahjong-tile"
+  }
+}
+```
+
+#### 2. 替换WXML模板
+
+将旧的图片显示方式替换为新的组件：
+
+```html
+<!-- 修改前：旧的图片显示方式 -->
+<view class="mahjong-tile" wx:for="{{tiles}}" wx:key="index">
+  <image class="tile-image" src="{{getTileImage(item)}}" mode="aspectFit"></image>
+</view>
+
+<!-- 修改后：使用自定义组件 -->
+<mahjong-tile 
+  wx:for="{{tiles}}" 
+  wx:key="index"
+  tile-text="{{item}}"
+  bind:tap="onTileTap"
+></mahjong-tile>
+```
+
+#### 3. 更新JS代码
+
+移除旧的getTileImage方法调用，因为组件内部会自动处理：
+
+```javascript
+// 移除这行代码
 const { getTileImage } = require('../../utils/tileMapper')
-```
 
-#### 添加映射方法
-
-在Page对象中添加getTileImage方法：
-
-```javascript
+// 移除Page对象中的getTileImage方法
 Page({
   data: {
     // ... 页面数据
   },
   
-  // 麻将牌图片映射方法
-  getTileImage,
+  // 移除这行代码
+  // getTileImage,
   
   // ... 其他方法
 });
 ```
 
-#### 修改WXML模板
+#### 4. 调整CSS样式（可选）
 
-将文字显示改为图片显示：
-
-```html
-<!-- 修改前 -->
-<view class="mahjong-tile" wx:for="{{tiles}}" wx:key="index">
-  <text>{{item}}</text>
-</view>
-
-<!-- 修改后 -->
-<view class="mahjong-tile" wx:for="{{tiles}}" wx:key="index">
-  <image class="tile-image" src="{{getTileImage(item)}}" mode="aspectFit"></image>
-</view>
-```
-
-#### 调整CSS样式
-
-添加图片样式：
+新组件已经包含了完整的样式，您可以根据需要调整或移除旧的样式：
 
 ```css
+/* 可以移除这些旧样式 */
+.mahjong-tile {
+  /* 旧样式 */
+}
+
 .tile-image {
-  width: 70rpx;
-  height: 90rpx;
-  border-radius: 6rpx;
+  /* 旧样式 */
 }
 ```
 

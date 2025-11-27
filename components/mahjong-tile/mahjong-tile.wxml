@@ -1,0 +1,8 @@
+<!-- components/mahjong-tile/mahjong-tile.wxml -->
+<view class="mahjong-tile {{customClass}} {{disabled ? 'disabled' : ''}}" bindtap="onTap">
+  <!-- 精灵图模式 -->
+  <view wx:if="{{isSprite}}" class="tile-sprite" style="{{spriteStyle}}"></view>
+  
+  <!-- 单张图片模式 -->
+  <image wx:else class="tile-image" src="{{singleImage}}" mode="aspectFit"></image>
+</view>
