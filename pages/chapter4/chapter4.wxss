@@ -1,0 +1,106 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60rpx 32rpx;
+}
+
+.placeholder {
+  text-align: center;
+  width: 100%;
+}
+
+.emoji {
+  display: block;
+  font-size: 120rpx;
+  margin-bottom: 32rpx;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20rpx); }
+}
+
+.title {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #D32F2F;
+  margin-bottom: 16rpx;
+}
+
+.desc {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 48rpx;
+  line-height: 1.6;
+}
+
+.dev-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 48rpx;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 16rpx 48rpx;
+  background: linear-gradient(135deg, #FF9800, #FF5722);
+  color: white;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 50rpx;
+  box-shadow: 0 8rpx 16rpx rgba(255, 152, 0, 0.3);
+}
+
+.status-text {
+  font-size: 36rpx;
+  color: #999;
+  font-weight: bold;
+}
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+  width: 100%;
+  max-width: 500rpx;
+  margin: 0 auto;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 24rpx 32rpx;
+  background: white;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 48rpx;
+}
+
+.feature-name {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.back-button {
+  position: fixed;
+  bottom: 48rpx;
+  left: 32rpx;
+  right: 32rpx;
+}
+
+.back-button button {
+  width: 100%;
+}

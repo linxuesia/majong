@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="placeholder">
+    <text class="emoji">🏆</text>
+    <text class="title">第五章：实战演练</text>
+    <text class="desc">{{guideText}}</text>
+    <view class="dev-status">
+      <text class="status-badge">🚧 开发中</text>
+      <text class="status-text">敬请期待</text>
+    </view>
+    <view class="feature-list">
+      <view class="feature-item">
+        <text class="feature-icon">🤖</text>
+        <text class="feature-name">AI对手</text>
+      </view>
+      <view class="feature-item">
+        <text class="feature-icon">🎮</text>
+        <text class="feature-name">完整对局</text>
+      </view>
+      <view class="feature-item">
+        <text class="feature-icon">💡</text>
+        <text class="feature-name">智能提示</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="back-button">
+    <button class="btn-secondary" bindtap="onBackTap">返回</button>
+  </view>
+</view>

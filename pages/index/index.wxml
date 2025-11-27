@@ -1,0 +1,44 @@
+<!-- 首页 - 游戏主菜单 -->
+<view class="container">
+  <!-- 游戏标题 -->
+  <view class="title-section">
+    <image class="mascot" src="https://images.daojia.com/jz/pic/69c729e5f514f9bfc1c6a25b1f91e6ad.jpg" mode="aspectFit"></image>
+    <text class="game-title">雀神养成记</text>
+    <text class="game-subtitle">长沙风云篇</text>
+  </view>
+
+  <!-- 章节列表 -->
+  <view class="chapters-section">
+    <view class="chapter-card {{item.id <= currentChapter ? 'unlocked' : 'locked'}}" 
+          wx:for="{{chapters}}" 
+          wx:key="id"
+          bindtap="onChapterTap"
+          data-id="{{item.id}}">
+      <view class="chapter-icon">{{item.icon}}</view>
+      <view class="chapter-info">
+        <text class="chapter-title">第{{item.id}}章：{{item.title}}</text>
+        <text class="chapter-desc">{{item.desc}}</text>
+      </view>
+      <view class="chapter-status">
+        <text wx:if="{{completedChapters.includes(item.id)}}">✓</text>
+        <text wx:elif="{{item.id > currentChapter}}">🔒</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 开发模式工具栏 -->
+  <view class="dev-toolbar" wx:if="{{devMode}}">
+    <view class="dev-title">🔧 开发模式</view>
+    <view class="dev-buttons">
+      <button class="dev-btn" bindtap="onResetProgress">重置进度</button>
+      <button class="dev-btn" bindtap="onUnlockAll">解锁全部</button>
+      <button class="dev-btn" bindtap="onClearStorage">清除缓存</button>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-buttons">
+    <button class="btn-secondary" bindtap="onSettingsTap">规则介绍</button>
+    <button class="btn-primary" bindtap="onStartTap">开始游戏</button>
+  </view>
+</view>

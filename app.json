@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/chapter1/chapter1",
+    "pages/chapter2/chapter2",
+    "pages/chapter3/chapter3",
+    "pages/chapter4/chapter4",
+    "pages/chapter5/chapter5",
+    "pages/settings/settings"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#D32F2F",
+    "navigationBarTitleText": "雀神养成记：长沙风云篇",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#FFF8E1"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

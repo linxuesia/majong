@@ -1,0 +1,11 @@
+# 微信小程序
+node_modules/
+miniprogram_npm/
+.DS_Store
+
+# 开发工具
+.vscode/
+.idea/
+
+# 日志
+*.log

@@ -1,0 +1,349 @@
+/* 第三章样式 */
+.container {
+  min-height: 100vh;
+  padding: 32rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-section {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 32rpx;
+}
+
+.guide-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 16rpx;
+}
+
+.guide-bubble {
+  flex: 1;
+  background: white;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  position: relative;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.guide-bubble::before {
+  content: '';
+  position: absolute;
+  left: -16rpx;
+  top: 24rpx;
+  width: 0;
+  height: 0;
+  border-top: 16rpx solid transparent;
+  border-bottom: 16rpx solid transparent;
+  border-right: 16rpx solid white;
+}
+
+.guide-bubble text {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+}
+
+.progress-bar {
+  height: 16rpx;
+  background: #E0E0E0;
+  border-radius: 8rpx;
+  overflow: hidden;
+  margin-bottom: 32rpx;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  transition: width 0.3s ease;
+}
+
+.game-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.level-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #D32F2F;
+  text-align: center;
+  margin-bottom: 16rpx;
+}
+
+.level-desc {
+  font-size: 28rpx;
+  color: #666;
+  text-align: center;
+  margin-bottom: 32rpx;
+}
+
+/* 第一关样式 */
+.hand-section {
+  margin-bottom: 32rpx;
+}
+
+.hand-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12rpx;
+}
+
+.mahjong-tile {
+  width: 80rpx;
+  height: 100rpx;
+  background: white;
+  border: 2rpx solid #333;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  box-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.2);
+}
+
+.pattern-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  margin-bottom: 32rpx;
+}
+
+.pattern-btn {
+  background: white;
+  color: #333;
+  border: 4rpx solid #D32F2F;
+  border-radius: 50rpx;
+  padding: 32rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.pattern-btn:active {
+  background: linear-gradient(135deg, #D32F2F, #F44336);
+  color: white;
+  transform: scale(0.98);
+}
+
+.score-display {
+  display: flex;
+  justify-content: space-around;
+  padding: 24rpx;
+  background: white;
+  border-radius: 24rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #D32F2F;
+}
+
+.hint-box {
+  display: flex;
+  align-items: flex-start;
+  background: #E3F2FD;
+  border-left: 6rpx solid #2196F3;
+  padding: 24rpx;
+  border-radius: 12rpx;
+  margin-bottom: 32rpx;
+}
+
+.hint-icon {
+  font-size: 40rpx;
+  margin-right: 16rpx;
+}
+
+.hint-text {
+  flex: 1;
+  font-size: 26rpx;
+  color: #1565C0;
+  line-height: 1.6;
+}
+
+/* 第二关样式 */
+.tile-pool {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12rpx;
+  margin-bottom: 32rpx;
+  padding: 24rpx;
+  background: white;
+  border-radius: 24rpx;
+}
+
+.jiangjiang-tile {
+  position: relative;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.jiangjiang-tile.selected {
+  transform: translateY(-10rpx);
+  box-shadow: 0 8rpx 16rpx rgba(76, 175, 80, 0.4);
+}
+
+.tile-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(76, 175, 80, 0.8);
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-icon {
+  font-size: 48rpx;
+  color: white;
+  font-weight: bold;
+}
+
+.selection-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16rpx;
+  padding: 24rpx;
+  background: white;
+  border-radius: 24rpx;
+  margin-bottom: 32rpx;
+}
+
+.info-label {
+  font-size: 32rpx;
+  color: #666;
+}
+
+.info-value {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #FF9800;
+}
+
+.info-value.complete {
+  color: #4CAF50;
+  animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* 第三关样式 */
+.tags-section {
+  margin-bottom: 32rpx;
+}
+
+.section-label {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+  text-align: center;
+}
+
+.pattern-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16rpx;
+}
+
+.tag-item {
+  position: relative;
+  padding: 20rpx 40rpx;
+  background: white;
+  border: 4rpx solid #9E9E9E;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  color: #666;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.tag-item.selected {
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+  border-color: #4CAF50;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 8rpx 16rpx rgba(76, 175, 80, 0.4);
+}
+
+.tag-text {
+  font-weight: bold;
+}
+
+.tag-check {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.multiplier-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16rpx;
+  padding: 32rpx;
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  border-radius: 24rpx;
+  margin-bottom: 32rpx;
+  box-shadow: 0 8rpx 16rpx rgba(255, 107, 107, 0.4);
+}
+
+.multiplier-label {
+  font-size: 32rpx;
+  color: white;
+  font-weight: bold;
+}
+
+.multiplier-value {
+  font-size: 56rpx;
+  color: white;
+  font-weight: bold;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.3);
+}
+
+.check-btn {
+  width: 100%;
+  margin-bottom: 32rpx;
+}
+
+/* 底部按钮 */
+.bottom-actions {
+  display: flex;
+  gap: 24rpx;
+  margin-top: 32rpx;
+}
+
+.bottom-actions button {
+  flex: 1;
+}
+
+/* 动画效果 */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10rpx); }
+  75% { transform: translateX(10rpx); }
+}
+
+.shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20rpx); }
+}
+
+.bounce {
+  animation: bounce 0.6s ease-in-out;
+}

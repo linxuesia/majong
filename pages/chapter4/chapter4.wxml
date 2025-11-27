@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="placeholder">
+    <text class="emoji">🎆</text>
+    <text class="title">第四章：海底与扎鸟</text>
+    <text class="desc">{{guideText}}</text>
+    <view class="dev-status">
+      <text class="status-badge">🚧 开发中</text>
+      <text class="status-text">敬请期待</text>
+    </view>
+    <view class="feature-list">
+      <view class="feature-item">
+        <text class="feature-icon">🌊</text>
+        <text class="feature-name">海底捞月</text>
+      </view>
+      <view class="feature-item">
+        <text class="feature-icon">💥</text>
+        <text class="feature-name">海底炮</text>
+      </view>
+      <view class="feature-item">
+        <text class="feature-icon">🐦</text>
+        <text class="feature-name">扎鸟翻倍</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="back-button">
+    <button class="btn-secondary" bindtap="onBackTap">返回</button>
+  </view>
+</view>

@@ -1,0 +1,104 @@
+<!-- 第三章：大胡风云 -->
+<view class="container">
+  <!-- 辣子雀导师 -->
+  <view class="guide-section">
+    <image class="guide-avatar" src="https://images.daojia.com/jz/pic/69c729e5f514f9bfc1c6a25b1f91e6ad.jpg" mode="aspectFit"></image>
+    <view class="guide-bubble">
+      <text>{{guideText}}</text>
+    </view>
+  </view>
+
+  <!-- 关卡进度 -->
+  <view class="progress-bar">
+    <view class="progress-fill" style="width: {{progress}}%"></view>
+  </view>
+
+  <!-- 第一关：牌型识别 -->
+  <view class="game-area" wx:if="{{currentLevel === 1}}">
+    <view class="level-title">🎯 牌型识别大师</view>
+    <view class="level-desc">认识各种大胡牌型</view>
+    
+    <!-- 牌面展示 -->
+    <view class="hand-section">
+      <view class="hand-tiles">
+        <view class="mahjong-tile" wx:for="{{displayTiles}}" wx:key="index">
+          <image class="tile-image" src="{{getTileImage(item)}}" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+
+    <view class="hint-box" wx:if="{{currentPatternHint}}">
+      <text class="hint-icon">💡</text>
+      <text class="hint-text">{{currentPatternHint}}</text>
+    </view>
+
+    <!-- 选项按钮 -->
+    <view class="pattern-options">
+      <button class="pattern-btn" 
+              wx:for="{{patternOptions}}" 
+              wx:key="index"
+              bindtap="onPatternSelect"
+              data-pattern="{{item}}">
+        {{item}}
+      </button>
+    </view>
+
+    <view class="score-display">
+      <text>得分：{{score}}</text>
+      <text>进度：{{currentScenario + 1}}/5</text>
+    </view>
+  </view>
+
+  <!-- 第二关：大胡叠加 -->
+  <view class="game-area" wx:if="{{currentLevel === 3}}">
+    <view class="level-title">💥 大胡叠加算术</view>
+    <view class="level-desc">找出所有符合的牌型标签</view>
+    
+    <!-- 牌面展示 -->
+    <view class="hand-section">
+      <view class="hand-tiles">
+        <view class="mahjong-tile" wx:for="{{finalTiles}}" wx:key="index">
+          <text>{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 标签选择 -->
+    <view class="tags-section">
+      <text class="section-label">选择所有符合的牌型：</text>
+      <view class="pattern-tags">
+        <view class="tag-item {{item.selected ? 'selected' : ''}}" 
+              wx:for="{{patternTags}}" 
+              wx:key="id"
+              bindtap="onTagTap"
+              data-id="{{item.id}}">
+          <text class="tag-text">{{item.name}}</text>
+          <view class="tag-check" wx:if="{{item.selected}}">✓</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 倍数显示 -->
+    <view class="multiplier-display">
+      <text class="multiplier-label">当前倍数：</text>
+      <text class="multiplier-value">×{{multiplier}}</text>
+    </view>
+
+    <button class="btn-primary check-btn" bindtap="onCheckTags">
+      确认答案
+    </button>
+
+    <view class="hint-box">
+      <text class="hint-icon">💡</text>
+      <text class="hint-text">大胡可以叠加！比如"清一色+碰碰胡"会让分数翻更多倍！</text>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-actions">
+    <button class="btn-secondary" bindtap="onBackTap">返回</button>
+    <button class="btn-primary" bindtap="onNextTap" disabled="{{!levelCompleted}}">
+      {{currentLevel < 3 ? '下一关' : '完成章节'}}
+    </button>
+  </view>
+</view>

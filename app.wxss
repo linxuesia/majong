@@ -1,0 +1,82 @@
+/* app.wxss - 全局样式 */
+page {
+  background-color: #FFF8E1;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+
+/* 通用按钮样式 */
+.btn-primary {
+  background: linear-gradient(135deg, #D32F2F 0%, #F44336 100%);
+  color: white;
+  border-radius: 50rpx;
+  padding: 24rpx 48rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  box-shadow: 0 8rpx 16rpx rgba(211, 47, 47, 0.3);
+  border: none;
+}
+
+.btn-primary:active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background: white;
+  color: #D32F2F;
+  border: 4rpx solid #D32F2F;
+  border-radius: 50rpx;
+  padding: 24rpx 48rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+/* 卡片样式 */
+.card {
+  background: white;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin: 24rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 麻将牌样式 */
+.mahjong-tile {
+  width: 80rpx;
+  height: 100rpx;
+  background: white;
+  border: 2rpx solid #333;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48rpx;
+  box-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.2);
+}
+
+/* 麻将牌图片样式 */
+.tile-image {
+  width: 70rpx;
+  height: 90rpx;
+  border-radius: 6rpx;
+}
+
+/* 动画效果 */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20rpx); }
+}
+
+.bounce {
+  animation: bounce 0.6s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10rpx); }
+  75% { transform: translateX(10rpx); }
+}
+
+.shake {
+  animation: shake 0.4s ease-in-out;
+}

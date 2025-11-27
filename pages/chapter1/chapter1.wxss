@@ -1,0 +1,170 @@
+/* 第一章样式 */
+.container {
+  min-height: 100vh;
+  padding: 32rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-section {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 32rpx;
+}
+
+.guide-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 16rpx;
+}
+
+.guide-bubble {
+  flex: 1;
+  background: white;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  position: relative;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.guide-bubble::before {
+  content: '';
+  position: absolute;
+  left: -16rpx;
+  top: 24rpx;
+  width: 0;
+  height: 0;
+  border-top: 16rpx solid transparent;
+  border-bottom: 16rpx solid transparent;
+  border-right: 16rpx solid white;
+}
+
+.guide-bubble text {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+}
+
+.progress-bar {
+  height: 16rpx;
+  background: #E0E0E0;
+  border-radius: 8rpx;
+  overflow: hidden;
+  margin-bottom: 32rpx;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  transition: width 0.3s ease;
+}
+
+.game-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.level-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #D32F2F;
+  text-align: center;
+  margin-bottom: 16rpx;
+}
+
+.level-desc {
+  font-size: 28rpx;
+  color: #666;
+  text-align: center;
+  margin-bottom: 32rpx;
+}
+
+.tiles-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16rpx;
+  margin-bottom: 32rpx;
+}
+
+.tile {
+  width: 120rpx;
+  height: 160rpx;
+  background: white;
+  border: 4rpx solid #333;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4rpx 4rpx 8rpx rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+.tile.removed {
+  opacity: 0;
+  transform: scale(0.5) rotate(180deg);
+  pointer-events: none;
+}
+
+.tile-image {
+  width: 100rpx;
+  height: 140rpx;
+  border-radius: 8rpx;
+}
+
+.tile-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.score-display {
+  display: flex;
+  justify-content: space-around;
+  padding: 24rpx;
+  background: white;
+  border-radius: 24rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #D32F2F;
+}
+
+.hand-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12rpx;
+  margin-bottom: 48rpx;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.option-btn {
+  background: white;
+  color: #333;
+  border: 4rpx solid #D32F2F;
+  border-radius: 50rpx;
+  padding: 32rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.option-btn:active {
+  background: #D32F2F;
+  color: white;
+}
+
+.bottom-actions {
+  display: flex;
+  gap: 24rpx;
+  margin-top: 32rpx;
+}
+
+.bottom-actions button {
+  flex: 1;
+}

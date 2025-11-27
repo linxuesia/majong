@@ -1,0 +1,231 @@
+/* 规则介绍页面样式 */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #FFF8E1 0%, #FFFFFF 100%);
+  padding: 40rpx 32rpx 80rpx;
+}
+
+/* 头部 */
+.header {
+  text-align: center;
+  padding: 40rpx 0 60rpx;
+}
+
+.header-icon {
+  display: block;
+  font-size: 100rpx;
+  margin-bottom: 20rpx;
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.header-title {
+  display: block;
+  font-size: 56rpx;
+  font-weight: bold;
+  color: #D32F2F;
+  margin-bottom: 12rpx;
+}
+
+.header-subtitle {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  letter-spacing: 2rpx;
+}
+
+/* 章节 */
+.section {
+  margin-bottom: 48rpx;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 24rpx;
+}
+
+.title-icon {
+  font-size: 40rpx;
+}
+
+.title-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 基础规则卡片 */
+.rule-card {
+  background: white;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.rule-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #F5F5F5;
+}
+
+.rule-item:last-child {
+  border-bottom: none;
+}
+
+.rule-label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.rule-value {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #D32F2F;
+}
+
+/* 特色规则卡片 */
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  background: white;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+  transition: all 0.3s;
+}
+
+.feature-item:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon {
+  font-size: 48rpx;
+  flex-shrink: 0;
+}
+
+.feature-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.feature-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.feature-desc {
+  font-size: 24rpx;
+  color: #999;
+  line-height: 1.5;
+}
+
+/* 大胡牌型列表 */
+.pattern-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.pattern-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border-radius: 16rpx;
+  padding: 24rpx 28rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+  border-left: 6rpx solid #D32F2F;
+}
+
+.pattern-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  min-width: 120rpx;
+}
+
+.pattern-desc {
+  flex: 1;
+  font-size: 26rpx;
+  color: #666;
+  margin: 0 16rpx;
+}
+
+.pattern-score {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #D32F2F;
+  background: #FFEBEE;
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+}
+
+/* 起手胡列表 */
+.qishou-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16rpx;
+}
+
+.qishou-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+  background: white;
+  border-radius: 16rpx;
+  padding: 24rpx 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+}
+
+.qishou-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #D32F2F;
+}
+
+.qishou-desc {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 底部提示 */
+.footer-tip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  padding: 32rpx;
+  background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+  border-radius: 20rpx;
+  margin-top: 32rpx;
+}
+
+.tip-icon {
+  font-size: 36rpx;
+}
+
+.tip-text {
+  font-size: 26rpx;
+  color: #1565C0;
+  font-weight: 500;
+}

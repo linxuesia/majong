@@ -1,0 +1,135 @@
+<!-- 第二章：行牌修炼 -->
+<view class="container">
+  <!-- 辣子雀导师 -->
+  <view class="guide-section">
+    <image class="guide-avatar" src="https://images.daojia.com/jz/pic/69c729e5f514f9bfc1c6a25b1f91e6ad.jpg" mode="aspectFit"></image>
+    <view class="guide-bubble">
+      <text>{{guideText}}</text>
+    </view>
+  </view>
+
+  <!-- 关卡进度 -->
+  <view class="progress-bar">
+    <view class="progress-fill" style="width: {{progress}}%"></view>
+  </view>
+
+  <!-- 第一关：抢答反应堆 -->
+  <view class="game-area" wx:if="{{currentLevel === 1}}">
+    <view class="level-title">⚡ 抢答反应堆</view>
+    <view class="level-desc">判断应该"吃"还是"碰"？</view>
+    
+    <!-- 手牌展示 -->
+    <view class="hand-section">
+      <text class="section-label">你的手牌：</text>
+      <view class="hand-tiles">
+        <view class="mahjong-tile" wx:for="{{handTiles}}" wx:key="index">
+          <image class="tile-image" src="{{getTileImage(item)}}" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+
+    <!-- 打出的牌 -->
+    <view class="discard-section">
+      <text class="section-label">{{discardFrom}}打出：</text>
+      <view class="discard-tile {{animating ? 'flying' : ''}}">
+        <image class="tile-image" src="{{getTileImage(discardTile)}}" mode="aspectFit"></image>
+      </view>
+    </view>
+
+    <!-- 操作按钮 -->
+    <view class="action-buttons" wx:if="{{showActions}}">
+      <button class="action-btn eat-btn" bindtap="onActionTap" data-action="吃">吃</button>
+      <button class="action-btn peng-btn" bindtap="onActionTap" data-action="碰">碰</button>
+      <button class="action-btn pass-btn" bindtap="onActionTap" data-action="过">过</button>
+    </view>
+
+    <view class="score-display">
+      <text>得分：{{score}}</text>
+      <text>连击：{{combo}}连</text>
+    </view>
+  </view>
+
+  <!-- 第二关：寻找"将"军 -->
+  <view class="game-area" wx:if="{{currentLevel === 2}}">
+    <view class="level-title">🎯 寻找"将"军</view>
+    <view class="level-desc">拖动正确的将牌（2、5、8）才能胡牌！</view>
+    
+    <!-- 听牌展示 -->
+    <view class="hand-section">
+      <text class="section-label">听牌状态（缺一对将）：</text>
+      <view class="hand-tiles">
+        <view class="mahjong-tile" wx:for="{{tingpaiTiles}}" wx:key="index">
+          <text>{{item}}</text>
+        </view>
+        <view class="mahjong-tile empty">
+          <text class="question">?</text>
+        </view>
+        <view class="mahjong-tile empty">
+          <text class="question">?</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 候选将牌 -->
+    <view class="candidates-section">
+      <text class="section-label">选择将牌：</text>
+      <view class="candidate-tiles">
+        <view class="mahjong-tile candidate {{item.selected ? 'selected' : ''}}" 
+              wx:for="{{candidateTiles}}" 
+              wx:key="id"
+              bindtap="onCandidateTap"
+              data-id="{{item.id}}">
+          <text>{{item.text}}</text>
+          <view class="check-mark" wx:if="{{item.selected}}">✓</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="hint-box">
+      <text class="hint-icon">💡</text>
+      <text class="hint-text">小胡必须用2、5、8作将，大胡则没有限制</text>
+    </view>
+
+    <button class="btn-primary check-btn" bindtap="onCheckAnswer">确认答案</button>
+  </view>
+
+  <!-- 第三关：258将强化训练 -->
+  <view class="game-area" wx:if="{{currentLevel === 3}}">
+    <view class="level-title">🔥 258将强化训练</view>
+    <view class="level-desc">快速判断这手小胡能否胡牌？</view>
+    
+    <view class="hand-section">
+      <view class="hand-tiles">
+        <view class="mahjong-tile" wx:for="{{quizTiles}}" wx:key="index">
+          <text>{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="quiz-info">
+      <text class="quiz-question">这手小胡能胡牌吗？</text>
+    </view>
+
+    <view class="quiz-buttons">
+      <button class="quiz-btn yes-btn" bindtap="onQuizAnswer" data-answer="yes">
+        ✓ 能胡
+      </button>
+      <button class="quiz-btn no-btn" bindtap="onQuizAnswer" data-answer="no">
+        ✗ 不能胡
+      </button>
+    </view>
+
+    <view class="score-display">
+      <text>题目：{{quizIndex}}/3</text>
+      <text>正确：{{quizCorrect}}</text>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-actions">
+    <button class="btn-secondary" bindtap="onBackTap">返回</button>
+    <button class="btn-primary" bindtap="onNextTap" disabled="{{!levelCompleted}}">
+      {{currentLevel < 3 ? '下一关' : '完成章节'}}
+    </button>
+  </view>
+</view>

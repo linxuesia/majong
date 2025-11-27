@@ -1,0 +1,149 @@
+<!-- 规则介绍页面 -->
+<view class="container">
+  <view class="header">
+    <text class="header-icon">🀄</text>
+    <text class="header-title">长沙麻将规则</text>
+    <text class="header-subtitle">Changsha Mahjong Rules</text>
+  </view>
+
+  <!-- 基础规则 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title-icon">📋</text>
+      <text class="title-text">基础规则</text>
+    </view>
+    
+    <view class="rule-card">
+      <view class="rule-item">
+        <text class="rule-label">牌数</text>
+        <text class="rule-value">108张（万、条、筒）</text>
+      </view>
+      <view class="rule-item">
+        <text class="rule-label">玩家</text>
+        <text class="rule-value">4人</text>
+      </view>
+      <view class="rule-item">
+        <text class="rule-label">手牌</text>
+        <text class="rule-value">13张（胡牌14张）</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 特色规则 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title-icon">⭐</text>
+      <text class="title-text">特色规则</text>
+    </view>
+    
+    <view class="feature-card">
+      <view class="feature-item">
+        <text class="feature-icon">2️⃣5️⃣8️⃣</text>
+        <view class="feature-content">
+          <text class="feature-name">258将</text>
+          <text class="feature-desc">小胡必须用2、5、8作将</text>
+        </view>
+      </view>
+      
+      <view class="feature-item">
+        <text class="feature-icon">🤝</text>
+        <view class="feature-content">
+          <text class="feature-name">吃碰规则</text>
+          <text class="feature-desc">碰>吃，只能吃上家</text>
+        </view>
+      </view>
+      
+      <view class="feature-item">
+        <text class="feature-icon">🐦</text>
+        <view class="feature-content">
+          <text class="feature-name">扎鸟</text>
+          <text class="feature-desc">胡牌后抓鸟，中1或5翻倍</text>
+        </view>
+      </view>
+      
+      <view class="feature-item">
+        <text class="feature-icon">🌊</text>
+        <view class="feature-content">
+          <text class="feature-name">海底</text>
+          <text class="feature-desc">最后一张牌胡牌或点炮</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 大胡牌型 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title-icon">🎯</text>
+      <text class="title-text">大胡牌型</text>
+    </view>
+    
+    <view class="pattern-list">
+      <view class="pattern-item">
+        <text class="pattern-name">碰碰胡</text>
+        <text class="pattern-desc">全是刻子（三张相同）</text>
+        <text class="pattern-score">×6</text>
+      </view>
+      
+      <view class="pattern-item">
+        <text class="pattern-name">将将胡</text>
+        <text class="pattern-desc">全是258</text>
+        <text class="pattern-score">×6</text>
+      </view>
+      
+      <view class="pattern-item">
+        <text class="pattern-name">清一色</text>
+        <text class="pattern-desc">只有一种花色</text>
+        <text class="pattern-score">×6</text>
+      </view>
+      
+      <view class="pattern-item">
+        <text class="pattern-name">七小对</text>
+        <text class="pattern-desc">七个对子</text>
+        <text class="pattern-score">×6</text>
+      </view>
+      
+      <view class="pattern-item">
+        <text class="pattern-name">缺一色</text>
+        <text class="pattern-desc">缺少一种花色</text>
+        <text class="pattern-score">×3</text>
+      </view>
+      
+      <view class="pattern-item">
+        <text class="pattern-name">全求人</text>
+        <text class="pattern-desc">全靠吃碰（单钓）</text>
+        <text class="pattern-score">×3</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 起手胡 -->
+  <view class="section">
+    <view class="section-title">
+      <text class="title-icon">🎊</text>
+      <text class="title-text">起手胡</text>
+    </view>
+    
+    <view class="qishou-list">
+      <view class="qishou-item">
+        <text class="qishou-name">板板胡</text>
+        <text class="qishou-desc">无258</text>
+      </view>
+      
+      <view class="qishou-item">
+        <text class="qishou-name">四喜</text>
+        <text class="qishou-desc">4张同牌</text>
+      </view>
+      
+      <view class="qishou-item">
+        <text class="qishou-name">六六顺</text>
+        <text class="qishou-desc">2个刻子</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer-tip">
+    <text class="tip-icon">💡</text>
+    <text class="tip-text">通过闯关游戏学习这些规则吧！</text>
+  </view>
+</view>

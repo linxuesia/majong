@@ -1,0 +1,131 @@
+/* 首页样式 */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx 0;
+}
+
+.title-section {
+  text-align: center;
+  padding: 60rpx 0;
+}
+
+.mascot {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+}
+
+.game-title {
+  display: block;
+  font-size: 56rpx;
+  font-weight: bold;
+  color: #D32F2F;
+  margin-bottom: 12rpx;
+}
+
+.game-subtitle {
+  display: block;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.chapters-section {
+  flex: 1;
+  padding: 0 32rpx;
+}
+
+.chapter-card {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.chapter-card.unlocked:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
+}
+
+.chapter-card.locked {
+  opacity: 0.5;
+}
+
+.chapter-icon {
+  font-size: 64rpx;
+  margin-right: 24rpx;
+}
+
+.chapter-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chapter-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.chapter-desc {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.chapter-status {
+  font-size: 48rpx;
+}
+
+.bottom-buttons {
+  display: flex;
+  justify-content: space-around;
+  padding: 32rpx;
+  gap: 24rpx;
+}
+
+.bottom-buttons button {
+  flex: 1;
+}
+
+/* 开发模式工具栏 */
+.dev-toolbar {
+  margin: 32rpx;
+  padding: 24rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 16rpx rgba(102, 126, 234, 0.3);
+}
+
+.dev-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  margin-bottom: 16rpx;
+}
+
+.dev-buttons {
+  display: flex;
+  gap: 12rpx;
+}
+
+.dev-btn {
+  flex: 1;
+  padding: 16rpx 0;
+  font-size: 24rpx;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2rpx solid rgba(255, 255, 255, 0.5);
+  border-radius: 12rpx;
+}
+
+.dev-btn:active {
+  background: rgba(255, 255, 255, 0.3);
+}
