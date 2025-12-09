@@ -61,9 +61,9 @@ const LOCAL_IMAGE_BASE_PATH = '/images/';
 
 // 精灵图配置
 const SPRITE_CONFIG = {
-  // 每个麻将牌在精灵图中的尺寸
-  tileWidth: 100, // 宽度（像素）
-  tileHeight: 140, // 高度（像素）
+  // 每个麻将牌在精灵图中的尺寸（像素）
+  tileWidth: 80, // 宽度调整为 80px，对应 80rpx
+  tileHeight: 100, // 高度调整为 100px，对应 100rpx
   
   // 精灵图文件名
   sheets: {

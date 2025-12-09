@@ -21,9 +21,7 @@
     <!-- 牌面展示 -->
     <view class="hand-section">
       <view class="hand-tiles">
-        <view class="mahjong-tile" wx:for="{{displayTiles}}" wx:key="index">
-          <image class="tile-image" src="{{getTileImage(item)}}" mode="aspectFit"></image>
-        </view>
+        <mahjong-tile wx:for="{{displayTiles}}" wx:key="index" tile-text="{{item}}"></mahjong-tile>
       </view>
     </view>
 
@@ -57,9 +55,7 @@
     <!-- 牌面展示 -->
     <view class="hand-section">
       <view class="hand-tiles">
-        <view class="mahjong-tile" wx:for="{{finalTiles}}" wx:key="index">
-          <text>{{item}}</text>
-        </view>
+        <mahjong-tile wx:for="{{finalTiles}}" wx:key="index" tile-text="{{item}}"></mahjong-tile>
       </view>
     </view>
 

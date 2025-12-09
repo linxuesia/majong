@@ -19,13 +19,14 @@
     <view class="level-desc">点击剔除字牌和花牌，只留下万、条、筒！</view>
     
     <view class="tiles-container">
-      <view class="tile {{item.removed ? 'removed' : ''}}" 
-            wx:for="{{tiles}}" 
-            wx:key="id"
-            bindtap="onTileTap"
-            data-id="{{item.id}}">
-        <image class="tile-image" src="{{item.image}}" mode="aspectFit"></image>
-      </view>
+      <mahjong-tile 
+        class="tile {{item.removed ? 'removed' : ''}}" 
+        wx:for="{{tiles}}" 
+        wx:key="id"
+        tile-text="{{item.text}}"
+        bind:tap="onTileTap"
+        data-id="{{item.id}}"
+      ></mahjong-tile>
     </view>
 
     <view class="score-display">
@@ -39,9 +40,7 @@
     <view class="level-desc">判断这手牌是什么起手胡？</view>
     
     <view class="hand-tiles">
-      <view class="mahjong-tile" wx:for="{{handTiles}}" wx:key="index">
-        <image class="tile-image" src="{{getTileImage(item)}}" mode="aspectFit"></image>
-      </view>
+      <mahjong-tile wx:for="{{handTiles}}" wx:key="index" tile-text="{{item}}"></mahjong-tile>
     </view>
 
     <view class="options">

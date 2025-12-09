@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "第三章：大胡风云"
+  "navigationBarTitleText": "第三章：大胡风云",
+  "usingComponents": {
+    "mahjong-tile": "../../components/mahjong-tile/mahjong-tile"
+  }
 }

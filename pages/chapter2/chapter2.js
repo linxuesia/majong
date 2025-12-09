@@ -1,6 +1,5 @@
 // pages/chapter2/chapter2.js
 const app = getApp()
-const { getTileImage } = require('../../utils/tileMapper')
 
 Page({
   data: {
@@ -30,9 +29,6 @@ Page({
     quizCorrect: 0,
     quizAnswer: false
   },
-  
-  // 麻将牌图片映射方法
-  getTileImage,
 
   onLoad(options) {
     // 检查是否有保存的关卡进度

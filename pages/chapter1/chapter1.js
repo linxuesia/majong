@@ -1,6 +1,5 @@
 // pages/chapter1/chapter1.js
 const app = getApp()
-const { getTileImage } = require('../../utils/tileMapper')
 
 Page({
   data: {
@@ -18,9 +17,6 @@ Page({
     handTiles: [],
     options: []
   },
-  
-  // 麻将牌图片映射方法
-  getTileImage,
   
 
   onLoad() {
@@ -47,7 +43,6 @@ Page({
       tiles.push({
         id: id++,
         text: tileText,
-        image: getTileImage(tileText),
         isValid: true,
         removed: false
       })
@@ -58,7 +53,6 @@ Page({
       tiles.push({
         id: id++,
         text: tileText,
-        image: getTileImage(tileText),
         isValid: false,
         removed: false
       })

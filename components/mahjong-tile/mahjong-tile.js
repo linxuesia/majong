@@ -55,10 +55,11 @@ Component({
       if (!tileInfo) return;
       
       if (tileInfo.type === 'sprite') {
-        // 精灵图模式
+        // 精灵图模式 - 使用更精确的样式计算
         const spriteStyle = {
           backgroundImage: `url(${tileInfo.sheetPath})`,
           backgroundPosition: `-${tileInfo.x}px -${tileInfo.y}px`,
+          backgroundSize: 'auto', // 保持精灵图原始尺寸
           width: `${tileInfo.width}rpx`,
           height: `${tileInfo.height}rpx`
         };

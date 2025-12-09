@@ -1,6 +1,5 @@
 // pages/chapter3/chapter3.js
 const app = getApp()
-const { getTileImage } = require('../../utils/tileMapper')
 
 Page({
   data: {
@@ -22,9 +21,6 @@ Page({
     correctTags: [],
     multiplier: 1
   },
-  
-  // 麻将牌图片映射方法
-  getTileImage,
 
   onLoad(options) {
     const app = getApp()

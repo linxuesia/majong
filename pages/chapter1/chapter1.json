@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "第一章：初入江湖"
+  "navigationBarTitleText": "第一章：初入江湖",
+  "usingComponents": {
+    "mahjong-tile": "../../components/mahjong-tile/mahjong-tile"
+  }
 }

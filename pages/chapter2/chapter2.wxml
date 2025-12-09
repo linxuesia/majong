@@ -22,9 +22,7 @@
     <view class="hand-section">
       <text class="section-label">你的手牌：</text>
       <view class="hand-tiles">
-        <view class="mahjong-tile" wx:for="{{handTiles}}" wx:key="index">
-          <image class="tile-image" src="{{getTileImage(item)}}" mode="aspectFit"></image>
-        </view>
+        <mahjong-tile wx:for="{{handTiles}}" wx:key="index" tile-text="{{item}}"></mahjong-tile>
       </view>
     </view>
 
@@ -32,7 +30,7 @@
     <view class="discard-section">
       <text class="section-label">{{discardFrom}}打出：</text>
       <view class="discard-tile {{animating ? 'flying' : ''}}">
-        <image class="tile-image" src="{{getTileImage(discardTile)}}" mode="aspectFit"></image>
+        <mahjong-tile tile-text="{{discardTile}}"></mahjong-tile>
       </view>
     </view>
 
@@ -58,9 +56,7 @@
     <view class="hand-section">
       <text class="section-label">听牌状态（缺一对将）：</text>
       <view class="hand-tiles">
-        <view class="mahjong-tile" wx:for="{{tingpaiTiles}}" wx:key="index">
-          <text>{{item}}</text>
-        </view>
+        <mahjong-tile wx:for="{{tingpaiTiles}}" wx:key="index" tile-text="{{item}}"></mahjong-tile>
         <view class="mahjong-tile empty">
           <text class="question">?</text>
         </view>
@@ -74,12 +70,12 @@
     <view class="candidates-section">
       <text class="section-label">选择将牌：</text>
       <view class="candidate-tiles">
-        <view class="mahjong-tile candidate {{item.selected ? 'selected' : ''}}" 
+        <view class="candidate {{item.selected ? 'selected' : ''}}" 
               wx:for="{{candidateTiles}}" 
               wx:key="id"
               bindtap="onCandidateTap"
               data-id="{{item.id}}">
-          <text>{{item.text}}</text>
+          <mahjong-tile tile-text="{{item.text}}"></mahjong-tile>
           <view class="check-mark" wx:if="{{item.selected}}">✓</view>
         </view>
       </view>
@@ -100,9 +96,7 @@
     
     <view class="hand-section">
       <view class="hand-tiles">
-        <view class="mahjong-tile" wx:for="{{quizTiles}}" wx:key="index">
-          <text>{{item}}</text>
-        </view>
+        <mahjong-tile wx:for="{{quizTiles}}" wx:key="index" tile-text="{{item}}"></mahjong-tile>
       </view>
     </view>
 
