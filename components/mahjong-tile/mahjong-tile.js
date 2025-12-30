@@ -36,6 +36,8 @@ Component({
     spriteSheetPath: '',
     spriteX: 0,
     spriteY: 0,
+    spriteWidth: 66,
+    spriteHeight: 95,
     // 单张图片
     singleImage: ''
   },
@@ -67,6 +69,8 @@ Component({
           spriteSheetPath: tileInfo.sheetPath,
           spriteX: tileInfo.x,
           spriteY: tileInfo.y,
+          spriteWidth: tileInfo.width,
+          spriteHeight: tileInfo.height,
           singleImage: ''
         });
       } else {

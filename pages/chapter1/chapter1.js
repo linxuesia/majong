@@ -32,7 +32,7 @@ Page({
   initLevel1() {
     // 生成混合的牌
     const validTiles = ['一万', '二万', '三万', '一条', '二条', '三条', '一筒', '二筒', '三筒']
-    const invalidTiles = ['东', '南', '西', '北', '中', '发', '白', '春', '梅']
+    const invalidTiles = ['东', '南', '西', '北', '中', '发', '白']
     
     const tiles = []
     let id = 0

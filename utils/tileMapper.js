@@ -72,6 +72,9 @@ const SPRITE_CONFIG = {
   totalWidth: 600,
   totalHeight: 400,
   
+  // 精灵图中每行之间的间隙（像素）
+  rowGap: 5,
+  
   // 调整后的定位偏移量（用于修正显示）
   offsetX: 0,
   offsetY: 0
@@ -87,9 +90,9 @@ const getTileInfo = (tileText) => {
     const baseUrl = IMAGE_SOURCE_TYPE === 'network' ? NETWORK_IMAGE_BASE_URL : LOCAL_IMAGE_BASE_PATH;
     const sheetPath = `${baseUrl}${SPRITE_CONFIG.fileName}`;
     
-    // 计算精灵图中的位置
+    // 计算精灵图中的位置，加上行间距
     const x = tileInfo.col * SPRITE_CONFIG.tileWidth;
-    const y = tileInfo.row * SPRITE_CONFIG.tileHeight;
+    const y = (tileInfo.row * SPRITE_CONFIG.tileHeight) + (tileInfo.row * SPRITE_CONFIG.rowGap);
     
     return {
       type: 'sprite',
