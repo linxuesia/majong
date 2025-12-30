@@ -32,7 +32,11 @@ Component({
   data: {
     tileInfo: null,
     isSprite: false,
-    spriteStyle: {},
+    // 精灵图样式属性
+    spriteSheetPath: '',
+    spriteX: 0,
+    spriteY: 0,
+    // 单张图片
     singleImage: ''
   },
 
@@ -56,18 +60,13 @@ Component({
       
       if (tileInfo.type === 'sprite') {
         // 精灵图模式 - 使用更精确的样式计算
-        const spriteStyle = {
-          backgroundImage: `url(${tileInfo.sheetPath})`,
-          backgroundPosition: `-${tileInfo.x}px -${tileInfo.y}px`,
-          backgroundSize: 'auto', // 保持精灵图原始尺寸
-          width: `${tileInfo.width}rpx`,
-          height: `${tileInfo.height}rpx`
-        };
-        
+        // 直接设置各个样式属性，而不是通过对象
         this.setData({
           tileInfo: tileInfo,
           isSprite: true,
-          spriteStyle: spriteStyle,
+          spriteSheetPath: tileInfo.sheetPath,
+          spriteX: tileInfo.x,
+          spriteY: tileInfo.y,
           singleImage: ''
         });
       } else {
@@ -75,7 +74,6 @@ Component({
         this.setData({
           tileInfo: tileInfo,
           isSprite: false,
-          spriteStyle: {},
           singleImage: tileInfo.path
         });
       }

@@ -1,78 +1,80 @@
-// 麻将牌文字到图片的映射关系
+// 麻将牌文字到图片的映射关系（单张精灵图布局）
 const tileMap = {
-  // 万子牌
-  '一万': { sheet: 'wan', index: 0 },
-  '二万': { sheet: 'wan', index: 1 },
-  '三万': { sheet: 'wan', index: 2 },
-  '四万': { sheet: 'wan', index: 3 },
-  '五万': { sheet: 'wan', index: 4 },
-  '六万': { sheet: 'wan', index: 5 },
-  '七万': { sheet: 'wan', index: 6 },
-  '八万': { sheet: 'wan', index: 7 },
-  '九万': { sheet: 'wan', index: 8 },
+  // 万子牌（第1行）
+  '一万': { row: 0, col: 0 },
+  '二万': { row: 0, col: 1 },
+  '三万': { row: 0, col: 2 },
+  '四万': { row: 0, col: 3 },
+  '五万': { row: 0, col: 4 },
+  '六万': { row: 0, col: 5 },
+  '七万': { row: 0, col: 6 },
+  '八万': { row: 0, col: 7 },
+  '九万': { row: 0, col: 8 },
   
-  // 条子牌
-  '一条': { sheet: 'tiao', index: 0 },
-  '二条': { sheet: 'tiao', index: 1 },
-  '三条': { sheet: 'tiao', index: 2 },
-  '四条': { sheet: 'tiao', index: 3 },
-  '五条': { sheet: 'tiao', index: 4 },
-  '六条': { sheet: 'tiao', index: 5 },
-  '七条': { sheet: 'tiao', index: 6 },
-  '八条': { sheet: 'tiao', index: 7 },
-  '九条': { sheet: 'tiao', index: 8 },
+  // 条子牌（第2行）
+  '一条': { row: 1, col: 0 },
+  '二条': { row: 1, col: 1 },
+  '三条': { row: 1, col: 2 },
+  '四条': { row: 1, col: 3 },
+  '五条': { row: 1, col: 4 },
+  '六条': { row: 1, col: 5 },
+  '七条': { row: 1, col: 6 },
+  '八条': { row: 1, col: 7 },
+  '九条': { row: 1, col: 8 },
   
-  // 筒子牌
-  '一筒': { sheet: 'tong', index: 0 },
-  '二筒': { sheet: 'tong', index: 1 },
-  '三筒': { sheet: 'tong', index: 2 },
-  '四筒': { sheet: 'tong', index: 3 },
-  '五筒': { sheet: 'tong', index: 4 },
-  '六筒': { sheet: 'tong', index: 5 },
-  '七筒': { sheet: 'tong', index: 6 },
-  '八筒': { sheet: 'tong', index: 7 },
-  '九筒': { sheet: 'tong', index: 8 },
+  // 筒子牌（第3行）
+  '一筒': { row: 2, col: 0 },
+  '二筒': { row: 2, col: 1 },
+  '三筒': { row: 2, col: 2 },
+  '四筒': { row: 2, col: 3 },
+  '五筒': { row: 2, col: 4 },
+  '六筒': { row: 2, col: 5 },
+  '七筒': { row: 2, col: 6 },
+  '八筒': { row: 2, col: 7 },
+  '九筒': { row: 2, col: 8 },
   
-  // 字牌
-  '东': { sheet: 'zi', index: 0 },
-  '南': { sheet: 'zi', index: 1 },
-  '西': { sheet: 'zi', index: 2 },
-  '北': { sheet: 'zi', index: 3 },
-  '中': { sheet: 'zi', index: 4 },
-  '发': { sheet: 'zi', index: 5 },
-  '白': { sheet: 'zi', index: 6 },
-  
-  // 花牌
-  '春': { sheet: 'hua', index: 0 },
-  '梅': { sheet: 'hua', index: 1 }
+  // 字牌（第4行）
+  '北': { row: 3, col: 0 },
+  '白': { row: 3, col: 1 },
+  '南': { row: 3, col: 2 },
+  '中': { row: 3, col: 3 },
+  '发': { row: 3, col: 4 },
+  '东': { row: 3, col: 5 },
+  '西': { row: 3, col: 6 }
 };
 
 // 配置：图片加载方式
 const LOAD_TYPE = 'sprite'; // sprite: 精灵图, single: 单张图片
 
 // 配置：图片来源类型 (local: 本地图片, network: 网络图片)
-const IMAGE_SOURCE_TYPE = 'network'; // 建议使用 network 以减小包大小
+const IMAGE_SOURCE_TYPE = 'network'; // 使用网络图片
 
 // 网络图片基础URL (使用网络图片时需要配置)
-const NETWORK_IMAGE_BASE_URL = 'https://example.com/mahjong/';
+const NETWORK_IMAGE_BASE_URL = 'https://images.daojia.com/jz/pic/';
 
 // 本地图片基础路径
 const LOCAL_IMAGE_BASE_PATH = '/images/';
 
-// 精灵图配置
+// 单张精灵图配置
 const SPRITE_CONFIG = {
-  // 每个麻将牌在精灵图中的尺寸（像素）
-  tileWidth: 80, // 宽度调整为 80px，对应 80rpx
-  tileHeight: 100, // 高度调整为 100px，对应 100rpx
+  // 整个精灵图的文件名
+  fileName: 'd5601e8b347ca3f3b4431b8869d786e9.png',
   
-  // 精灵图文件名
-  sheets: {
-    wan: 'sprites_wan.png',
-    tiao: 'sprites_tiao.png',
-    tong: 'sprites_tong.png',
-    zi: 'sprites_zi.png',
-    hua: 'sprites_hua.png'
-  }
+  // 每个麻将牌在精灵图中的尺寸（像素）
+  tileWidth: 66, // 宽度（像素）
+  tileHeight: 96, // 高度（像素）
+  
+  // 精灵图中的行数和列数
+  rows: 4,
+  cols: 9,
+  
+  // 图片总尺寸（像素）
+  totalWidth: 600,
+  totalHeight: 400,
+  
+  // 调整后的定位偏移量（用于修正显示）
+  offsetX: 0,
+  offsetY: 0
 };
 
 // 获取麻将牌对应的图片信息
@@ -81,15 +83,13 @@ const getTileInfo = (tileText) => {
   if (!tileInfo) return null;
   
   if (LOAD_TYPE === 'sprite') {
-    // 使用精灵图
+    // 使用单张精灵图
     const baseUrl = IMAGE_SOURCE_TYPE === 'network' ? NETWORK_IMAGE_BASE_URL : LOCAL_IMAGE_BASE_PATH;
-    const sheetPath = `${baseUrl}sprites/${SPRITE_CONFIG.sheets[tileInfo.sheet]}`;
+    const sheetPath = `${baseUrl}${SPRITE_CONFIG.fileName}`;
     
     // 计算精灵图中的位置
-    const row = Math.floor(tileInfo.index / 3); // 假设每行3个牌
-    const col = tileInfo.index % 3;
-    const x = col * SPRITE_CONFIG.tileWidth;
-    const y = row * SPRITE_CONFIG.tileHeight;
+    const x = tileInfo.col * SPRITE_CONFIG.tileWidth;
+    const y = tileInfo.row * SPRITE_CONFIG.tileHeight;
     
     return {
       type: 'sprite',
@@ -100,9 +100,9 @@ const getTileInfo = (tileText) => {
       height: SPRITE_CONFIG.tileHeight
     };
   } else {
-    // 使用单张图片
+    // 使用单张图片（保留兼容）
     const baseUrl = IMAGE_SOURCE_TYPE === 'network' ? NETWORK_IMAGE_BASE_URL : LOCAL_IMAGE_BASE_PATH;
-    const imagePath = `${baseUrl}tiles/${tileInfo.sheet}_${tileInfo.index + 1}.png`;
+    const imagePath = `${baseUrl}tiles/${tileText.replace(/[^\w]/g, '')}.png`;
     
     return {
       type: 'single',

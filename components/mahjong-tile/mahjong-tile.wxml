@@ -2,7 +2,7 @@
 <view class="mahjong-tile {{customClass}} {{disabled ? 'disabled' : ''}}" bindtap="onTap">
   <!-- 精灵图模式 -->
   <view class="sprite-container" wx:if="{{isSprite}}">
-    <view class="tile-sprite" style="{{spriteStyle}}"></view>
+    <view class="tile-sprite" style="background-image: url({{spriteSheetPath}}); background-position: -{{spriteX}}px -{{spriteY}}px; background-size: auto;"></view>
   </view>
   
   <!-- 单张图片模式 -->

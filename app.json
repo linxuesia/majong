@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/test-sprite/test-sprite",
     "pages/chapter1/chapter1",
     "pages/chapter2/chapter2",
     "pages/chapter3/chapter3",

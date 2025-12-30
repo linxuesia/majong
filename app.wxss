@@ -42,8 +42,8 @@ page {
 
 /* 麻将牌样式 */
 .mahjong-tile {
-  width: 80rpx;
-  height: 100rpx;
+  width: 66rpx;
+  height: 97rpx;
   background: white;
   border: 2rpx solid #333;
   border-radius: 8rpx;

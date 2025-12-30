@@ -123,6 +123,11 @@ Page({
       title: '第一关完成！',
       icon: 'success'
     })
+    
+    // 延迟1.5秒后自动进入第二关
+    setTimeout(() => {
+      this.initLevel2()
+    }, 1000)
   },
 
   gameOver() {
@@ -194,6 +199,11 @@ Page({
         title: '回答正确！',
         icon: 'success'
       })
+      
+      // 延迟1.5秒后自动完成章节
+      setTimeout(() => {
+        this.completeChapter()
+      }, 1500)
     } else {
       wx.showToast({
         title: '再想想哦',

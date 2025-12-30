@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "mahjong-tile": "../../components/mahjong-tile/mahjong-tile"
+  },
+  "navigationBarTitleText": "精灵图调试",
+  "navigationBarBackgroundColor": "#D32F2F",
+  "navigationBarTextStyle": "white",
+  "backgroundTextStyle": "light",
+  "backgroundColor": "#FFF8E1"
+}
