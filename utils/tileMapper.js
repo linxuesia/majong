@@ -62,7 +62,7 @@ const SPRITE_CONFIG = {
   
   // 每个麻将牌在精灵图中的尺寸（像素）
   tileWidth: 66, // 宽度（像素）
-  tileHeight: 96, // 高度（像素）
+  tileHeight: 97, // 高度（像素）
   
   // 精灵图中的行数和列数
   rows: 4,
@@ -76,8 +76,8 @@ const SPRITE_CONFIG = {
   rowGap: 5,
   
   // 调整后的定位偏移量（用于修正显示）
-  offsetX: 0,
-  offsetY: 0
+  offsetX: 4,
+  offsetY: 1
 };
 
 // 获取麻将牌对应的图片信息
@@ -89,10 +89,14 @@ const getTileInfo = (tileText) => {
     // 使用单张精灵图
     const baseUrl = IMAGE_SOURCE_TYPE === 'network' ? NETWORK_IMAGE_BASE_URL : LOCAL_IMAGE_BASE_PATH;
     const sheetPath = `${baseUrl}${SPRITE_CONFIG.fileName}`;
+    // 第二行设置 offsetY 设置为 7
+    if (tileInfo.row === 1) {
+      SPRITE_CONFIG.offsetY = 7;
+    }
     
     // 计算精灵图中的位置，加上行间距
-    const x = tileInfo.col * SPRITE_CONFIG.tileWidth;
-    const y = (tileInfo.row * SPRITE_CONFIG.tileHeight) + (tileInfo.row * SPRITE_CONFIG.rowGap);
+    const x = tileInfo.col * SPRITE_CONFIG.tileWidth + SPRITE_CONFIG.offsetX;
+    const y = (tileInfo.row * SPRITE_CONFIG.tileHeight) + (tileInfo.row * SPRITE_CONFIG.rowGap) + SPRITE_CONFIG.offsetY;
     
     return {
       type: 'sprite',
