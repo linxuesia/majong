@@ -96,7 +96,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12rpx;
+  gap: 4rpx;
 }
 
 .discard-section {
