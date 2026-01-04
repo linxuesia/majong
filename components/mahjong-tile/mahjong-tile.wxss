@@ -5,10 +5,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 134rpx;
-  height: 200rpx;
-  background: white;
-  border: 2rpx solid #333;
+  /* width: 134rpx; */
+  /* height: 200rpx; */
+  /* background: white; */
+  /* border: 2rpx solid #333; */
   border-radius: 8rpx;
   box-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
@@ -86,17 +86,7 @@
   object-fit: contain;
 }
 
-/* 精灵图样式 */
-.tile-sprite {
-  background-size: auto;
-  background-repeat: no-repeat;
-  border-radius: 6rpx;
-  box-shadow: inset 0 0 2rpx rgba(0, 0, 0, 0.3);
-  transition: all 0.2s ease;
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
+
 
 /* 点击效果 */
 .mahjong-tile:active {
