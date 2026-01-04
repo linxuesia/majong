@@ -17,10 +17,12 @@ Page({
     showActions: false,
     animating: false,
     correctAction: '',
+    currentScenarioIndex: 0,
     
     // 第二关：寻找将军
     tingpaiTiles: [],
     candidateTiles: [],
+    level2ScenarioIndex: 0,
     
     // 第三关：258将强化训练
     quizTiles: [],
@@ -48,6 +50,9 @@ Page({
 
   // ========== 第一关：抢答反应堆 ==========
   initLevel1() {
+    this.setData({
+      currentScenarioIndex: 0
+    })
     this.generateScenario()
   },
 
@@ -95,7 +100,11 @@ Page({
       }
     ]
 
-    const scenario = scenarios[Math.floor(Math.random() * scenarios.length)]
+    let currentIndex = this.data.currentScenarioIndex
+    const scenario = scenarios[currentIndex]
+    
+    // 递增索引，循环使用
+    currentIndex = (currentIndex + 1) % scenarios.length
     
     this.setData({
       handTiles: scenario.hand,
@@ -104,7 +113,8 @@ Page({
       correctAction: scenario.correct,
       currentReason: scenario.reason,
       showActions: false,
-      animating: true
+      animating: true,
+      currentScenarioIndex: currentIndex
     })
 
     // 动画后显示按钮
@@ -216,7 +226,12 @@ Page({
       }
     ]
 
-    const scenario = scenarios[Math.floor(Math.random() * scenarios.length)]
+    // 获取当前索引，默认从0开始
+    const index = this.data.level2ScenarioIndex
+    const scenario = scenarios[index]
+    
+    // 递增索引，循环使用
+    const newIndex = (index + 1) % scenarios.length
     
     this.setData({
       currentLevel: 2,
@@ -224,7 +239,8 @@ Page({
       tingpaiTiles: scenario.tiles,
       candidateTiles: scenario.candidates.map(c => ({ ...c, selected: false })),
       progress: 33,
-      guideText: '小胡必须用2、5、8作将！选择正确的将牌吧！'
+      guideText: '小胡必须用2、5、8作将！选择正确的将牌吧！',
+      level2ScenarioIndex: newIndex
     })
   },
 
