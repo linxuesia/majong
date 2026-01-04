@@ -38,7 +38,7 @@ Page({
     let id = 0
     
     // 随机选择一些有效牌和无效牌
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 8; i++) {
       const tileText = validTiles[Math.floor(Math.random() * validTiles.length)]
       tiles.push({
         id: id++,
@@ -48,7 +48,7 @@ Page({
       })
     }
     
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 4; i++) {
       const tileText = invalidTiles[Math.floor(Math.random() * invalidTiles.length)]
       tiles.push({
         id: id++,
