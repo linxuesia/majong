@@ -2,7 +2,7 @@
 App({
   globalData: {
     // 开发模式开关（开发时设为true，发布时设为false）
-    DEV_MODE: false,
+    DEV_MODE: true,
     
     // 游戏进度
     currentChapter: 1,

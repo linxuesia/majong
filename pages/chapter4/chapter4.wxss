@@ -1,106 +1,267 @@
+/* 第四章样式 */
 .container {
   min-height: 100vh;
+  padding: 32rpx;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 60rpx 32rpx;
+  background: linear-gradient(180deg, #E3F2FD, #FFFFFF);
 }
 
-.placeholder {
-  text-align: center;
-  width: 100%;
-}
-
-.emoji {
-  display: block;
-  font-size: 120rpx;
+.guide-section {
+  display: flex;
+  align-items: flex-start;
   margin-bottom: 32rpx;
-  animation: float 3s ease-in-out infinite;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20rpx); }
+.guide-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 16rpx;
 }
 
-.title {
-  display: block;
-  font-size: 48rpx;
-  font-weight: bold;
-  color: #D32F2F;
-  margin-bottom: 16rpx;
-}
-
-.desc {
-  display: block;
-  font-size: 28rpx;
-  color: #666;
-  margin-bottom: 48rpx;
-  line-height: 1.6;
-}
-
-.dev-status {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16rpx;
-  margin-bottom: 48rpx;
-}
-
-.status-badge {
-  display: inline-block;
-  padding: 16rpx 48rpx;
-  background: linear-gradient(135deg, #FF9800, #FF5722);
-  color: white;
-  font-size: 32rpx;
-  font-weight: bold;
-  border-radius: 50rpx;
-  box-shadow: 0 8rpx 16rpx rgba(255, 152, 0, 0.3);
-}
-
-.status-text {
-  font-size: 36rpx;
-  color: #999;
-  font-weight: bold;
-}
-
-.feature-list {
-  display: flex;
-  flex-direction: column;
-  gap: 24rpx;
-  width: 100%;
-  max-width: 500rpx;
-  margin: 0 auto;
-}
-
-.feature-item {
-  display: flex;
-  align-items: center;
-  gap: 24rpx;
-  padding: 24rpx 32rpx;
+.guide-bubble {
+  flex: 1;
   background: white;
   border-radius: 24rpx;
+  padding: 24rpx;
+  position: relative;
   box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
 }
 
-.feature-icon {
-  font-size: 48rpx;
+.guide-bubble::before {
+  content: '';
+  position: absolute;
+  left: -16rpx;
+  top: 24rpx;
+  width: 0;
+  height: 0;
+  border-top: 16rpx solid transparent;
+  border-bottom: 16rpx solid transparent;
+  border-right: 16rpx solid white;
 }
 
-.feature-name {
+.guide-bubble text {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+}
+
+.progress-bar {
+  height: 16rpx;
+  background: #E0E0E0;
+  border-radius: 8rpx;
+  overflow: hidden;
+  margin-bottom: 32rpx;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  transition: width 0.3s ease;
+}
+
+.game-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  box-shadow: 0 8rpx 16rpx rgba(0, 0, 0, 0.1);
+}
+
+.level-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #D32F2F;
+  text-align: center;
+  margin-bottom: 16rpx;
+}
+
+.level-desc {
+  font-size: 28rpx;
+  color: #666;
+  text-align: center;
+  margin-bottom: 32rpx;
+}
+
+.sea-tiles-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16rpx;
+  margin-bottom: 32rpx;
+  padding: 24rpx;
+  background: linear-gradient(135deg, #B3E5FC, #03A9F4);
+  border-radius: 24rpx;
+}
+
+.sea-tile {
+  width: 120rpx;
+  height: 160rpx;
+  background: white;
+  border: 4rpx solid #333;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4rpx 4rpx 8rpx rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+.choices-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  margin-bottom: 32rpx;
+}
+
+.choice-btn {
+  background: white;
+  color: #333;
+  border: 4rpx solid #D32F2F;
+  border-radius: 50rpx;
+  padding: 32rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.choice-btn:active {
+  background: #D32F2F;
+  color: white;
+  transform: scale(0.98);
+}
+
+.score-display {
+  display: flex;
+  justify-content: space-around;
+  padding: 24rpx;
+  background: white;
+  border-radius: 24rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #D32F2F;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 第二关：扎鸟题目样式 */
+.question-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.question-desc {
   font-size: 32rpx;
   color: #333;
+  text-align: center;
+  padding: 24rpx;
+  background: linear-gradient(135deg, #FFF3E0, #FFCCBC);
+  border-radius: 16rpx;
+  line-height: 1.6;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.option-btn {
+  background: white;
+  color: #333;
+  border: 4rpx solid #D32F2F;
+  border-radius: 50rpx;
+  padding: 32rpx;
+  font-size: 32rpx;
   font-weight: bold;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
 }
 
-.back-button {
-  position: fixed;
-  bottom: 48rpx;
-  left: 32rpx;
-  right: 32rpx;
+.option-btn:active {
+  transform: scale(0.98);
 }
 
-.back-button button {
-  width: 100%;
+.option-btn.selected {
+  background: #D32F2F;
+  color: white;
+}
+
+.submit-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 50rpx;
+  padding: 32rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2);
+  margin-top: 16rpx;
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+.submit-btn:disabled {
+  background: #BDBDBD;
+  color: #757575;
+}
+
+.bottom-actions {
+  display: flex;
+  gap: 24rpx;
+  margin-top: 32rpx;
+}
+
+.bottom-actions button {
+  flex: 1;
+}
+
+.btn-primary {
+  background: #D32F2F;
+  color: white;
+  border: none;
+  border-radius: 50rpx;
+  padding: 32rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:disabled {
+  background: #BDBDBD;
+  color: #757575;
+}
+
+.btn-secondary {
+  background: white;
+  color: #333;
+  border: 4rpx solid #333;
+  border-radius: 50rpx;
+  padding: 32rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:active {
+  background: #333;
+  color: white;
+}
+
+/* 海底特殊样式 */
+.sea-tile[tile-text="海底"] {
+  background: linear-gradient(135deg, #FFEB3B, #FFC107);
+  font-weight: bold;
+  font-size: 40rpx;
+  color: #D32F2F;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }

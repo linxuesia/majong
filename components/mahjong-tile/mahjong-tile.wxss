@@ -86,7 +86,24 @@
   object-fit: contain;
 }
 
+/* 文字模式样式 */
+.tile-text-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 90%;
+  background-color: #f8f8f8;
+  border-radius: 6rpx;
+  box-shadow: inset 0 0 2rpx rgba(0, 0, 0, 0.3);
+}
 
+.tile-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
 
 /* 点击效果 */
 .mahjong-tile:active {

@@ -1,29 +1,126 @@
+<!-- 第四章：海底与扎鸟 -->
 <view class="container">
-  <view class="placeholder">
-    <text class="emoji">🎆</text>
-    <text class="title">第四章：海底与扎鸟</text>
-    <text class="desc">{{guideText}}</text>
-    <view class="dev-status">
-      <text class="status-badge">🚧 开发中</text>
-      <text class="status-text">敬请期待</text>
-    </view>
-    <view class="feature-list">
-      <view class="feature-item">
-        <text class="feature-icon">🌊</text>
-        <text class="feature-name">海底捞月</text>
-      </view>
-      <view class="feature-item">
-        <text class="feature-icon">💥</text>
-        <text class="feature-name">海底炮</text>
-      </view>
-      <view class="feature-item">
-        <text class="feature-icon">🐦</text>
-        <text class="feature-name">扎鸟翻倍</text>
-      </view>
+  <!-- 辣子雀导师 -->
+  <view class="guide-section">
+    <image class="guide-avatar" src="https://images.daojia.com/jz/pic/69c729e5f514f9bfc1c6a25b1f91e6ad.jpg" mode="aspectFit"></image>
+    <view class="guide-bubble">
+      <text>{{guideText}}</text>
     </view>
   </view>
-  
-  <view class="back-button">
+
+  <!-- 关卡进度 -->
+  <view class="progress-bar">
+    <view class="progress-fill" style="width: {{progress}}%"></view>
+  </view>
+
+  <!-- 游戏区域 -->
+  <view class="game-area" wx:if="{{currentLevel === 1}}">
+    <view class="level-title">🌊 深海探宝</view>
+    <view class="level-desc">根据描述，选择正确的海底动作！</view>
+    
+    <view class="sea-tiles-container">
+      <mahjong-tile 
+        class="tile sea-tile" 
+        wx:for="{{seaTiles}}" 
+        wx:key="index"
+        tile-text="{{item}}"
+      ></mahjong-tile>
+    </view>
+
+    <view class="choices-container">
+      <button class="choice-btn" 
+              wx:for="{{choices}}" 
+              wx:key="index"
+              bindtap="onChoiceTap"
+              data-choice="{{item}}">
+        {{item}}
+      </button>
+    </view>
+
+    <view class="score-display">
+      <text>得分：{{score}}</text>
+      <text>剩余时间：{{timeLeft}}秒</text>
+    </view>
+  </view>
+
+  <view class="game-area" wx:if="{{currentLevel === 2}}">
+    <view class="level-title">🐦 愤怒的扎鸟</view>
+    <view class="level-desc">扎鸟规则学习</view>
+    
+    <!-- 第一题：选择中自己的数字（多选） -->
+    <view wx:if="{{questionType === 'who'}}" class="question-container">
+      <view class="question-desc">{{guideText}}</view>
+      
+      <view class="options">
+        <button class="option-btn {{item.selected ? 'selected' : ''}}" 
+                wx:for="{{options}}" 
+                wx:key="index"
+                bindtap="onOptionSelect"
+                data-index="{{index}}">
+          {{item.text}}
+        </button>
+      </view>
+      
+      <button class="submit-btn" 
+              bindtap="onWhoSubmit"
+              disabled="{{userAnswer.length === 0}}">
+        提交答案
+      </button>
+    </view>
+    
+    <!-- 第二、三题：判断是哪家（单选） -->
+    <view wx:if="{{questionType === 'position'}}" class="question-container">
+      <view class="question-desc">{{guideText}}</view>
+      
+      <view class="options">
+        <button class="option-btn {{selectedOption === index ? 'selected' : ''}}" 
+                wx:for="{{options}}" 
+                wx:key="index"
+                bindtap="onOptionSelect"
+                data-index="{{index}}">
+          {{item.text}}
+        </button>
+      </view>
+      
+      <button class="submit-btn" 
+              bindtap="onPositionSubmit"
+              disabled="{{selectedOption === null}}">
+        提交答案
+      </button>
+    </view>
+    
+    <!-- 第四题：计算各家要给的分数（单选） -->
+    <view wx:if="{{questionType === 'allScores'}}" class="question-container">
+      <view class="question-desc">{{guideText}}</view>
+      
+      <view class="options">
+        <button class="option-btn {{selectedOption === index ? 'selected' : ''}}" 
+                wx:for="{{options}}" 
+                wx:key="index"
+                bindtap="onOptionSelect"
+                data-index="{{index}}">
+          {{item}}
+        </button>
+      </view>
+      
+      <button class="submit-btn" 
+              bindtap="onScoreSubmit"
+              disabled="{{selectedOption === null}}">
+        提交答案
+      </button>
+    </view>
+
+    <view class="score-display">
+      <text>得分：{{score}}</text>
+      <text>剩余时间：{{timeLeft}}秒</text>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-actions">
     <button class="btn-secondary" bindtap="onBackTap">返回</button>
+    <button class="btn-primary" bindtap="onNextTap" disabled="{{!levelCompleted && currentLevel === 1}}">
+      {{currentLevel < 2 ? '下一关' : '完成章节'}}
+    </button>
   </view>
 </view>

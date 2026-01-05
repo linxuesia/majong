@@ -1,10 +1,15 @@
 <!-- components/mahjong-tile/mahjong-tile.wxml -->
 <view class="mahjong-tile {{customClass}} {{disabled ? 'disabled' : ''}}" bindtap="onTap">
   <!-- 精灵图模式 -->
-  <view class="sprite-container" wx:if="{{isSprite}}">
+  <view class="sprite-container" wx:if="{{isSprite && tileInfo}}">
     <view class="tile-sprite" style="background-image: url({{spriteSheetPath}}); background-position: -{{spriteX}}px -{{spriteY}}px; width: {{spriteWidth}}px; height: {{spriteHeight}}px; background-size: auto;"></view>
   </view>
   
   <!-- 单张图片模式 -->
-  <image wx:else class="tile-image" src="{{singleImage}}" mode="aspectFit"></image>
+  <image wx:elif="{{!isSprite && singleImage}}" class="tile-image" src="{{singleImage}}" mode="aspectFit"></image>
+  
+  <!-- 文字模式（用于特殊牌型） -->
+  <view wx:else class="tile-text-container">
+    <text class="tile-text">{{tileText}}</text>
+  </view>
 </view>
