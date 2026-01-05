@@ -20,7 +20,7 @@
     
     <view class="sea-tiles-container">
       <mahjong-tile 
-        class="tile sea-tile" 
+        custom-class="tile sea-tile" 
         wx:for="{{seaTiles}}" 
         wx:key="index"
         tile-text="{{item}}"

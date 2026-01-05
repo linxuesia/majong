@@ -64,7 +64,8 @@ Page({
       correctChoice: scenario.action,
       choices: scenario.choices,
       timeLeft: 30,
-      gameOver: false
+      gameOver: false,
+      currentLevel: 1
     })
     
     this.startTimer()

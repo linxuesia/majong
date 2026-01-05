@@ -36,6 +36,7 @@
 /* 精灵图样式 */
 .tile-sprite {
   background-size: auto;
+  background-size: auto;
   background-repeat: no-repeat;
   border-radius: 6rpx;
   box-shadow: inset 0 0 2rpx rgba(0, 0, 0, 0.3);
