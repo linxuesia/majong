@@ -221,47 +221,60 @@
 }
 
 .btn-primary {
-  background: #D32F2F;
+  background: linear-gradient(135deg, #D32F2F 0%, #F44336 100%);
   color: white;
   border: none;
   border-radius: 50rpx;
-  padding: 32rpx;
+  padding: 24rpx 48rpx;
   font-size: 32rpx;
   font-weight: bold;
-  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8rpx 16rpx rgba(211, 47, 47, 0.3);
+}
+
+.btn-primary:active {
+  opacity: 0.8;
+  transform: scale(0.98);
 }
 
 .btn-primary:disabled {
   background: #BDBDBD;
   color: #757575;
+  box-shadow: none;
 }
 
 .btn-secondary {
   background: white;
-  color: #333;
-  border: 4rpx solid #333;
+  color: #D32F2F;
+  border: 4rpx solid #D32F2F;
   border-radius: 50rpx;
-  padding: 32rpx;
+  padding: 24rpx 48rpx;
   font-size: 32rpx;
   font-weight: bold;
-  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+  box-shadow: none;
 }
 
 .btn-secondary:active {
-  background: #333;
-  color: white;
+  opacity: 0.8;
+  transform: scale(0.98);
 }
 
 /* 海底特殊样式 */
 .sea-tile[tile-text="海底"] {
+  width: 160rpx;
+  height: 220rpx;
   background: linear-gradient(135deg, #FFEB3B, #FFC107);
   font-weight: bold;
-  font-size: 40rpx;
+  font-size: 48rpx;
   color: #D32F2F;
   animation: pulse 1.5s ease-in-out infinite;
+  border: 6rpx solid #D32F2F;
+  box-shadow: 0 12rpx 24rpx rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
+  position: relative;
+  z-index: 10;
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  0%, 100% { transform: scale(1.1); }
+  50% { transform: scale(1.2); }
 }
