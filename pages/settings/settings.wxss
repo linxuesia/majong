@@ -1,21 +1,32 @@
 /* 规则介绍页面样式 */
 .container {
   min-height: 100vh;
-  background: linear-gradient(180deg, #FFF8E1 0%, #FFFFFF 100%);
+  background: linear-gradient(135deg, #FFF8E1, #FFECB3);
   padding: 40rpx 32rpx 80rpx;
+  animation: fadeIn 0.8s ease-out;
 }
 
 /* 头部 */
 .header {
   text-align: center;
   padding: 40rpx 0 60rpx;
+  animation: slideIn 0.8s ease-out 0.2s both;
 }
 
 .header-icon {
   display: block;
-  font-size: 100rpx;
+  font-size: 120rpx;
   margin-bottom: 20rpx;
-  animation: rotate 20s linear infinite;
+  animation: rotate 20s linear infinite, scaleIn 1s ease-out 0.4s both;
+  background: linear-gradient(135deg, #D32F2F, #FFB74D);
+  border-radius: 50%;
+  box-shadow: 0 8rpx 24rpx rgba(211, 47, 47, 0.3);
+  width: 160rpx;
+  height: 160rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20rpx;
 }
 
 @keyframes rotate {
@@ -29,18 +40,26 @@
   font-weight: bold;
   color: #D32F2F;
   margin-bottom: 12rpx;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #D32F2F, #FFB74D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeIn 1s ease-out 0.6s both;
 }
 
 .header-subtitle {
   display: block;
   font-size: 24rpx;
-  color: #999;
+  color: #999999;
   letter-spacing: 2rpx;
+  animation: fadeIn 1s ease-out 0.8s both;
 }
 
 /* 章节 */
 .section {
   margin-bottom: 48rpx;
+  animation: slideIn 0.8s ease-out 1s both;
 }
 
 .section-title {
@@ -48,24 +67,34 @@
   align-items: center;
   gap: 12rpx;
   margin-bottom: 24rpx;
+  animation: fadeIn 1s ease-out 1.2s both;
 }
 
 .title-icon {
   font-size: 40rpx;
+  color: #D32F2F;
+  animation: bounce 2s infinite;
 }
 
 .title-text {
   font-size: 36rpx;
   font-weight: bold;
-  color: #333;
+  color: #333333;
 }
 
 /* 基础规则卡片 */
 .rule-card {
-  background: white;
+  background: #FFFFFF;
   border-radius: 24rpx;
   padding: 32rpx;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  animation: scaleIn 0.8s ease-out 1.4s both;
+  transition: all 0.3s ease;
+}
+
+.rule-card:hover {
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  transform: translateY(-2rpx);
 }
 
 .rule-item {
@@ -74,7 +103,19 @@
   align-items: center;
   padding: 20rpx 0;
   border-bottom: 2rpx solid #F5F5F5;
+  animation: slideIn 0.6s ease-out both;
+  transition: all 0.2s ease;
 }
+
+.rule-item:hover {
+  transform: translateX(8rpx);
+}
+
+.rule-item:nth-child(1) { animation-delay: 1.6s; }
+.rule-item:nth-child(2) { animation-delay: 1.7s; }
+.rule-item:nth-child(3) { animation-delay: 1.8s; }
+.rule-item:nth-child(4) { animation-delay: 1.9s; }
+.rule-item:nth-child(5) { animation-delay: 2s; }
 
 .rule-item:last-child {
   border-bottom: none;
@@ -82,13 +123,16 @@
 
 .rule-label {
   font-size: 28rpx;
-  color: #666;
+  color: #666666;
 }
 
 .rule-value {
   font-size: 28rpx;
   font-weight: bold;
   color: #D32F2F;
+  background: rgba(211, 47, 47, 0.1);
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
 }
 
 /* 特色规则卡片 */
@@ -102,11 +146,35 @@
   display: flex;
   align-items: center;
   gap: 24rpx;
-  background: white;
-  border-radius: 20rpx;
+  background: #FFFFFF;
+  border-radius: 24rpx;
   padding: 24rpx;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
-  transition: all 0.3s;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: slideIn 0.8s ease-out both;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, #D32F2F, #FFB74D);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-4rpx) scale(1.02);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+}
+
+.feature-item:hover::before {
+  opacity: 1;
 }
 
 .feature-item:active {
@@ -114,9 +182,16 @@
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.12);
 }
 
+.feature-item:nth-child(1) { animation-delay: 2.2s; }
+.feature-item:nth-child(2) { animation-delay: 2.3s; }
+.feature-item:nth-child(3) { animation-delay: 2.4s; }
+.feature-item:nth-child(4) { animation-delay: 2.5s; }
+
 .feature-icon {
   font-size: 48rpx;
   flex-shrink: 0;
+  color: #D32F2F;
+  animation: bounce 2s infinite;
 }
 
 .feature-content {
@@ -129,12 +204,12 @@
 .feature-name {
   font-size: 32rpx;
   font-weight: bold;
-  color: #333;
+  color: #333333;
 }
 
 .feature-desc {
   font-size: 24rpx;
-  color: #999;
+  color: #999999;
   line-height: 1.5;
 }
 
@@ -142,31 +217,45 @@
 .pattern-list {
   display: flex;
   flex-direction: column;
-  gap: 12rpx;
+  gap: 16rpx;
+  animation: fadeIn 1s ease-out 2.6s both;
 }
 
 .pattern-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: white;
+  background: #FFFFFF;
   border-radius: 16rpx;
   padding: 24rpx 28rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
   border-left: 6rpx solid #D32F2F;
+  transition: all 0.3s ease;
+  animation: slideIn 0.8s ease-out both;
 }
+
+.pattern-item:hover {
+  transform: translateY(-4rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+}
+
+.pattern-item:nth-child(1) { animation-delay: 2.8s; }
+.pattern-item:nth-child(2) { animation-delay: 2.9s; }
+.pattern-item:nth-child(3) { animation-delay: 3s; }
+.pattern-item:nth-child(4) { animation-delay: 3.1s; }
+.pattern-item:nth-child(5) { animation-delay: 3.2s; }
 
 .pattern-name {
   font-size: 30rpx;
   font-weight: bold;
-  color: #333;
+  color: #333333;
   min-width: 120rpx;
 }
 
 .pattern-desc {
   flex: 1;
   font-size: 26rpx;
-  color: #666;
+  color: #666666;
   margin: 0 16rpx;
 }
 
@@ -174,9 +263,15 @@
   font-size: 32rpx;
   font-weight: bold;
   color: #D32F2F;
-  background: #FFEBEE;
+  background: rgba(211, 47, 47, 0.1);
   padding: 8rpx 20rpx;
   border-radius: 20rpx;
+  transition: all 0.2s ease;
+}
+
+.pattern-score:hover {
+  background: rgba(211, 47, 47, 0.2);
+  transform: scale(1.05);
 }
 
 /* 起手胡列表 */
@@ -184,6 +279,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16rpx;
+  animation: fadeIn 1s ease-out 3.4s both;
 }
 
 .qishou-item {
@@ -191,11 +287,43 @@
   flex-direction: column;
   align-items: center;
   gap: 12rpx;
-  background: white;
+  background: #FFFFFF;
   border-radius: 16rpx;
   padding: 24rpx 16rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: scaleIn 0.8s ease-out both;
+  position: relative;
+  overflow: hidden;
 }
+
+.qishou-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, #D32F2F, #FFB74D);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.qishou-item:hover {
+  transform: translateY(-4rpx) scale(1.05);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+}
+
+.qishou-item:hover::before {
+  opacity: 1;
+}
+
+.qishou-item:nth-child(1) { animation-delay: 3.6s; }
+.qishou-item:nth-child(2) { animation-delay: 3.7s; }
+.qishou-item:nth-child(3) { animation-delay: 3.8s; }
+.qishou-item:nth-child(4) { animation-delay: 3.9s; }
+.qishou-item:nth-child(5) { animation-delay: 4s; }
+.qishou-item:nth-child(6) { animation-delay: 4.1s; }
 
 .qishou-name {
   font-size: 28rpx;
@@ -205,7 +333,9 @@
 
 .qishou-desc {
   font-size: 24rpx;
-  color: #999;
+  color: #999999;
+  text-align: center;
+  line-height: 1.5;
 }
 
 /* 底部提示 */
@@ -218,14 +348,25 @@
   background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
   border-radius: 20rpx;
   margin-top: 32rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.8s ease-out 4.3s both;
+  transition: all 0.3s ease;
+}
+
+.footer-tip:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
 }
 
 .tip-icon {
   font-size: 36rpx;
+  color: #1565C0;
+  animation: bounce 2s infinite;
 }
 
 .tip-text {
   font-size: 26rpx;
   color: #1565C0;
   font-weight: 500;
+  line-height: 1.5;
 }

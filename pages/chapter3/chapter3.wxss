@@ -4,27 +4,35 @@
   padding: 32rpx;
   display: flex;
   flex-direction: column;
+  animation: fadeIn 0.8s ease-out;
 }
 
 .guide-section {
   display: flex;
   align-items: flex-start;
   margin-bottom: 32rpx;
+  animation: slideIn 0.8s ease-out 0.2s both;
 }
 
 .guide-avatar {
   width: 100rpx;
   height: 100rpx;
   margin-right: 16rpx;
+  border-radius: 50%;
+  box-shadow: 0 4rpx 16rpx rgba(211, 47, 47, 0.3);
+  background: linear-gradient(135deg, #D32F2F, #FFB74D);
+  animation: pulse 2s infinite;
 }
 
 .guide-bubble {
   flex: 1;
-  background: white;
+  background: #FFFFFF;
   border-radius: 24rpx;
   padding: 24rpx;
   position: relative;
   box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.8s ease-out 0.4s both;
+  transition: all 0.3s ease;
 }
 
 .guide-bubble::before {
@@ -36,63 +44,97 @@
   height: 0;
   border-top: 16rpx solid transparent;
   border-bottom: 16rpx solid transparent;
-  border-right: 16rpx solid white;
+  border-right: 16rpx solid #FFFFFF;
+  animation: fadeIn 0.8s ease-out 0.6s both;
 }
 
 .guide-bubble text {
   font-size: 28rpx;
-  color: #333;
+  color: #333333;
   line-height: 1.6;
+  animation: fadeIn 1s ease-out 0.8s both;
+}
+
+.guide-bubble:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
 }
 
 .progress-bar {
-  height: 16rpx;
-  background: #E0E0E0;
-  border-radius: 8rpx;
+  height: 20rpx;
+  background: rgba(211, 47, 47, 0.1);
+  border-radius: 10rpx;
   overflow: hidden;
   margin-bottom: 32rpx;
+  animation: slideIn 0.8s ease-out 1s both;
+  box-shadow: inset 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
 }
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #4CAF50, #8BC34A);
-  transition: width 0.3s ease;
+  background: linear-gradient(90deg, #D32F2F, #FFB74D);
+  transition: width 0.5s ease-out;
+  border-radius: 10rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shine 1.5s infinite;
 }
 
 .game-area {
   flex: 1;
   display: flex;
   flex-direction: column;
+  animation: fadeIn 0.8s ease-out 1.2s both;
 }
 
 .level-title {
-  font-size: 40rpx;
+  font-size: 48rpx;
   font-weight: bold;
   color: #D32F2F;
   text-align: center;
   margin-bottom: 16rpx;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-out 1.4s both;
+  background: linear-gradient(135deg, #D32F2F, #FFB74D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .level-desc {
   font-size: 28rpx;
-  color: #666;
+  color: #666666;
   text-align: center;
   margin-bottom: 32rpx;
+  animation: fadeIn 1s ease-out 1.6s both;
 }
 
 /* 第一关样式 */
 .hand-section {
   margin-bottom: 32rpx;
+  animation: slideIn 0.8s ease-out 1.8s both;
 }
 
 .hand-tiles {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 4rpx;
+  gap: 8rpx;
 }
 
-
+.hand-tiles .mahjong-tile {
+  animation: scaleIn 0.6s ease-out both;
+}
 
 .pattern-options {
   display: flex;
@@ -100,35 +142,73 @@
   flex-wrap: wrap;
   gap: 16rpx;
   margin-bottom: 32rpx;
+  animation: slideIn 0.8s ease-out 2s both;
 }
 
 .pattern-btn {
-  background: white;
-  color: #333;
+  background: #FFFFFF;
+  color: #333333;
   border: 4rpx solid #D32F2F;
   border-radius: 50rpx;
   padding: 32rpx;
   font-size: 32rpx;
   font-weight: bold;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
   width: calc(50% - 8rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.pattern-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(211, 47, 47, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.pattern-btn:active::before {
+  width: 400rpx;
+  height: 400rpx;
 }
 
 .pattern-btn:active {
   background: linear-gradient(135deg, #D32F2F, #F44336);
   color: white;
   transform: scale(0.98);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.2);
+}
+
+.pattern-btn:hover {
+  transform: translateY(-4rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  border-color: #FFB74D;
 }
 
 .score-display {
   display: flex;
   justify-content: space-around;
   padding: 24rpx;
-  background: white;
+  background: #FFFFFF;
   border-radius: 24rpx;
   font-size: 32rpx;
   font-weight: bold;
   color: #D32F2F;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 24rpx;
+  transition: all 0.3s ease;
+  animation: slideIn 0.8s ease-out 2.2s both;
+}
+
+.score-display:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
 }
 
 .hint-box {
@@ -137,13 +217,21 @@
   background: #E3F2FD;
   border-left: 6rpx solid #2196F3;
   padding: 24rpx;
-  border-radius: 12rpx;
+  border-radius: 16rpx;
   margin-bottom: 32rpx;
+  animation: slideIn 0.8s ease-out 2.4s both;
+  transition: all 0.3s ease;
+}
+
+.hint-box:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
 }
 
 .hint-icon {
   font-size: 40rpx;
   margin-right: 16rpx;
+  color: #2196F3;
 }
 
 .hint-text {
@@ -161,19 +249,36 @@
   gap: 12rpx;
   margin-bottom: 32rpx;
   padding: 24rpx;
-  background: white;
+  background: #FFFFFF;
   border-radius: 24rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.8s ease-out 2.6s both;
+  transition: all 0.3s ease;
+}
+
+.tile-pool:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+}
+
+.tile-pool .mahjong-tile {
+  animation: scaleIn 0.6s ease-out both;
 }
 
 .jiangjiang-tile {
   position: relative;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
   cursor: pointer;
+}
+
+.jiangjiang-tile:hover {
+  transform: translateY(-4rpx) scale(1.05);
 }
 
 .jiangjiang-tile.selected {
   transform: translateY(-10rpx);
   box-shadow: 0 8rpx 16rpx rgba(76, 175, 80, 0.4);
+  animation: pulse 1s infinite;
 }
 
 .tile-overlay {
@@ -183,16 +288,18 @@
   right: 0;
   bottom: 0;
   background: rgba(76, 175, 80, 0.8);
-  border-radius: 8rpx;
+  border-radius: 16rpx;
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: fadeIn 0.4s ease-out;
 }
 
 .check-icon {
   font-size: 48rpx;
   color: white;
   font-weight: bold;
+  animation: scaleIn 0.6s ease-out;
 }
 
 .selection-info {
@@ -201,20 +308,30 @@
   align-items: center;
   gap: 16rpx;
   padding: 24rpx;
-  background: white;
+  background: #FFFFFF;
   border-radius: 24rpx;
   margin-bottom: 32rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.8s ease-out 2.8s both;
+  transition: all 0.3s ease;
+}
+
+.selection-info:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
 }
 
 .info-label {
   font-size: 32rpx;
-  color: #666;
+  color: #666666;
+  font-weight: bold;
 }
 
 .info-value {
   font-size: 48rpx;
   font-weight: bold;
-  color: #FF9800;
+  color: #FFB74D;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.1);
 }
 
 .info-value.complete {
@@ -222,22 +339,19 @@
   animation: pulse 0.6s ease-in-out;
 }
 
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
-
 /* 第三关样式 */
 .tags-section {
   margin-bottom: 32rpx;
+  animation: slideIn 0.8s ease-out 3s both;
 }
 
 .section-label {
   display: block;
   font-size: 28rpx;
-  color: #666;
+  color: #666666;
   margin-bottom: 16rpx;
   text-align: center;
+  font-weight: bold;
 }
 
 .pattern-tags {
@@ -250,23 +364,30 @@
 .tag-item {
   position: relative;
   padding: 20rpx 40rpx;
-  background: white;
+  background: #FFFFFF;
   border: 4rpx solid #9E9E9E;
   border-radius: 40rpx;
   font-size: 28rpx;
-  color: #666;
-  transition: all 0.3s;
+  color: #666666;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   gap: 12rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.tag-item:hover {
+  transform: translateY(-4rpx);
+  border-color: #D32F2F;
 }
 
 .tag-item.selected {
-  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+  background: linear-gradient(135deg, #4CAF50, #8BC34A);
   border-color: #4CAF50;
   color: white;
   transform: scale(1.05);
   box-shadow: 0 8rpx 16rpx rgba(76, 175, 80, 0.4);
+  animation: pulse 1s infinite;
 }
 
 .tag-text {
@@ -276,6 +397,7 @@
 .tag-check {
   font-size: 32rpx;
   font-weight: bold;
+  animation: scaleIn 0.6s ease-out;
 }
 
 .multiplier-display {
@@ -288,6 +410,13 @@
   border-radius: 24rpx;
   margin-bottom: 32rpx;
   box-shadow: 0 8rpx 16rpx rgba(255, 107, 107, 0.4);
+  animation: slideIn 0.8s ease-out 3.2s both;
+  transition: all 0.3s ease;
+}
+
+.multiplier-display:hover {
+  transform: translateY(-4rpx);
+  box-shadow: 0 12rpx 24rpx rgba(255, 107, 107, 0.5);
 }
 
 .multiplier-label {
@@ -301,11 +430,13 @@
   color: white;
   font-weight: bold;
   text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.3);
+  animation: bounce 1s infinite;
 }
 
 .check-btn {
   width: 100%;
   margin-bottom: 32rpx;
+  animation: scaleIn 0.6s ease-out 3.4s both;
 }
 
 /* 底部按钮 */
@@ -313,28 +444,9 @@
   display: flex;
   gap: 24rpx;
   margin-top: 32rpx;
+  animation: slideIn 0.8s ease-out 3.6s both;
 }
 
 .bottom-actions button {
   flex: 1;
-}
-
-/* 动画效果 */
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-10rpx); }
-  75% { transform: translateX(10rpx); }
-}
-
-.shake {
-  animation: shake 0.4s ease-in-out;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20rpx); }
-}
-
-.bounce {
-  animation: bounce 0.6s ease-in-out;
 }

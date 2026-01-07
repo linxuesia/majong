@@ -4,27 +4,35 @@
   padding: 32rpx;
   display: flex;
   flex-direction: column;
+  animation: fadeIn 0.8s ease-out;
 }
 
 .guide-section {
   display: flex;
   align-items: flex-start;
   margin-bottom: 32rpx;
+  animation: slideIn 0.8s ease-out 0.2s both;
 }
 
 .guide-avatar {
   width: 100rpx;
   height: 100rpx;
   margin-right: 16rpx;
+  border-radius: 50%;
+  box-shadow: 0 4rpx 16rpx rgba(211, 47, 47, 0.3);
+  background: linear-gradient(135deg, #D32F2F, #FFB74D);
+  animation: pulse 2s infinite;
 }
 
 .guide-bubble {
   flex: 1;
-  background: white;
+  background: #FFFFFF;
   border-radius: 24rpx;
   padding: 24rpx;
   position: relative;
   box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.8s ease-out 0.4s both;
+  transition: all 0.3s ease;
 }
 
 .guide-bubble::before {
@@ -36,48 +44,79 @@
   height: 0;
   border-top: 16rpx solid transparent;
   border-bottom: 16rpx solid transparent;
-  border-right: 16rpx solid white;
+  border-right: 16rpx solid #FFFFFF;
+  animation: fadeIn 0.8s ease-out 0.6s both;
 }
 
 .guide-bubble text {
   font-size: 28rpx;
-  color: #333;
+  color: #333333;
   line-height: 1.6;
+  animation: fadeIn 1s ease-out 0.8s both;
+}
+
+.guide-bubble:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
 }
 
 .progress-bar {
-  height: 16rpx;
-  background: #E0E0E0;
-  border-radius: 8rpx;
+  height: 20rpx;
+  background: rgba(211, 47, 47, 0.1);
+  border-radius: 10rpx;
   overflow: hidden;
   margin-bottom: 32rpx;
+  animation: slideIn 0.8s ease-out 1s both;
+  box-shadow: inset 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
 }
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #4CAF50, #8BC34A);
-  transition: width 0.3s ease;
+  background: linear-gradient(90deg, #D32F2F, #FFB74D);
+  transition: width 0.5s ease-out;
+  border-radius: 10rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shine 1.5s infinite;
 }
 
 .game-area {
   flex: 1;
   display: flex;
   flex-direction: column;
+  animation: fadeIn 0.8s ease-out 1.2s both;
 }
 
 .level-title {
-  font-size: 40rpx;
+  font-size: 48rpx;
   font-weight: bold;
   color: #D32F2F;
   text-align: center;
   margin-bottom: 16rpx;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-out 1.4s both;
+  background: linear-gradient(135deg, #D32F2F, #FFB74D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .level-desc {
   font-size: 28rpx;
-  color: #666;
+  color: #666666;
   text-align: center;
   margin-bottom: 32rpx;
+  animation: fadeIn 1s ease-out 1.6s both;
 }
 
 .tiles-container {
@@ -86,56 +125,113 @@
   justify-content: center;
   gap: 16rpx;
   margin-bottom: 32rpx;
+  animation: fadeIn 1s ease-out 1.8s both;
 }
 
 .tile {
   width: 120rpx;
   height: 160rpx;
-  background: white;
-  border: 4rpx solid #333;
-  border-radius: 12rpx;
+  background: #FFFFFF;
+  border: 4rpx solid #D32F2F;
+  border-radius: 16rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 4rpx 4rpx 8rpx rgba(0, 0, 0, 0.2);
-  transition: all 0.3s;
+  box-shadow: 4rpx 4rpx 12rpx rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  animation: scaleIn 0.6s ease-out both;
+}
+
+.tile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, #D32F2F, #FFB74D);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.tile:hover {
+  transform: translateY(-8rpx) scale(1.05);
+  box-shadow: 8rpx 12rpx 24rpx rgba(0, 0, 0, 0.3);
+}
+
+.tile:active {
+  transform: translateY(-4rpx) scale(0.98);
+}
+
+.tile.selected {
+  border-color: #FFB74D;
+  box-shadow: 0 0 24rpx rgba(255, 183, 77, 0.6);
+  animation: pulse 1s infinite;
+}
+
+.tile.selected::before {
+  opacity: 1;
 }
 
 .tile.removed {
   opacity: 0;
   transform: scale(0.5) rotate(180deg);
   pointer-events: none;
+  transition: all 0.5s ease-in-out;
 }
 
 .tile-image {
   width: 100rpx;
   height: 140rpx;
-  border-radius: 8rpx;
+  border-radius: 12rpx;
+  transition: all 0.2s ease;
+}
+
+.tile:hover .tile-image {
+  transform: scale(1.1);
 }
 
 .tile-text {
   font-size: 36rpx;
   font-weight: bold;
-  color: #333;
+  color: #333333;
+  transition: all 0.2s ease;
+}
+
+.tile:hover .tile-text {
+  color: #D32F2F;
+  transform: scale(1.1);
 }
 
 .score-display {
   display: flex;
   justify-content: space-around;
   padding: 24rpx;
-  background: white;
+  background: #FFFFFF;
   border-radius: 24rpx;
   font-size: 32rpx;
   font-weight: bold;
   color: #D32F2F;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 24rpx;
+  animation: slideIn 0.8s ease-out 2s both;
+  transition: all 0.3s ease;
+}
+
+.score-display:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
 }
 
 .hand-tiles {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 4rpx;
+  gap: 8rpx;
   margin-bottom: 48rpx;
+  animation: fadeIn 1s ease-out 2.2s both;
 }
 
 .options {
@@ -143,30 +239,74 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 16rpx;
+  animation: slideIn 0.8s ease-out 2.4s both;
 }
 
 .option-btn {
-  background: white;
-  color: #333;
+  background: #FFFFFF;
+  color: #D32F2F;
   border: 4rpx solid #D32F2F;
   border-radius: 50rpx;
   padding: 32rpx;
   font-size: 32rpx;
   font-weight: bold;
   width: calc(50% - 8rpx);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.option-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(211, 47, 47, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.option-btn:active::before {
+  width: 400rpx;
+  height: 400rpx;
 }
 
 .option-btn:active {
   background: #D32F2F;
   color: white;
+  transform: scale(0.98);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.2);
+}
+
+.option-btn:hover {
+  transform: translateY(-4rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  border-color: #FFB74D;
 }
 
 .bottom-actions {
   display: flex;
   gap: 24rpx;
   margin-top: 32rpx;
+  animation: slideIn 0.8s ease-out 2.6s both;
 }
 
 .bottom-actions button {
   flex: 1;
 }
+
+/* 为不同位置的麻将牌添加延迟动画 */
+.tile:nth-child(1) { animation-delay: 2.8s; }
+.tile:nth-child(2) { animation-delay: 2.9s; }
+.tile:nth-child(3) { animation-delay: 3s; }
+.tile:nth-child(4) { animation-delay: 3.1s; }
+.tile:nth-child(5) { animation-delay: 3.2s; }
+.tile:nth-child(6) { animation-delay: 3.3s; }
+.tile:nth-child(7) { animation-delay: 3.4s; }
+.tile:nth-child(8) { animation-delay: 3.5s; }
+.tile:nth-child(9) { animation-delay: 3.6s; }
+.tile:nth-child(10) { animation-delay: 3.7s; }
