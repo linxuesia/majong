@@ -176,7 +176,6 @@ Page({
     
     this.setData({
       questionType: 'who',
-      questionIndex: 0,
       guideText: '扎鸟时，哪些数字代表中到自己？（可多选）',
       options: options.map(o => ({ text: o, selected: false, correct: selfNumbers.includes(o) })),
       correctAnswers: selfNumbers,
@@ -201,7 +200,6 @@ Page({
     
     this.setData({
       questionType: 'position',
-      questionIndex: 1,
       guideText: `扎鸟抽到【${randomNum}号】，这位玩家是？`,
       options: positions.map(p => ({ text: p, correct: p === correctPosition })),
       correctAnswer: correctPosition,
@@ -230,16 +228,23 @@ Page({
     const firstWho = mapping[firstBird]
     const secondWho = mapping[secondBird]
     
-    let scoreMultiplier = 1
-    if (firstWho === '自己') scoreMultiplier++
-    if (secondWho === '自己') scoreMultiplier++
+    let totalScore = 0
+    if (firstWho === '自己') {
+      totalScore += baseScore * 3
+    } else {
+      totalScore += baseScore * 1
+    }
+    if (secondWho === '自己') {
+      totalScore += baseScore * 3
+    } else {
+      totalScore += baseScore * 1
+    }
     
     this.setData({
       questionType: 'score',
-      questionIndex: 2,
       guideText: `底分${baseScore}，扎到${firstBird}号（${firstWho}）和${secondBird}号（${secondWho}），胡牌玩家总分是多少？`,
-      options: [baseScore * scoreMultiplier, baseScore * (scoreMultiplier + 1), baseScore * (scoreMultiplier + 2)].sort(() => Math.random() - 0.5),
-      correctAnswer: baseScore * scoreMultiplier,
+      options: [totalScore, baseScore * 2, baseScore * 4].sort(() => Math.random() - 0.5),
+      correctAnswer: totalScore,
       selectedOption: null,
       levelCompleted: false,
       currentLevel: 2,
@@ -267,9 +272,9 @@ Page({
     
     const allScores = {
       '自己': 0,
-      '下家': baseScore,
-      '对家': baseScore,
-      '上家': baseScore
+      '下家': 0,
+      '对家': 0,
+      '上家': 0
     }
     
     if (firstWho === '自己') {
@@ -284,7 +289,7 @@ Page({
       allScores['下家'] += baseScore
       allScores['对家'] += baseScore
       allScores['上家'] += baseScore
-    } else if (secondWho !== firstWho) {
+    } else {
       allScores[secondWho] += baseScore
     }
     
@@ -295,7 +300,6 @@ Page({
     
     this.setData({
       questionType: 'allScores',
-      questionIndex: 3,
       guideText: `底分${baseScore}，扎到${firstBird}号和${secondBird}号（${firstWho}、${secondWho}），各家要付多少分？`,
       options: [scoreText, wrong1, wrong2],
       correctAnswer: scoreText,
@@ -377,7 +381,7 @@ Page({
   goToNextQuestion() {
     clearInterval(this.timer)
     
-    const questionTypes = ['who', 'position', 'position', 'allScores']
+    const questionTypes = ['who', 'position', 'position', 'score', 'allScores']
     const nextIndex = this.data.questionIndex + 1
     
     if (nextIndex >= questionTypes.length) {
