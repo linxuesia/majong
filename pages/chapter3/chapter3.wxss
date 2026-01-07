@@ -96,7 +96,8 @@
 
 .pattern-options {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 16rpx;
   margin-bottom: 32rpx;
 }
@@ -110,6 +111,7 @@
   font-size: 32rpx;
   font-weight: bold;
   transition: all 0.3s;
+  width: calc(50% - 8rpx);
 }
 
 .pattern-btn:active {

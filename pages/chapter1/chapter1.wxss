@@ -140,7 +140,8 @@
 
 .options {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 16rpx;
 }
 
@@ -152,6 +153,7 @@
   padding: 32rpx;
   font-size: 32rpx;
   font-weight: bold;
+  width: calc(50% - 8rpx);
 }
 
 .option-btn:active {

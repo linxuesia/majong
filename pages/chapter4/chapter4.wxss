@@ -111,7 +111,8 @@
 
 .choices-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 16rpx;
   margin-bottom: 32rpx;
 }
@@ -125,6 +126,7 @@
   font-size: 32rpx;
   font-weight: bold;
   box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+  width: calc(50% - 8rpx);
 }
 
 .choice-btn:active {
@@ -164,7 +166,8 @@
 
 .options {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 16rpx;
 }
 
@@ -178,6 +181,7 @@
   font-weight: bold;
   box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
+  width: calc(50% - 8rpx);
 }
 
 .option-btn:active {

@@ -8,6 +8,10 @@ page {
 }
 
 /* 通用按钮样式 */
+.option-btn{
+  box-sizing: border-box;
+  width: 130px !important;
+}
 .btn-primary {
   background: linear-gradient(135deg, #D32F2F 0%, #F44336 100%);
   color: white;
