@@ -89,7 +89,28 @@
       </button>
     </view>
     
-    <!-- 第四题：计算各家要给的分数（单选） -->
+    <!-- 第四题：计算胡牌玩家总分（单选） -->
+    <view wx:if="{{questionType === 'score'}}" class="question-container">
+      <view class="question-desc">{{guideText}}</view>
+      
+      <view class="options">
+        <button class="option-btn {{selectedOption === index ? 'selected' : ''}}" 
+                wx:for="{{options}}" 
+                wx:key="index"
+                bindtap="onOptionSelect"
+                data-index="{{index}}">
+          {{item}}
+        </button>
+      </view>
+      
+      <button class="submit-btn" 
+              bindtap="onScoreSubmit"
+              disabled="{{selectedOption === null}}">
+        提交答案
+      </button>
+    </view>
+    
+    <!-- 第五题：计算各家要给的分数（单选） -->
     <view wx:if="{{questionType === 'allScores'}}" class="question-container">
       <view class="question-desc">{{guideText}}</view>
       
