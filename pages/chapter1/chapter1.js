@@ -15,7 +15,10 @@ Page({
     
     // 第二关：起手胡
     handTiles: [],
-    options: []
+    options: [],
+    correctAnswer: '',
+    currentScenarioIndex: 0,
+    totalScenarios: 0
   },
   
 
@@ -177,7 +180,8 @@ Page({
       }
     ]
     
-    const scenario = scenarios[Math.floor(Math.random() * scenarios.length)]
+    const currentScenarioIndex = 0
+    const scenario = scenarios[currentScenarioIndex]
     
     this.setData({
       currentLevel: 2,
@@ -186,7 +190,10 @@ Page({
       options: scenario.options,
       correctAnswer: scenario.answer,
       guideText: '看看这手牌，你能认出来吗？',
-      progress: 50
+      progress: 50,
+      currentScenarioIndex: currentScenarioIndex,
+      totalScenarios: scenarios.length,
+      scenarios: scenarios
     })
   },
 
@@ -194,21 +201,45 @@ Page({
     const answer = e.currentTarget.dataset.answer
     
     if (answer === this.data.correctAnswer) {
-      this.setData({
-        levelCompleted: true,
-        progress: 100,
-        guideText: '恭喜你！第一章完成了！'
-      })
+      const nextScenarioIndex = this.data.currentScenarioIndex + 1
       
       wx.showToast({
         title: '回答正确！',
         icon: 'success'
       })
       
-      // 延迟1.5秒后自动完成章节
-      setTimeout(() => {
-        this.completeChapter()
-      }, 1500)
+      // 检查是否还有下一道题
+      if (nextScenarioIndex < this.data.totalScenarios) {
+        // 显示下一道题
+        const scenario = this.data.scenarios[nextScenarioIndex]
+        
+        // 计算当前进度
+        const progress = 50 + Math.round((nextScenarioIndex + 1) / this.data.totalScenarios * 50)
+        
+        setTimeout(() => {
+          this.setData({
+            levelCompleted: false,
+            handTiles: scenario.tiles,
+            options: scenario.options,
+            correctAnswer: scenario.answer,
+            guideText: '继续看看下一手牌！',
+            progress: progress,
+            currentScenarioIndex: nextScenarioIndex
+          })
+        }, 1000)
+      } else {
+        // 所有题目完成，完成章节
+        this.setData({
+          levelCompleted: true,
+          progress: 100,
+          guideText: '恭喜你！第一章完成了！'
+        })
+        
+        // 延迟1.5秒后自动完成章节
+        setTimeout(() => {
+          this.completeChapter()
+        }, 1500)
+      }
     } else {
       wx.showToast({
         title: '再想想哦',
