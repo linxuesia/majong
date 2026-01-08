@@ -213,6 +213,16 @@ page {
   animation: pulse 1s infinite;
 }
 
+/* 麻将牌移除动画 */
+.mahjong-tile.removed {
+  opacity: 0;
+  transform: translateX(-100vw) translateY(-100vh) rotate(360deg);
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  z-index: 10;
+}
+
 /* 麻将牌图片样式 */
 .tile-image {
   width: 70rpx;

@@ -19,6 +19,15 @@ Component({
       type: Boolean,
       value: false
     },
+    // 是否已移除
+    removed: {
+      type: Boolean,
+      value: false,
+      observer: function(newVal) {
+        // 确保removed类能正确应用
+        this.setData({ removed: newVal });
+      }
+    },
     // 自定义类名
     customClass: {
       type: String,
@@ -32,6 +41,8 @@ Component({
   data: {
     tileInfo: null,
     isSprite: false,
+    // 是否已移除
+    removed: false,
     // 精灵图样式属性
     spriteSheetPath: '',
     spriteX: 0,
@@ -47,6 +58,8 @@ Component({
    */
   attached: function() {
     this.updateTileInfo(this.properties.tileText);
+    // 初始化removed状态
+    this.setData({ removed: this.properties.removed });
   },
 
   /**

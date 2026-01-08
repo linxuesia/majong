@@ -20,10 +20,11 @@
     
     <view class="tiles-container">
       <mahjong-tile 
-        custom-class="tile {{item.removed ? 'removed' : ''}}" 
+        custom-class="tile" 
         wx:for="{{tiles}}" 
         wx:key="id"
         tile-text="{{item.text}}"
+        removed="{{item.removed}}"
         bind:tap="onTileTap"
         data-id="{{item.id}}"
       ></mahjong-tile>

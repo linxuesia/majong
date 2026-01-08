@@ -1,5 +1,5 @@
 <!-- components/mahjong-tile/mahjong-tile.wxml -->
-<view class="mahjong-tile {{customClass}} {{disabled ? 'disabled' : ''}}" bindtap="onTap">
+<view class="mahjong-tile {{customClass}} {{disabled ? 'disabled' : ''}} {{removed ? 'removed' : ''}}" bindtap="onTap">
   <!-- 精灵图模式 -->
   <view class="sprite-container" wx:if="{{isSprite && tileInfo}}">
     <view class="tile-sprite" style="background-image: url({{spriteSheetPath}}); background-position: -{{spriteX}}px -{{spriteY}}px; width: {{spriteWidth}}px; height: {{spriteHeight}}px; background-size: auto;"></view>
