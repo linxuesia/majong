@@ -166,17 +166,23 @@ Page({
       {
         tiles: ['一万', '一万', '一万', '一万', '二条', '五条', '七条', '四条', '三筒', '八筒', '三筒', '三筒', '七筒', '一条'],
         answer: '四喜',
-        options: ['板板胡', '四喜', '六六顺', '普通牌']
+        options: ['板板胡', '四喜', '六六顺', '普通牌'],
+        definition: '四喜：起手就有4张相同的牌（即一个杠牌），是长沙麻将中的一种起手胡牌型。' + 
+                   '这种牌型非常少见，也非常吉利，寓意着"四季发财"。'
       },
       {
         tiles: ['五万', '五万', '五万', '六万', '六万', '六万', '八条', '九条', '九筒', '九筒', '四条', '三筒', '八筒', '一条'],
         answer: '六六顺',
-        options: ['板板胡', '四喜', '六六顺', '普通牌']
+        options: ['板板胡', '四喜', '六六顺', '普通牌'],
+        definition: '六六顺：起手就有2个刻子（即2组3张相同的牌），是长沙麻将中的一种起手胡牌型。' + 
+                   '这种牌型寓意着"六六大顺"，是一种非常好的起手。'
       },
       {
         tiles: ['一万', '二万', '三万', '四万', '九万', '六万', '七条', '六条', '九条', '一筒', '二筒', '三筒', '四筒', '七筒'],
         answer: '板板胡',
-        options: ['板板胡', '四喜', '六六顺', '普通牌']
+        options: ['板板胡', '四喜', '六六顺', '普通牌'],
+        definition: '板板胡：起手没有258将牌（即没有二、五、八万，二、五、八条，二、五、八筒），' + 
+                   '是长沙麻将中的一种起手胡牌型。这种牌型也被称为"缺将胡"。'
       }
     ]
     
@@ -202,44 +208,47 @@ Page({
     
     if (answer === this.data.correctAnswer) {
       const nextScenarioIndex = this.data.currentScenarioIndex + 1
+      const currentScenario = this.data.scenarios[this.data.currentScenarioIndex]
       
-      wx.showToast({
-        title: '回答正确！',
-        icon: 'success'
+      // 显示详细定义
+      wx.showModal({
+        title: '🎉 回答正确！',
+        content: currentScenario.definition,
+        showCancel: false,
+        confirmText: '继续',
+        success: () => {
+          // 检查是否还有下一道题
+          if (nextScenarioIndex < this.data.totalScenarios) {
+            // 显示下一道题
+            const scenario = this.data.scenarios[nextScenarioIndex]
+            
+            // 计算当前进度
+            const progress = 50 + Math.round((nextScenarioIndex + 1) / this.data.totalScenarios * 50)
+            
+            this.setData({
+              levelCompleted: false,
+              handTiles: scenario.tiles,
+              options: scenario.options,
+              correctAnswer: scenario.answer,
+              guideText: '继续看看下一手牌！',
+              progress: progress,
+              currentScenarioIndex: nextScenarioIndex
+            })
+          } else {
+            // 所有题目完成，完成章节
+            this.setData({
+              levelCompleted: true,
+              progress: 100,
+              guideText: '恭喜你！第一章完成了！'
+            })
+            
+            // 延迟1.5秒后自动完成章节
+            setTimeout(() => {
+              this.completeChapter()
+            }, 1500)
+          }
+        }
       })
-      
-      // 检查是否还有下一道题
-      if (nextScenarioIndex < this.data.totalScenarios) {
-        // 显示下一道题
-        const scenario = this.data.scenarios[nextScenarioIndex]
-        
-        // 计算当前进度
-        const progress = 50 + Math.round((nextScenarioIndex + 1) / this.data.totalScenarios * 50)
-        
-        setTimeout(() => {
-          this.setData({
-            levelCompleted: false,
-            handTiles: scenario.tiles,
-            options: scenario.options,
-            correctAnswer: scenario.answer,
-            guideText: '继续看看下一手牌！',
-            progress: progress,
-            currentScenarioIndex: nextScenarioIndex
-          })
-        }, 1000)
-      } else {
-        // 所有题目完成，完成章节
-        this.setData({
-          levelCompleted: true,
-          progress: 100,
-          guideText: '恭喜你！第一章完成了！'
-        })
-        
-        // 延迟1.5秒后自动完成章节
-        setTimeout(() => {
-          this.completeChapter()
-        }, 1500)
-      }
     } else {
       wx.showToast({
         title: '再想想哦',
