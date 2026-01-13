@@ -57,7 +57,7 @@
         <text class="feature-icon">🐦</text>
         <view class="feature-content">
           <text class="feature-name">扎鸟</text>
-          <text class="feature-desc">胡牌后抓鸟，中1或5翻倍</text>
+          <text class="feature-desc">胡牌后抓鸟，中1或5或9表示自己</text>
         </view>
       </view>
       
@@ -65,7 +65,7 @@
         <text class="feature-icon">🌊</text>
         <view class="feature-content">
           <text class="feature-name">海底</text>
-          <text class="feature-desc">最后一张牌胡牌或点炮</text>
+          <text class="feature-desc">最后一张牌胡牌或点炮，升番。</text>
         </view>
       </view>
     </view>

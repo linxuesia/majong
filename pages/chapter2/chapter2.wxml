@@ -50,7 +50,7 @@
   <!-- 第二关：寻找"将"军 -->
   <view class="game-area" wx:if="{{currentLevel === 2}}">
     <view class="level-title">🎯 寻找"将"军</view>
-    <view class="level-desc">拖动正确的将牌（2、5、8）才能胡牌！</view>
+    <view class="level-desc">选择正确的将牌（2、5、8）才能胡牌！</view>
     
     <!-- 听牌展示 -->
     <view class="hand-section">
