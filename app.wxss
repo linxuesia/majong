@@ -49,7 +49,7 @@ page {
 }
 
 /* 通用按钮样式 */
-.option-btn {
+.option-btn, .pattern-btn,.choice-btn {
   box-sizing: border-box;
   width: 130px !important;
 }
