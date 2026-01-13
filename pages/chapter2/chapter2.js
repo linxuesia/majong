@@ -123,7 +123,7 @@ Page({
         animating: false,
         showActions: true
       })
-    }, 800)
+    }, 300)
   },
 
   onActionTap(e) {
