@@ -54,6 +54,15 @@ page {
   width: 130px !important;
 }
 
+.option-btn.selected {
+  background: linear-gradient(135deg, #D32F2F 0%, #F44336 100%);
+  color: white;
+  border-color: #FFB74D;
+  box-shadow: 0 0 20rpx rgba(255, 183, 77, 0.6);
+  animation: pulse 1s infinite;
+  transform: translateY(-4rpx);
+}
+
 .btn-primary {
   background: linear-gradient(135deg, #D32F2F 0%, #F44336 100%);
   color: white;
@@ -417,4 +426,115 @@ page {
 
 .swing {
   animation: swing 2s ease-in-out infinite;
+}
+
+/* 庆祝特效样式 */
+.celebration-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* 粒子特效 */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  animation: particle-burst 1s ease-out forwards;
+}
+
+@keyframes particle-burst {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(-100rpx);
+    opacity: 0;
+  }
+}
+
+/* 爆炸效果 */
+@keyframes explode {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.explode {
+  animation: explode 0.6s ease-out;
+}
+
+/* 星星特效 */
+.star {
+  position: absolute;
+  color: #FFD700;
+  font-size: 64rpx;
+  opacity: 0;
+  animation: star-fall 1.5s ease-out forwards;
+}
+
+@keyframes star-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 闪光效果 */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.sparkle {
+  position: absolute;
+  width: 20rpx;
+  height: 20rpx;
+  background: radial-gradient(circle, #FFD700, transparent);
+  border-radius: 50%;
+  animation: sparkle 1s ease-out infinite;
+}
+
+/* 庆祝文字动画 */
+@keyframes celebrate-text {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.celebrate-text {
+  animation: celebrate-text 0.8s ease-out forwards;
 }

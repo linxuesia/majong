@@ -401,6 +401,9 @@ Page({
   },
 
   completeChapter() {
+    // 显示庆祝特效
+    app.showCelebration()
+    
     clearInterval(this.timer)
     this.setData({
       levelCompleted: true,

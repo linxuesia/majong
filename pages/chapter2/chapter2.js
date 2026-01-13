@@ -422,6 +422,9 @@ Page({
   },
 
   completeChapter() {
+    // 显示庆祝特效
+    app.showCelebration()
+    
     // 更新全局进度
     if (!app.globalData.completedChapters.includes(2)) {
       app.globalData.completedChapters.push(2)

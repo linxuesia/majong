@@ -9,3 +9,11 @@ miniprogram_npm/
 
 # 日志
 *.log
+.agent
+.claude
+.cursor
+.kiro
+.shared
+.windsurf
+.trae
+.guthub

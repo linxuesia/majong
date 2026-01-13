@@ -2,7 +2,7 @@
 App({
   globalData: {
     // 开发模式开关（开发时设为true，发布时设为false）
-    DEV_MODE: true,
+    DEV_MODE: false,
     
     // 游戏进度
     currentChapter: 1,
@@ -58,5 +58,52 @@ App({
   // 保存规则配置
   saveRules() {
     wx.setStorageSync('gameRules', this.globalData.gameRules)
+  },
+
+  // 显示庆祝特效
+  showCelebration() {
+    // 创建庆祝容器
+    const celebrationContainer = wx.createSelectorQuery().select('.celebration-container')
+    celebrationContainer.exec((res) => {
+      if (!res[0]) {
+        // 如果容器不存在，创建一个
+        const page = getCurrentPages()[getCurrentPages().length - 1]
+        const pageElement = page.selectComponent('#page-container') || page
+        
+        // 在页面根元素添加庆祝容器
+        const container = wx.createSelectorQuery().select('page')
+        container.exec((pageRes) => {
+          if (pageRes[0]) {
+            // 使用原生JS创建DOM元素（在小程序中需要通过setData实现）
+            // 由于小程序的限制，我们使用另一种方式实现特效
+            this.createCelebrationAnimation()
+          }
+        })
+      }
+    })
+  },
+
+  // 创建庆祝动画
+  createCelebrationAnimation() {
+    // 在小程序中，我们使用wx.createAnimation来实现动画效果
+    // 同时结合showToast和showModal的动画效果
+    
+    // 连续显示多个庆祝图标
+    const icons = ['🎉', '🎊', '🎁', '✨', '🏆']
+    icons.forEach((icon, index) => {
+      setTimeout(() => {
+        wx.showToast({
+          title: icon,
+          icon: 'none',
+          duration: 800,
+          mask: false
+        })
+      }, index * 200)
+    })
+    
+    // 添加震动效果
+    if (wx.vibrateLong) {
+      wx.vibrateLong()
+    }
   }
 })
