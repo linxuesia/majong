@@ -197,7 +197,7 @@
   justify-content: center;
   gap: 24rpx;
   margin-bottom: 32rpx;
-  animation: slideIn 0.8s ease-out 2.2s both;
+  animation: slideIn 0.8s ease-out 0.8s both;
 }
 
 .action-btn {

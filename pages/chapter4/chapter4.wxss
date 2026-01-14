@@ -235,6 +235,7 @@
   font-weight: bold;
   color: #D32F2F;
   box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  margin-top: auto;
   margin-bottom: 24rpx;
   transition: all 0.3s ease;
   animation: slideIn 0.8s ease-out 2.2s both;
@@ -251,6 +252,12 @@
   flex-direction: column;
   gap: 24rpx;
   animation: slideIn 0.8s ease-out 2.4s both;
+  flex: 1;
+}
+
+.question-container .submit-btn {
+  margin-top: auto;
+  margin-bottom: 20rpx;
 }
 
 .question-desc {

@@ -228,22 +228,83 @@ Page({
     const firstWho = mapping[firstBird]
     const secondWho = mapping[secondBird]
     
-    let totalScore = 0
+    // 用户最新规则：
+    // - 各家分数 = 底分 * (该家被扎到的鸟的个数 + 1)
+    // - 总分为三家分数之和
+    // 例子：底分20，扎到自己和下家，总分140=20*(2+1)+20*(1+1)+20*(1+1)
+    
+    // 统计每家被扎到的鸟的个数
+    const birdCount = {
+      '下家': 0,
+      '对家': 0,
+      '上家': 0
+    };
+    
+    // 第一只鸟
     if (firstWho === '自己') {
-      totalScore += baseScore * 3
+      // 扎到自己，所有输家的鸟个数+1
+      birdCount['下家'] += 1;
+      birdCount['对家'] += 1;
+      birdCount['上家'] += 1;
     } else {
-      totalScore += baseScore * 1
+      // 扎到某一家，该家的鸟个数+1
+      birdCount[firstWho] += 1;
     }
+    
+    // 第二只鸟
     if (secondWho === '自己') {
-      totalScore += baseScore * 3
+      // 扎到自己，所有输家的鸟个数+1
+      birdCount['下家'] += 1;
+      birdCount['对家'] += 1;
+      birdCount['上家'] += 1;
     } else {
-      totalScore += baseScore * 1
+      // 扎到某一家，该家的鸟个数+1
+      birdCount[secondWho] += 1;
     }
+    
+    // 计算每家分数
+    const scores = {
+      '下家': baseScore * (birdCount['下家'] + 1),
+      '对家': baseScore * (birdCount['对家'] + 1),
+      '上家': baseScore * (birdCount['上家'] + 1)
+    };
+    
+    // 计算总分
+    const totalScore = scores['下家'] + scores['对家'] + scores['上家'];
+    
+    // 生成唯一的选项，确保正确答案在其中，且没有重复
+    let options = [totalScore];
+    
+    // 生成两个干扰选项，确保它们与正确答案和彼此都不同
+    let distractor1 = totalScore + baseScore * 3;
+    let distractor2 = totalScore - baseScore * 3;
+    
+    // 确保干扰选项为正数
+    distractor1 = Math.max(0, distractor1);
+    distractor2 = Math.max(0, distractor2);
+    
+    // 确保干扰选项与正确答案不同
+    if (distractor1 === totalScore) {
+      distractor1 += baseScore;
+    }
+    if (distractor2 === totalScore) {
+      distractor2 += baseScore;
+    }
+    
+    // 确保两个干扰选项不同
+    if (distractor1 === distractor2) {
+      distractor1 += baseScore;
+    }
+    
+    options.push(distractor1, distractor2);
+    
+    // 打乱选项顺序
+    options = options.sort(() => Math.random() - 0.5);
     
     this.setData({
       questionType: 'score',
       guideText: `底分${baseScore}，扎到${firstBird}号（${firstWho}）和${secondBird}号（${secondWho}），胡牌玩家总分是多少？`,
-      options: [totalScore, baseScore * 2, baseScore * 4].sort(() => Math.random() - 0.5),
+      options: options,
       correctAnswer: totalScore,
       selectedOption: null,
       levelCompleted: false,
@@ -277,21 +338,44 @@ Page({
       '上家': 0
     }
     
+    // 用户最新规则：
+    // - 各家分数 = 底分 * (该家被扎到的鸟的个数 + 1)
+    // - 总分为三家分数之和
+    // 例子：底分20，扎到自己和下家，总分140=20*(2+1)+20*(1+1)+20*(1+1)
+    
+    // 统计每家被扎到的鸟的个数
+    const birdCount = {
+      '下家': 0,
+      '对家': 0,
+      '上家': 0
+    };
+    
+    // 第一只鸟
     if (firstWho === '自己') {
-      allScores['下家'] += baseScore
-      allScores['对家'] += baseScore
-      allScores['上家'] += baseScore
+      // 扎到自己，所有输家的鸟个数+1
+      birdCount['下家'] += 1;
+      birdCount['对家'] += 1;
+      birdCount['上家'] += 1;
     } else {
-      allScores[firstWho] += baseScore
+      // 扎到某一家，该家的鸟个数+1
+      birdCount[firstWho] += 1;
     }
     
+    // 第二只鸟
     if (secondWho === '自己') {
-      allScores['下家'] += baseScore
-      allScores['对家'] += baseScore
-      allScores['上家'] += baseScore
+      // 扎到自己，所有输家的鸟个数+1
+      birdCount['下家'] += 1;
+      birdCount['对家'] += 1;
+      birdCount['上家'] += 1;
     } else {
-      allScores[secondWho] += baseScore
+      // 扎到某一家，该家的鸟个数+1
+      birdCount[secondWho] += 1;
     }
+    
+    // 计算每家分数
+    allScores['下家'] = baseScore * (birdCount['下家'] + 1);
+    allScores['对家'] = baseScore * (birdCount['对家'] + 1);
+    allScores['上家'] = baseScore * (birdCount['上家'] + 1);
     
     const scoreText = `下家给${allScores['下家']}分，对家给${allScores['对家']}分，上家给${allScores['上家']}分`
     
