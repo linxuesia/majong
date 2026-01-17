@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "第五章：实战演练"
+  "navigationBarTitleText": "第五章：实战演练",
+  "usingComponents": {
+    "mahjong-tile": "../../components/mahjong-tile/mahjong-tile"
+  }
 }

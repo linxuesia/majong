@@ -1,151 +1,429 @@
+/* 第五章样式 */
 .container {
   min-height: 100vh;
+  padding: 32rpx;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 60rpx 32rpx;
   animation: fadeIn 0.8s ease-out;
 }
 
-.placeholder {
-  text-align: center;
-  width: 100%;
-  animation: scaleIn 0.8s ease-out 0.2s both;
+.guide-section {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 32rpx;
+  animation: slideIn 0.8s ease-out 0.2s both;
+}
+
+.guide-avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 16rpx;
+  border-radius: 50%;
+  box-shadow: 0 4rpx 16rpx rgba(211, 47, 47, 0.3);
+  background: linear-gradient(135deg, #D32F2F, #FFB74D);
+  animation: pulse 2s infinite;
+}
+
+.guide-bubble {
+  flex: 1;
   background: #FFFFFF;
   border-radius: 24rpx;
-  padding: 60rpx 32rpx;
-  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  padding: 24rpx;
+  position: relative;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.8s ease-out 0.4s both;
   transition: all 0.3s ease;
 }
 
-.placeholder:hover {
-  transform: translateY(-4rpx);
-  box-shadow: 0 16rpx 48rpx rgba(0, 0, 0, 0.2);
+.guide-bubble::before {
+  content: '';
+  position: absolute;
+  left: -16rpx;
+  top: 24rpx;
+  width: 0;
+  height: 0;
+  border-top: 16rpx solid transparent;
+  border-bottom: 16rpx solid transparent;
+  border-right: 16rpx solid #FFFFFF;
+  animation: fadeIn 0.8s ease-out 0.6s both;
 }
 
-.emoji {
-  display: block;
-  font-size: 120rpx;
-  margin-bottom: 32rpx;
-  animation: float 3s ease-in-out infinite, scaleIn 1s ease-out 0.4s both;
-}
-
-.title {
-  display: block;
-  font-size: 48rpx;
-  font-weight: bold;
-  color: #D32F2F;
-  margin-bottom: 16rpx;
-  animation: fadeIn 1s ease-out 0.6s both;
-  background: linear-gradient(135deg, #D32F2F, #FFB74D);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.1);
-}
-
-.desc {
-  display: block;
+.guide-bubble text {
   font-size: 28rpx;
-  color: #666666;
-  margin-bottom: 48rpx;
+  color: #333333;
   line-height: 1.6;
   animation: fadeIn 1s ease-out 0.8s both;
 }
 
-.dev-status {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16rpx;
-  margin-bottom: 48rpx;
-  animation: fadeIn 1s ease-out 1s both;
+.guide-bubble:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
 }
 
-.status-badge {
-  display: inline-block;
-  padding: 16rpx 48rpx;
-  background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
-  color: white;
-  font-size: 32rpx;
-  font-weight: bold;
-  border-radius: 50rpx;
-  box-shadow: 0 8rpx 16rpx rgba(255, 183, 77, 0.3);
-  animation: bounce 1.5s ease-in-out infinite;
+.progress-bar {
+  height: 20rpx;
+  background: rgba(211, 47, 47, 0.1);
+  border-radius: 10rpx;
+  overflow: hidden;
+  margin-bottom: 32rpx;
+  animation: slideIn 0.8s ease-out 1s both;
+  box-shadow: inset 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
 }
 
-.status-text {
-  font-size: 36rpx;
-  color: var(--text-light);
-  font-weight: bold;
-}
-
-.feature-list {
-  display: flex;
-  flex-direction: column;
-  gap: 24rpx;
-  width: 100%;
-  max-width: 500rpx;
-  margin: 0 auto;
-  animation: fadeIn 1s ease-out 1.2s both;
-}
-
-.feature-item {
-  display: flex;
-  align-items: center;
-  gap: 24rpx;
-  padding: 24rpx 32rpx;
-  background: var(--bg-card);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-sm);
-  transition: all var(--anim-normal) ease;
-  animation: slideIn 0.8s ease-out both;
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #D32F2F, #FFB74D);
+  transition: width 0.5s ease-out;
+  border-radius: 10rpx;
   position: relative;
   overflow: hidden;
 }
 
-.feature-item::before {
+.progress-fill::after {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  height: 4rpx;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-}
-
-.feature-item:hover {
-  transform: translateY(-4rpx) scale(1.02);
-  box-shadow: var(--box-shadow-md);
-}
-
-.feature-item:nth-child(1) { animation-delay: 1.4s; }
-.feature-item:nth-child(2) { animation-delay: 1.5s; }
-.feature-item:nth-child(3) { animation-delay: 1.6s; }
-.feature-item:nth-child(4) { animation-delay: 1.7s; }
-
-.feature-icon {
-  font-size: 48rpx;
-  color: var(--primary-color);
-  animation: bounce 2s infinite;
-}
-
-.feature-name {
-  font-size: 32rpx;
-  color: var(--text-primary);
-  font-weight: bold;
-}
-
-.back-button {
-  position: fixed;
-  bottom: 48rpx;
-  left: 32rpx;
-  right: 32rpx;
-  animation: fadeIn 1s ease-out 1.8s both;
-}
-
-.back-button button {
+  left: -100%;
   width: 100%;
-  animation: scaleIn 0.6s ease-out 2s both;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shine 1.5s infinite;
+}
+
+.game-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.8s ease-out 1.2s both;
+  transition: all 0.3s ease;
+}
+
+.game-area:hover {
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+}
+
+.level-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #D32F2F;
+  text-align: center;
+  margin-bottom: 16rpx;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-out 1.4s both;
+  background: linear-gradient(135deg, #D32F2F, #FFB74D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.level-desc {
+  font-size: 28rpx;
+  color: #666666;
+  text-align: center;
+  margin-bottom: 32rpx;
+  animation: fadeIn 1s ease-out 1.6s both;
+}
+
+/* 手牌容器样式 */
+.tiles-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12rpx;
+  margin-bottom: 32rpx;
+  padding: 20rpx;
+  background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.8s ease-out 1.8s both;
+  transition: all 0.3s ease;
+}
+
+.tiles-container:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 16rpx 48rpx rgba(0, 0, 0, 0.2);
+}
+
+/* 手牌样式 */
+.tile {
+  width: 100rpx;
+  height: 140rpx;
+  background: #FFFFFF;
+  border: 3rpx solid #D32F2F;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3rpx 3rpx 8rpx rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  animation: scaleIn 0.6s ease-out both;
+}
+
+.tile:hover {
+  transform: translateY(-8rpx) scale(1.05);
+  box-shadow: 8rpx 12rpx 24rpx rgba(0, 0, 0, 0.3);
+}
+
+.tile:active {
+  transform: translateY(-4rpx) scale(0.98);
+}
+
+/* 问题描述样式 */
+.question-desc {
+  font-size: 32rpx;
+  color: #333333;
+  text-align: center;
+  padding: 24rpx;
+  background: linear-gradient(135deg, #FFF3E0, #FFCCBC);
+  border-radius: 16rpx;
+  line-height: 1.6;
+  font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 32rpx;
+  animation: slideIn 0.8s ease-out 2s both;
+}
+
+/* 选项容器样式 */
+.options {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-bottom: 32rpx;
+  animation: slideIn 0.8s ease-out 2.2s both;
+}
+
+/* 选项按钮样式 */
+.option-btn {
+  background: #FFFFFF;
+  color: #333333;
+  border: 4rpx solid #D32F2F;
+  border-radius: 50rpx;
+  padding: 32rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  width: calc(50% - 8rpx);
+  position: relative;
+  overflow: hidden;
+}
+
+.option-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(211, 47, 47, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.option-btn:active::before {
+  width: 400rpx;
+  height: 400rpx;
+}
+
+.option-btn:active {
+  transform: scale(0.98);
+}
+
+.option-btn:hover {
+  transform: translateY(-4rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+  border-color: #FFB74D;
+}
+
+.option-btn.selected {
+  background: #D32F2F;
+  color: white;
+  animation: pulse 1s infinite;
+}
+
+/* 提交按钮样式 */
+.submit-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 50rpx;
+  padding: 32rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  margin-bottom: 32rpx;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  animation: slideIn 0.8s ease-out 2.4s both;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.submit-btn:active::before {
+  width: 400rpx;
+  height: 400rpx;
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-4rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+}
+
+.submit-btn:disabled {
+  background: #BDBDBD;
+  color: #757575;
+  cursor: not-allowed;
+}
+
+/* 解说区域样式 */
+.explanation {
+  background: #F5F5F5;
+  border: 4rpx solid #FFB74D;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 32rpx;
+  animation: slideIn 0.8s ease-out 2.6s both;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.explanation-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #D32F2F;
+  margin-bottom: 16rpx;
+  text-align: center;
+}
+
+.explanation-content {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.6;
+  text-align: center;
+  padding: 16rpx;
+  background: white;
+  border-radius: 8rpx;
+  box-shadow: inset 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 得分显示样式 */
+.score-display {
+  display: flex;
+  justify-content: space-around;
+  padding: 24rpx;
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #D32F2F;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  margin-top: auto;
+  margin-bottom: 24rpx;
+  transition: all 0.3s ease;
+  animation: slideIn 0.8s ease-out 2.8s both;
+}
+
+.score-display:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.15);
+}
+
+/* 底部按钮样式 */
+.bottom-actions {
+  display: flex;
+  gap: 24rpx;
+  margin-top: 32rpx;
+  animation: slideIn 0.8s ease-out 3s both;
+}
+
+.bottom-actions button {
+  flex: 1;
+}
+
+/* 为不同位置的手牌添加延迟动画 */
+.tile:nth-child(1) { animation-delay: 3.1s; }
+.tile:nth-child(2) { animation-delay: 3.2s; }
+.tile:nth-child(3) { animation-delay: 3.3s; }
+.tile:nth-child(4) { animation-delay: 3.4s; }
+.tile:nth-child(5) { animation-delay: 3.5s; }
+.tile:nth-child(6) { animation-delay: 3.6s; }
+.tile:nth-child(7) { animation-delay: 3.7s; }
+.tile:nth-child(8) { animation-delay: 3.8s; }
+.tile:nth-child(9) { animation-delay: 3.9s; }
+.tile:nth-child(10) { animation-delay: 4s; }
+.tile:nth-child(11) { animation-delay: 4.1s; }
+.tile:nth-child(12) { animation-delay: 4.2s; }
+.tile:nth-child(13) { animation-delay: 4.3s; }
+.tile:nth-child(14) { animation-delay: 4.4s; }
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }

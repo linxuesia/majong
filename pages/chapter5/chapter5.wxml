@@ -1,29 +1,70 @@
+<!-- 第五章：实战演练 -->
 <view class="container">
-  <view class="placeholder">
-    <text class="emoji">🏆</text>
-    <text class="title">第五章：实战演练</text>
-    <text class="desc">{{guideText}}</text>
-    <view class="dev-status">
-      <text class="status-badge">🚧 开发中</text>
-      <text class="status-text">敬请期待</text>
-    </view>
-    <view class="feature-list">
-      <view class="feature-item">
-        <text class="feature-icon">🤖</text>
-        <text class="feature-name">AI对手</text>
-      </view>
-      <view class="feature-item">
-        <text class="feature-icon">🎮</text>
-        <text class="feature-name">完整对局</text>
-      </view>
-      <view class="feature-item">
-        <text class="feature-icon">💡</text>
-        <text class="feature-name">智能提示</text>
-      </view>
+  <!-- 辣子雀导师 -->
+  <view class="guide-section">
+    <image class="guide-avatar" src="https://images.daojia.com/jz/pic/69c729e5f514f9bfc1c6a25b1f91e6ad.jpg" mode="aspectFit"></image>
+    <view class="guide-bubble">
+      <text>{{guideText}}</text>
     </view>
   </view>
-  
-  <view class="back-button">
+
+  <!-- 关卡进度 -->
+  <view class="progress-bar">
+    <view class="progress-fill" style="width: {{progress}}%"></view>
+  </view>
+
+  <!-- 游戏区域 -->
+  <view class="game-area">
+    <view class="level-title">🎯 实战演练</view>
+    <view class="level-desc">
+      {{questionType === 'discard' ? '选择应该打出的牌来优化牌型' : '选择可以胡的牌'}}
+    </view>
+    
+    <!-- 手牌区域 -->
+    <view class="tiles-container">
+      <mahjong-tile 
+        custom-class="tile" 
+        wx:for="{{tiles}}" 
+        wx:key="index"
+        tile-text="{{item}}"
+      ></mahjong-tile>
+    </view>
+
+    <!-- 问题描述 -->
+    <view class="question-desc">{{guideText}}</view>
+    
+    <!-- 选项区域 -->
+    <view class="options">
+      <button class="option-btn {{selectedOption === index ? 'selected' : ''}}" 
+              wx:for="{{options}}" 
+              wx:key="index"
+              bindtap="onOptionSelect"
+              data-index="{{index}}">
+        {{item}}
+      </button>
+    </view>
+    
+    <!-- 提交按钮 -->
+    <button class="submit-btn" 
+            bindtap="onSubmit"
+            disabled="{{selectedOption === null}}">
+      提交答案
+    </button>
+
+    <!-- 解说区域 -->
+    <view class="explanation" wx:if="{{showExplanation}}">
+      <view class="explanation-title">📋 题目解说</view>
+      <view class="explanation-content">{{explanation}}</view>
+    </view>
+
+    <view class="score-display">
+      <text>得分：{{score}}</text>
+      <text>剩余时间：{{timeLeft}}秒</text>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-actions">
     <button class="btn-secondary" bindtap="onBackTap">返回</button>
   </view>
 </view>
