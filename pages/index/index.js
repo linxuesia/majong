@@ -141,5 +141,59 @@ Page({
     wx.navigateTo({
       url: `/pages/chapter${nextChapter}/chapter${nextChapter}`
     })
+  },
+
+  // 分享按钮点击事件
+  onShareTap() {
+    wx.showModal({
+      title: '分享解锁',
+      content: '分享给好友，即刻解锁全部章节！',
+      confirmText: '立即分享',
+      cancelText: '稍后再试',
+      success: (res) => {
+        if (res.confirm) {
+          // 开启微信分享菜单
+          wx.showShareMenu({
+            withShareTicket: true,
+            menus: ['shareAppMessage', 'shareTimeline']
+          })
+          
+          // 分享成功后解锁全部章节
+          app.globalData.currentChapter = 5
+          app.globalData.completedChapters = [1, 2, 3, 4, 5]
+          app.saveProgress()
+          this.loadProgress()
+          
+          wx.showToast({
+            title: '分享成功，已解锁全部章节！',
+            icon: 'success'
+          })
+        }
+      }
+    })
+  },
+
+  // 分享给好友 - 微信小程序API
+  onShareAppMessage() {
+    return {
+      title: '雀神养成记：长沙风云篇 - 一起成为雀神！',
+      path: '/pages/index/index',
+      imageUrl: 'https://images.daojia.com/jz/pic/69c729e5f514f9bfc1c6a25b1f91e6ad.jpg',
+      success(res) {
+        console.log('分享成功', res)
+      },
+      fail(res) {
+        console.log('分享失败', res)
+      }
+    }
+  },
+
+  // 分享到朋友圈
+  onShareTimeline() {
+    return {
+      title: '雀神养成记：长沙风云篇 - 一起成为雀神！',
+      query: 'from=timeline',
+      imageUrl: 'https://images.daojia.com/jz/pic/69c729e5f514f9bfc1c6a25b1f91e6ad.jpg'
+    }
   }
 })

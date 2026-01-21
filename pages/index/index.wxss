@@ -3,8 +3,41 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 40rpx 0;
+  padding: 20rpx 0 40rpx;
   animation: fadeIn 0.8s ease-out;
+}
+
+/* 顶部规则按钮 */
+.top-settings {
+  padding: 0 32rpx 24rpx;
+  text-align: right;
+  animation: slideIn 0.8s ease-out 0.5s both;
+}
+
+.btn-settings {
+  background: linear-gradient(135deg, #D32F2F 0%, #F44336 100%);
+  color: white;
+  border-radius: 50rpx;
+  padding: 16rpx 32rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  box-shadow: 0 8rpx 16rpx rgba(211, 47, 47, 0.3);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: scaleIn 0.6s ease-out 0.7s both;
+}
+
+.btn-settings:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 12rpx 24rpx rgba(211, 47, 47, 0.4);
+}
+
+.btn-settings:active {
+  opacity: 0.9;
+  transform: scale(0.97);
+  box-shadow: 0 4rpx 8rpx rgba(211, 47, 47, 0.4);
 }
 
 .title-section {
@@ -157,23 +190,49 @@
 
 .bottom-buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   padding: 32rpx;
   gap: 24rpx;
   animation: slideIn 0.8s ease-out 1.8s both;
 }
 
 .bottom-buttons button {
-  flex: 1;
-  animation: scaleIn 0.6s ease-out both;
+  width: 100%;
+  max-width: 600rpx;
+  animation: scaleIn 0.6s ease-out 2s both;
 }
 
-.bottom-buttons button:nth-child(1) {
-  animation-delay: 2s;
+/* 分享按钮 */
+.share-section {
+  padding: 0 32rpx 24rpx;
+  animation: slideIn 0.8s ease-out 2.2s both;
 }
 
-.bottom-buttons button:nth-child(2) {
-  animation-delay: 2.1s;
+.btn-share {
+  background: linear-gradient(135deg, #FFB74D 0%, #FF9800 100%);
+  color: white;
+  border-radius: 50rpx;
+  padding: 24rpx 48rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  box-shadow: 0 8rpx 24rpx rgba(255, 183, 77, 0.4);
+  border: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  width: 100%;
+  animation: scaleIn 0.6s ease-out 2.4s both;
+}
+
+.btn-share:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 12rpx 32rpx rgba(255, 183, 77, 0.5);
+}
+
+.btn-share:active {
+  opacity: 0.9;
+  transform: scale(0.97);
+  box-shadow: 0 4rpx 12rpx rgba(255, 183, 77, 0.4);
 }
 
 /* 开发模式工具栏 */
