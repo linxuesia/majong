@@ -1,0 +1,60 @@
+<!-- 麻将记账本房间页面 -->
+<view class="container">
+  <!-- 房间信息 -->
+  <view class="room-info fadeIn">
+    <text class="room-name">{{roomName}}</text>
+    <text class="room-id">房间号: {{roomId}}</text>
+    <text class="room-time">{{currentTime}}</text>
+  </view>
+
+  <!-- 功能按钮区域 -->
+  <view class="function-buttons slideIn">
+    <button class="btn-primary" bindtap="onStartGame">📝 开始记账</button>
+    <button class="btn-secondary" bindtap="onViewScores">📊 查看分数</button>
+  </view>
+
+  <!-- 玩家列表 -->
+  <view class="players-section slideIn" style="animation-delay: 0.1s;">
+    <text class="section-title">玩家列表</text>
+    
+    <view wx:if="{{players.length === 0}}" class="empty-state">
+      <text class="empty-text">暂无玩家</text>
+    </view>
+    
+    <view wx:else class="players-list">
+      <view wx:for="{{players}}" wx:key="id" class="player-item scaleIn" style="animation-delay: {{0.2 + index * 0.1}}s;">
+        <text class="player-name">{{item.name}}</text>
+        <text class="player-score">{{item.score || 0}}分</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 游戏记录 -->
+  <view class="game-records-section slideIn" style="animation-delay: 0.2s;">
+    <text class="section-title">游戏记录</text>
+    
+    <view wx:if="{{gameRecords.length === 0}}" class="empty-state">
+      <text class="empty-text">暂无游戏记录</text>
+    </view>
+    
+    <view wx:else class="game-records-list">
+      <view wx:for="{{gameRecords}}" wx:key="id" class="game-record-item scaleIn" style="animation-delay: {{0.3 + index * 0.1}}s;">
+        <view class="record-header">
+          <text class="record-number">第{{item.round}}局</text>
+          <text class="record-time">{{item.time}}</text>
+        </view>
+        <view class="record-results">
+          <view wx:for="{{item.results}}" wx:key="playerId" class="result-item">
+            <text class="result-player">{{item.name}}:</text>
+            <text class="result-score {{item.score >= 0 ? 'win' : 'lose'}}">{{item.score >= 0 ? '+' : ''}}{{item.score}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出按钮 -->
+  <view class="exit-section slideIn" style="animation-delay: 0.3s;">
+    <button class="btn-exit" bindtap="onExitRoom">🚪 退出房间</button>
+  </view>
+</view>

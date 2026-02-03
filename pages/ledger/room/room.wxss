@@ -1,0 +1,351 @@
+/* 记账本房间页面样式 */
+.container {
+  min-height: 100vh;
+  background-color: #FFF8E1;
+  padding: 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+/* 房间信息 */
+.room-info {
+  background: linear-gradient(135deg, #D32F2F, #F44336);
+  border-radius: 24rpx;
+  padding: 32rpx;
+  color: white;
+  box-shadow: 0 8rpx 16rpx rgba(211, 47, 47, 0.3);
+  text-align: center;
+}
+
+.room-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.room-id {
+  font-size: 24rpx;
+  opacity: 0.9;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.room-time {
+  font-size: 24rpx;
+  opacity: 0.8;
+  display: block;
+}
+
+/* 功能按钮区域 */
+.function-buttons {
+  display: flex;
+  gap: 24rpx;
+}
+
+.btn-primary {
+  flex: 1;
+  background: linear-gradient(135deg, #4CAF50, #8BC34A);
+  color: white;
+  border-radius: 8rpx;
+  padding: 24rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  border: none;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:active::before {
+  width: 300rpx;
+  height: 300rpx;
+}
+
+.btn-primary:active {
+  opacity: 0.9;
+  transform: scale(0.97);
+  box-shadow: 0 4rpx 8rpx rgba(76, 175, 80, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 24rpx rgba(76, 175, 80, 0.4);
+}
+
+.btn-secondary {
+  flex: 1;
+  background: linear-gradient(135deg, #FFB74D, #FFCC80);
+  color: white;
+  border-radius: 8rpx;
+  padding: 24rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  border: none;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-secondary:active::before {
+  width: 300rpx;
+  height: 300rpx;
+}
+
+.btn-secondary:active {
+  opacity: 0.9;
+  transform: scale(0.97);
+  box-shadow: 0 4rpx 8rpx rgba(255, 152, 0, 0.4);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 24rpx rgba(255, 152, 0, 0.4);
+}
+
+/* 玩家列表区域 */
+.players-section {
+  background-color: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 24rpx;
+  display: block;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48rpx 0;
+  color: #999999;
+}
+
+.empty-text {
+  font-size: 28rpx;
+}
+
+.players-list {
+  margin-top: 8rpx;
+}
+
+.player-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F9F9F9;
+  border-radius: 8rpx;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+  border: 1rpx solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.player-item:hover {
+  background-color: rgba(211, 47, 47, 0.05);
+  border-color: #F44336;
+  transform: translateY(-2rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.player-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.player-score {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #D32F2F;
+}
+
+/* 游戏记录区域 */
+.game-records-section {
+  background-color: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-height: 200rpx;
+}
+
+.game-records-list {
+  margin-top: 8rpx;
+}
+
+.game-record-item {
+  background-color: #F9F9F9;
+  border-radius: 8rpx;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+  border: 1rpx solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.game-record-item:hover {
+  background-color: rgba(211, 47, 47, 0.05);
+  border-color: #F44336;
+  transform: translateY(-2rpx);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+  padding-bottom: 8rpx;
+  border-bottom: 1rpx solid #e0e0e0;
+}
+
+.record-number {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.record-time {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.record-results {
+  margin-top: 8rpx;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8rpx;
+}
+
+.result-player {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.result-score {
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.result-score.win {
+  color: #4CAF50;
+}
+
+.result-score.lose {
+  color: #F44336;
+}
+
+/* 退出按钮区域 */
+.exit-section {
+}
+
+.btn-exit {
+  width: 100%;
+  background: linear-gradient(135deg, #F44336, #EF5350);
+  color: white;
+  border-radius: 8rpx;
+  padding: 24rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  border: none;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-exit::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-exit:active::before {
+  width: 300rpx;
+  height: 300rpx;
+}
+
+.btn-exit:active {
+  opacity: 0.9;
+  transform: scale(0.97);
+  box-shadow: 0 4rpx 8rpx rgba(244, 67, 54, 0.4);
+}
+
+.btn-exit:hover {
+  transform: translateY(-2rpx);
+  box-shadow: 0 8rpx 24rpx rgba(244, 67, 54, 0.4);
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+  .container {
+    padding: var(--spacing-sm);
+  }
+  
+  .function-buttons {
+    flex-direction: column;
+  }
+  
+  .room-info {
+    padding: var(--spacing-md);
+  }
+  
+  .room-name {
+    font-size: var(--font-size-lg);
+  }
+  
+  .btn-primary,
+  .btn-secondary,
+  .btn-exit {
+    font-size: var(--font-size-md);
+    padding: var(--spacing-sm);
+  }
+  
+  .players-section,
+  .game-records-section {
+    padding: var(--spacing-md);
+  }
+}

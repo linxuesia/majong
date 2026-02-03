@@ -143,57 +143,50 @@ Page({
     })
   },
 
-  // 分享按钮点击事件
-  onShareTap() {
-    wx.showModal({
-      title: '分享解锁',
-      content: '分享给好友，即刻解锁全部章节！',
-      confirmText: '立即分享',
-      cancelText: '稍后再试',
-      success: (res) => {
-        if (res.confirm) {
-          // 开启微信分享菜单
-          wx.showShareMenu({
-            withShareTicket: true,
-            menus: ['shareAppMessage', 'shareTimeline']
-          })
-          
-          // 分享成功后解锁全部章节
-          app.globalData.currentChapter = 5
-          app.globalData.completedChapters = [1, 2, 3, 4, 5]
-          app.saveProgress()
-          this.loadProgress()
-          
-          wx.showToast({
-            title: '分享成功，已解锁全部章节！',
-            icon: 'success'
-          })
-        }
-      }
+  onLedgerTap() {
+    wx.navigateTo({
+      url: '/pages/ledger/index/index'
     })
   },
 
   // 分享给好友 - 微信小程序API
   onShareAppMessage() {
+    // 注意：个人开发者的小程序可能无法获取分享后的回调数据
+    // 因此我们在用户点击分享按钮时就执行解锁逻辑
+    this.unlockAllChapters()
+    
     return {
       title: '雀神养成记：长沙风云篇 - 一起成为雀神！',
       path: '/pages/index/index',
-      imageUrl: 'https://images.daojia.com/jz/pic/69c729e5f514f9bfc1c6a25b1f91e6ad.jpg',
-      success(res) {
-        console.log('分享成功', res)
-      },
-      fail(res) {
-        console.log('分享失败', res)
-      }
+      imageUrl: 'https://images.daojia.com/jz/pic/69c729e5f514f9bfc1c6a25b1f91e6ad.jpg'
     }
   },
 
   // 分享到朋友圈
   onShareTimeline() {
+    // 注意：朋友圈分享没有success回调，而且个人开发者可能无法获取分享结果
+    // 因此我们在用户点击分享按钮时就执行解锁逻辑
+    this.unlockAllChapters()
+    
     return {
       title: '雀神养成记：长沙风云篇 - 一起成为雀神！',
       query: 'from=timeline',
       imageUrl: 'https://images.daojia.com/jz/pic/69c729e5f514f9bfc1c6a25b1f91e6ad.jpg'
     }
+  },
+  
+  // 解锁全部章节的方法
+  unlockAllChapters() {
+    // 解锁全部章节
+    app.globalData.currentChapter = 5
+    app.globalData.completedChapters = [1, 2, 3, 4, 5]
+    app.saveProgress()
+    this.loadProgress()
+    
+    // 显示解锁成功提示
+    wx.showToast({
+      title: '分享成功，已解锁全部章节！',
+      icon: 'success'
+    })
   }
 })

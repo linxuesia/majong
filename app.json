@@ -7,7 +7,9 @@
     "pages/chapter3/chapter3",
     "pages/chapter4/chapter4",
     "pages/chapter5/chapter5",
-    "pages/settings/settings"
+    "pages/settings/settings",
+    "pages/ledger/index/index",
+    "pages/ledger/room/room"
   ],
   "window": {
     "backgroundTextStyle": "light",

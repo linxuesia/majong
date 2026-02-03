@@ -44,10 +44,11 @@
   <!-- 底部按钮 -->
   <view class="bottom-buttons">
     <button class="btn-primary" bindtap="onStartTap">开始游戏</button>
+    <button class="btn-secondary" bindtap="onLedgerTap">麻将记账本</button>
   </view>
 
   <!-- 分享按钮 -->
   <view class="share-section">
-    <button class="btn-share" bindtap="onShareTap">分享给好友，即刻解锁全部章节</button>
+    <button class="btn-share" open-type="share">分享给好友，即刻解锁全部章节</button>
   </view>
 </view>

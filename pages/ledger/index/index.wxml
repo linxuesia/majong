@@ -1,0 +1,62 @@
+<!-- 麻将记账本首页 -->
+<view class="container">
+  <!-- 用户信息区域 -->
+  <view class="user-info-section">
+    <view wx:if="{{userInfo}}" class="user-info">
+      <image class="user-avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      <view class="user-detail">
+        <text class="user-nickname">{{userInfo.nickName}}</text>
+        <text class="user-stats">本月已对局: 0场</text>
+      </view>
+    </view>
+    <button wx:else class="btn-authorize" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">点击授权登录</button>
+  </view>
+
+  <!-- 核心操作区 -->
+  <view class="action-cards">
+    <view class="action-card create-card" bindtap="onCreateRoom">
+      <text class="card-icon">🀄</text>
+      <text class="card-title">创建房间</text>
+      <text class="card-subtitle">发起新对局</text>
+    </view>
+    <view class="action-card join-card" bindtap="onJoinRoom">
+      <text class="card-icon">🔗</text>
+      <text class="card-title">加入房间</text>
+      <text class="card-subtitle">输入房号加入</text>
+    </view>
+  </view>
+
+  <!-- 房间输入框 -->
+  <view class="room-input-section" wx:if="{{showJoinRoomInput}}">
+    <view class="form-group">
+      <text class="form-label">房间号</text>
+      <input class="form-input" type="number" placeholder="请输入房间号" value="{{roomId}}" bindinput="onRoomIdChange" />
+    </view>
+    <button class="btn-join" bindtap="confirmJoinRoom">确认加入</button>
+    <button class="btn-cancel" bindtap="cancelJoinRoom">取消</button>
+  </view>
+
+  <!-- 历史房间 -->
+  <view class="history-section">
+    <text class="section-title">历史房间</text>
+    
+    <view wx:if="{{historyRooms.length === 0}}" class="empty-state">
+      <view class="empty-illustration">
+        <text>🀙 🀚 🀛</text>
+      </view>
+      <text class="empty-text">还没有战绩，快去开一局吧！</text>
+    </view>
+    
+    <view wx:else class="history-list">
+      <view wx:for="{{historyRooms}}" wx:key="id" class="history-item" bindtap="joinHistoryRoom" data-id="{{item.id}}">
+        <text class="room-name">{{item.name || '房间 ' + item.id}}</text>
+        <text class="room-time">{{item.lastAccessTime}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 本地模式 -->
+  <view class="local-mode-section">
+    <button class="btn-local" bindtap="enterLocalMode">📱 本地记账（无需网络）</button>
+  </view>
+</view>
