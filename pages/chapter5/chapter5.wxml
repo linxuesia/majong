@@ -1,4 +1,4 @@
-<!-- 第五章：实战演练 -->
+<!-- 第五章：清一色挑战 -->
 <view class="container">
   <!-- 辣子雀导师 -->
   <view class="guide-section">
@@ -15,10 +15,7 @@
 
   <!-- 游戏区域 -->
   <view class="game-area">
-    <view class="level-title">🎯 实战演练</view>
-    <view class="level-desc">
-      {{questionType === 'discard' ? '选择应该打出的牌来优化牌型' : '选择可以胡的牌'}}
-    </view>
+    <view class="level-title">🀄️ 清一色听牌挑战</view>
     
     <!-- 手牌区域 -->
     <view class="tiles-container">
@@ -30,41 +27,46 @@
       ></mahjong-tile>
     </view>
 
-    <!-- 问题描述 -->
-    <view class="question-desc">{{guideText}}</view>
-    
-    <!-- 选项区域 -->
-    <view class="options">
-      <button class="option-btn {{selectedOption === index ? 'selected' : ''}}" 
-              wx:for="{{options}}" 
-              wx:key="index"
-              bindtap="onOptionSelect"
-              data-index="{{index}}">
-        {{item}}
-      </button>
+    <!-- 选项区域（1-9号牌） -->
+    <view class="options-grid">
+      <view class="option-item {{utils.includes(selectedOptions, index + 1) ? 'selected' : ''}}" 
+            wx:for="{{options}}" 
+            wx:key="index"
+            bindtap="onOptionSelect"
+            data-index="{{index}}">
+        <mahjong-tile 
+          tile-text="{{item}}"
+          custom-class="option-tile"
+        ></mahjong-tile>
+        <view class="check-mark" wx:if="{{utils.includes(selectedOptions, index + 1)}}">✅</view>
+      </view>
     </view>
     
     <!-- 提交按钮 -->
-    <button class="submit-btn" 
+    <button class="submit-btn {{selectedOptions.length > 0 ? 'active' : ''}}" 
             bindtap="onSubmit"
-            disabled="{{selectedOption === null}}">
-      提交答案
+            disabled="{{selectedOptions.length === 0}}">
+      确认胡这些牌 ({{selectedOptions.length}})
     </button>
 
-    <!-- 解说区域 -->
-    <view class="explanation" wx:if="{{showExplanation}}">
-      <view class="explanation-title">📋 题目解说</view>
-      <view class="explanation-content">{{explanation}}</view>
-    </view>
-
-    <view class="score-display">
-      <text>得分：{{score}}</text>
-      <text>剩余时间：{{timeLeft}}秒</text>
+    <!-- 分数与时间 -->
+    <view class="info-row">
+      <view class="score-tag">得分：{{score}}</view>
+      <view class="time-tag {{timeLeft < 20 ? 'urgent' : ''}}">⏳ {{timeLeft}}s</view>
     </view>
   </view>
 
   <!-- 底部按钮 -->
   <view class="bottom-actions">
-    <button class="btn-secondary" bindtap="onBackTap">返回</button>
+    <button class="btn-secondary" bindtap="onBackTap">退出练习</button>
   </view>
 </view>
+
+<!-- 简单的 WXS 辅助函数 -->
+<wxs module="utils">
+  module.exports = {
+    includes: function(array, value) {
+      return array.indexOf(value) !== -1;
+    }
+  }
+</wxs>
