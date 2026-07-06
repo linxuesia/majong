@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "claim-button": "/components/claim-button/claim-button"
+  }
+}

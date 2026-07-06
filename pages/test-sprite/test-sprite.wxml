@@ -1,58 +1,24 @@
-<!-- pages/test-sprite/test-sprite.wxml -->
 <view class="container">
   <view class="header">
-    <text class="title">精灵图调试页面</text>
-    <text class="subtitle">调试麻将牌精灵图显示问题</text>
+    <text class="title">V2 全牌面调试预览</text>
+    <text class="subtitle">基于新版 DemChing 精灵图 (3D CSS 外框)</text>
   </view>
 
-  <view class="config-info">
-    <text class="info-title">精灵图配置信息：</text>
-    <view class="info-item">
-      <text class="info-label">单个麻将牌尺寸：</text>
-      <text class="info-value">{{spriteConfig.tileWidth}}px × {{spriteConfig.tileHeight}}px</text>
-    </view>
-    <view class="info-item">
-      <text class="info-label">精灵图总尺寸：</text>
-      <text class="info-value">{{spriteConfig.totalWidth}}px × {{spriteConfig.totalHeight}}px</text>
-    </view>
-    <view class="info-item">
-      <text class="info-label">行数 × 列数：</text>
-      <text class="info-value">{{spriteConfig.rows}} × {{spriteConfig.cols}}</text>
-    </view>
-  </view>
-
-  <view class="debug-section">
-    <text class="section-title">调试信息：</text>
-    <text class="debug-text">1rpx ≈ 0.5px，当前设备像素比：{{pixelRatio}}</text>
-  </view>
-
-  <view class="tiles-container">
-    <text class="section-title">所有麻将牌：</text>
-    <view class="tiles-grid">
-      <view class="tile-item" wx:for="{{allTiles}}" wx:key="{{index}}">
-        <mahjong-tile tile-text="{{item}}" />
-        <text class="tile-text">{{item}}</text>
+  <view class="table-preview">
+    <view class="section-title">🀄️ 全牌面集合 (34张)</view>
+    <view class="all-tiles-grid">
+      <view class="tile-item" wx:for="{{allTiles}}" wx:key="index">
+        <mahjong-tile-v2 tile-text="{{item}}" width="70" height="96"></mahjong-tile-v2>
+        <text class="tile-label">{{item}}</text>
       </view>
     </view>
   </view>
 
-  <view class="direct-sprite-test">
-    <text class="section-title">直接使用精灵图测试：</text>
-    <view class="direct-sprite-container">
-      <view class="direct-sprite" style="background-image: url(https://images.daojia.com/jz/pic/d5601e8b347ca3f3b4431b8869d786e9.png); background-size: auto;"></view>
-    </view>
-    <text class="direct-sprite-desc">直接显示完整精灵图，用于查看原始图片尺寸</text>
-  </view>
-
-  <view class="fixed-size-test">
-    <text class="section-title">固定尺寸测试：</text>
-    <view class="fixed-size-container">
-      <text class="size-label">66px × 97px：</text>
-      <view class="fixed-size-tile" style="width: 66px; height: 97px; background-color: #f0f0f0; border: 1px solid #ccc; display: inline-block; margin: 10px;"></view>
-      <text class="size-label">33px × 48.5px：</text>
-      <view class="fixed-size-tile" style="width: 33px; height: 48.5px; background-color: #f0f0f0; border: 1px solid #ccc; display: inline-block; margin: 10px;"></view>
-      <text class="size-label">66rpx × 97rpx：</text>
-      <view class="fixed-size-tile" style="width: 66rpx; height: 97rpx; background-color: #f0f0f0; border: 1px solid #ccc; display: inline-block; margin: 10px;"></view>
+  <view class="interactive-test">
+    <view class="section-title">👆 选中动效测试</view>
+    <view class="test-item" bindtap="toggleSelect">
+      <mahjong-tile-v2 tile-text="中" selected="{{isSelected}}" width="120" height="160"></mahjong-tile-v2>
+      <text>点击测试上浮效果</text>
     </view>
   </view>
 </view>

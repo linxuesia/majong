@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "好友",
+  "usingComponents": {
+    "empty-state": "../../components/empty-state/empty-state"
+  }
+}

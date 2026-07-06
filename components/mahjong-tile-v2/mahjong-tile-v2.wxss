@@ -1,0 +1,53 @@
+/* 保持 3D 外框样式 */
+.tile-v2 {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: all 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.tile-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #2E7D32; 
+  border-radius: 8rpx;
+  box-shadow: 
+    inset 0 -4rpx 8rpx rgba(0,0,0,0.3),
+    0 8rpx 12rpx rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.tile-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 12rpx); /* 留出侧面厚度 */
+  background: #FFFFFF;
+  border-radius: 8rpx;
+  z-index: 2;
+  overflow: hidden; /* 重要：防止图片溢出 */
+  border: 1rpx solid #E0E0E0;
+}
+
+/* 位图精灵图层 */
+.tile-image-layer {
+  width: 100%;
+  height: 100%;
+  background-size: 900% 500%; /* 9列 5行 */
+  background-repeat: no-repeat;
+  /* 增加内边距让牌面符号不贴边 */
+  transform: scale(0.85); 
+}
+
+.tile-v2.selected {
+  transform: translateY(-10rpx);
+}
+.tile-v2.selected .tile-body {
+  border-color: #FF9800;
+  background: #FFF3E0;
+}

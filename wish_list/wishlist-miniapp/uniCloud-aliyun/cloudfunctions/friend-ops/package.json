@@ -1,0 +1,9 @@
+{
+  "name": "friend-ops",
+  "version": "1.0.0",
+  "description": "好友操作云函数",
+  "main": "index.js",
+  "dependencies": {
+    "uni-id-common": "file:../../../../uni-id-common"
+  }
+}

@@ -1,0 +1,96 @@
+/* 全局样式变量 */
+.friends-page.data-v-a89a5f87 {
+  min-height: 100vh;
+  background-color: #F5F5F5;
+}
+.friends-page__search.data-v-a89a5f87 {
+  padding: 24rpx;
+  background-color: #ffffff;
+}
+.friends-page__search-wrap.data-v-a89a5f87 {
+  display: flex;
+  align-items: center;
+  background-color: #F5F5F5;
+  border-radius: 999rpx;
+  padding: 16rpx 28rpx;
+}
+.friends-page__search-icon.data-v-a89a5f87 {
+  font-size: 28rpx;
+  margin-right: 12rpx;
+}
+.friends-page__search-input.data-v-a89a5f87 {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333333;
+  height: 40rpx;
+}
+.friends-page__list.data-v-a89a5f87 {
+  padding: 24rpx;
+}
+.friends-page__item.data-v-a89a5f87 {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s;
+}
+.friends-page__item.data-v-a89a5f87:active {
+  transform: scale(0.98);
+}
+.friends-page__avatar.data-v-a89a5f87 {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: #F0F0F0;
+}
+.friends-page__info.data-v-a89a5f87 {
+  flex: 1;
+  margin-left: 24rpx;
+}
+.friends-page__name.data-v-a89a5f87 {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 8rpx;
+}
+.friends-page__status-text.data-v-a89a5f87 {
+  font-size: 22rpx;
+  color: #52C41A;
+  background-color: #F6FFED;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+}
+.friends-page__arrow.data-v-a89a5f87 {
+  flex-shrink: 0;
+  padding: 16rpx;
+}
+.friends-page__arrow-icon.data-v-a89a5f87 {
+  font-size: 28rpx;
+  color: #CCCCCC;
+}
+.friends-page__loading.data-v-a89a5f87 {
+  text-align: center;
+  padding: 40rpx;
+  color: #999999;
+  font-size: 26rpx;
+}
+.friends-page__invite.data-v-a89a5f87 {
+  margin: 40rpx 24rpx;
+  padding: 28rpx;
+  background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+  border-radius: 24rpx;
+  text-align: center;
+  box-shadow: 0 8rpx 24rpx rgba(255, 107, 107, 0.2);
+}
+.friends-page__invite.data-v-a89a5f87:active {
+  opacity: 0.9;
+}
+.friends-page__invite-text.data-v-a89a5f87 {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #ffffff;
+}

@@ -32,8 +32,10 @@
       <text class="form-label">房间号</text>
       <input class="form-input" type="number" placeholder="请输入房间号" value="{{roomId}}" bindinput="onRoomIdChange" />
     </view>
-    <button class="btn-join" bindtap="confirmJoinRoom">确认加入</button>
-    <button class="btn-cancel" bindtap="cancelJoinRoom">取消</button>
+    <view class="input-actions">
+      <button class="btn-join" bindtap="confirmJoinRoom">确认加入</button>
+      <button class="btn-cancel" bindtap="cancelJoinRoom">取消</button>
+    </view>
   </view>
 
   <!-- 历史房间 -->

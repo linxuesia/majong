@@ -1,0 +1,43 @@
+/* 全局样式变量 */
+.claim-button.data-v-9e1f4b63 {
+  width: 100%;
+}
+.claim-button__btn.data-v-9e1f4b63 {
+  width: 100%;
+  height: 88rpx;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+}
+.claim-button__btn.data-v-9e1f4b63::after {
+  border: none;
+}
+.claim-button__btn--claim.data-v-9e1f4b63 {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+  color: #ffffff;
+  box-shadow: 0 8rpx 24rpx rgba(255, 107, 107, 0.3);
+}
+.claim-button__btn--claim.data-v-9e1f4b63:active {
+  opacity: 0.85;
+}
+.claim-button__btn--cancel.data-v-9e1f4b63 {
+  background-color: #ffffff;
+  color: #FF6B6B;
+  border: 2rpx solid #FF6B6B;
+}
+.claim-button__btn--cancel.data-v-9e1f4b63:active {
+  background-color: #FFF5F5;
+}
+.claim-button__btn--disabled.data-v-9e1f4b63 {
+  background-color: #F5F5F5;
+  color: #999999;
+}
+.claim-button__btn--completed.data-v-9e1f4b63 {
+  background: linear-gradient(135deg, #52C41A, #73D13D);
+  color: #ffffff;
+}

@@ -1,0 +1,82 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "我的心愿",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/friends/friends",
+      "style": {
+        "navigationBarTitleText": "好友"
+      }
+    },
+    {
+      "path": "pages/profile/profile",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/add-item/add-item",
+      "style": {
+        "navigationBarTitleText": "添加心愿"
+      }
+    },
+    {
+      "path": "pages/item-detail/item-detail",
+      "style": {
+        "navigationBarTitleText": "心愿详情"
+      }
+    },
+    {
+      "path": "pages/friend-wishlist/friend-wishlist",
+      "style": {
+        "navigationBarTitleText": "好友心愿"
+      }
+    },
+    {
+      "path": "pages/edit-item/edit-item",
+      "style": {
+        "navigationBarTitleText": "编辑心愿"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "心愿清单",
+    "navigationBarBackgroundColor": "#FF6B6B",
+    "backgroundColor": "#F5F5F5",
+    "app-plus": {
+      "background": "#F5F5F5"
+    }
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FF6B6B",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tab-home.png",
+        "selectedIconPath": "static/tab-home.png",
+        "text": "心愿"
+      },
+      {
+        "pagePath": "pages/friends/friends",
+        "iconPath": "static/tab-friends.png",
+        "selectedIconPath": "static/tab-friends.png",
+        "text": "好友"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "iconPath": "static/tab-profile.png",
+        "selectedIconPath": "static/tab-profile.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

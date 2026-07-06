@@ -1,0 +1,124 @@
+/* 全局样式变量 */
+.profile-page.data-v-04d37cba {
+  min-height: 100vh;
+  background-color: #F5F5F5;
+}
+.profile-page__user-card.data-v-04d37cba {
+  background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+  padding: 48rpx 32rpx;
+}
+.profile-page__user-info.data-v-04d37cba, .profile-page__login-hint.data-v-04d37cba {
+  display: flex;
+  align-items: center;
+}
+.profile-page__avatar.data-v-04d37cba {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.profile-page__avatar--default.data-v-04d37cba {
+  opacity: 0.7;
+}
+.profile-page__user-detail.data-v-04d37cba {
+  margin-left: 28rpx;
+}
+.profile-page__nickname.data-v-04d37cba {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8rpx;
+}
+.profile-page__join-time.data-v-04d37cba {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.7);
+}
+.profile-page__stats.data-v-04d37cba {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #ffffff;
+  margin: 24rpx;
+  border-radius: 24rpx;
+  padding: 32rpx 0;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+.profile-page__stat-item.data-v-04d37cba {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-page__stat-num.data-v-04d37cba {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #FF6B6B;
+}
+.profile-page__stat-label.data-v-04d37cba {
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 8rpx;
+}
+.profile-page__stat-divider.data-v-04d37cba {
+  width: 2rpx;
+  height: 60rpx;
+  background-color: #EEEEEE;
+}
+.profile-page__menu.data-v-04d37cba {
+  background-color: #ffffff;
+  margin: 24rpx;
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+.profile-page__menu-item.data-v-04d37cba {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32rpx 28rpx;
+  border-bottom: 2rpx solid #F5F5F5;
+}
+.profile-page__menu-item.data-v-04d37cba:last-child {
+  border-bottom: none;
+}
+.profile-page__menu-item.data-v-04d37cba:active {
+  background-color: #FAFAFA;
+}
+.profile-page__menu-left.data-v-04d37cba {
+  display: flex;
+  align-items: center;
+}
+.profile-page__menu-icon.data-v-04d37cba {
+  font-size: 36rpx;
+  margin-right: 20rpx;
+}
+.profile-page__menu-text.data-v-04d37cba {
+  font-size: 30rpx;
+  color: #333333;
+}
+.profile-page__menu-arrow.data-v-04d37cba {
+  font-size: 28rpx;
+  color: #CCCCCC;
+}
+.profile-page__logout.data-v-04d37cba {
+  padding: 24rpx;
+}
+.profile-page__logout-btn.data-v-04d37cba {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #ffffff;
+  color: #FF4D4F;
+  font-size: 30rpx;
+  font-weight: 500;
+  border-radius: 44rpx;
+  border: none;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+.profile-page__logout-btn.data-v-04d37cba::after {
+  border: none;
+}
+.profile-page__logout-btn.data-v-04d37cba:active {
+  background-color: #FFF5F5;
+}

@@ -1,0 +1,27 @@
+{
+  "bsonType": "object",
+  "required": ["userId", "friendId"],
+  "permission": {
+    "read": true,
+    "create": true,
+    "update": true,
+    "delete": true
+  },
+  "properties": {
+    "_id": {
+      "description": "ID"
+    },
+    "userId": {
+      "bsonType": "string",
+      "description": "用户ID"
+    },
+    "friendId": {
+      "bsonType": "string",
+      "description": "好友用户ID"
+    },
+    "createdAt": {
+      "bsonType": "date",
+      "description": "创建时间"
+    }
+  }
+}

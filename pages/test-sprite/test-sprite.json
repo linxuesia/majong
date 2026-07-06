@@ -1,10 +1,11 @@
 {
   "usingComponents": {
-    "mahjong-tile": "../../components/mahjong-tile/mahjong-tile"
+    "mahjong-tile": "../../components/mahjong-tile/mahjong-tile",
+    "mahjong-tile-v2": "../../components/mahjong-tile-v2/mahjong-tile-v2"
   },
-  "navigationBarTitleText": "精灵图调试",
-  "navigationBarBackgroundColor": "#D32F2F",
+  "navigationBarTitleText": "UI 对比调试 (V2 纯代码版)",
+  "navigationBarBackgroundColor": "#1B5E20",
   "navigationBarTextStyle": "white",
   "backgroundTextStyle": "light",
-  "backgroundColor": "#FFF8E1"
+  "backgroundColor": "#F8F9FA"
 }

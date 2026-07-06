@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "心愿详情",
+  "usingComponents": {
+    "claim-button": "../../components/claim-button/claim-button"
+  }
+}

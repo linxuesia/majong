@@ -1,0 +1,41 @@
+/* 全局样式变量 */
+.empty-state.data-v-a83f7a80 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 60rpx;
+}
+.empty-state__image.data-v-a83f7a80 {
+  width: 240rpx;
+  height: 240rpx;
+  margin-bottom: 40rpx;
+}
+.empty-state__title.data-v-a83f7a80 {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+.empty-state__desc.data-v-a83f7a80 {
+  font-size: 26rpx;
+  color: #999999;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 40rpx;
+}
+.empty-state__action.data-v-a83f7a80 {
+  padding: 16rpx 64rpx;
+  background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 500;
+  border-radius: 44rpx;
+  border: none;
+}
+.empty-state__action.data-v-a83f7a80::after {
+  border: none;
+}
+.empty-state__action.data-v-a83f7a80:active {
+  opacity: 0.85;
+}

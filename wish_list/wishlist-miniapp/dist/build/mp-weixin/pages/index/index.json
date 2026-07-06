@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "我的心愿",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "wish-card": "../../components/wish-card/wish-card",
+    "empty-state": "../../components/empty-state/empty-state"
+  }
+}

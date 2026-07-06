@@ -1,0 +1,261 @@
+/* 全局样式变量 */
+.add-item-page.data-v-218cc6db {
+  min-height: 100vh;
+  background-color: #F5F5F5;
+  padding-bottom: 160rpx;
+}
+.add-item-page__tabs.data-v-218cc6db {
+  display: flex;
+  background-color: #ffffff;
+  padding: 0 24rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+.add-item-page__tab.data-v-218cc6db {
+  flex: 1;
+  text-align: center;
+  padding: 28rpx 0;
+  font-size: 30rpx;
+  color: #666666;
+  position: relative;
+  transition: color 0.3s;
+}
+.add-item-page__tab--active.data-v-218cc6db {
+  color: #FF6B6B;
+  font-weight: 600;
+}
+.add-item-page__tab--active.data-v-218cc6db::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 6rpx;
+  border-radius: 3rpx;
+  background-color: #FF6B6B;
+}
+.add-item-page__form.data-v-218cc6db, .add-item-page__url-form.data-v-218cc6db {
+  padding: 24rpx;
+}
+.add-item-page__field.data-v-218cc6db {
+  background-color: #ffffff;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+}
+.add-item-page__label.data-v-218cc6db {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+.add-item-page__required.data-v-218cc6db {
+  color: #FF6B6B;
+}
+.add-item-page__input.data-v-218cc6db {
+  width: 100%;
+  height: 80rpx;
+  border: 2rpx solid #EEEEEE;
+  border-radius: 16rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  color: #333333;
+  box-sizing: border-box;
+}
+.add-item-page__input.data-v-218cc6db:focus {
+  border-color: #FF6B6B;
+}
+.add-item-page__textarea.data-v-218cc6db {
+  width: 100%;
+  min-height: 160rpx;
+  border: 2rpx solid #EEEEEE;
+  border-radius: 16rpx;
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+  color: #333333;
+  box-sizing: border-box;
+}
+.add-item-page__textarea--url.data-v-218cc6db {
+  min-height: 200rpx;
+}
+.add-item-page__textarea.data-v-218cc6db:focus {
+  border-color: #FF6B6B;
+}
+.add-item-page__image-upload.data-v-218cc6db {
+  width: 200rpx;
+  height: 200rpx;
+  border: 2rpx dashed #DDDDDD;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+.add-item-page__image-preview.data-v-218cc6db {
+  width: 100%;
+  height: 100%;
+}
+.add-item-page__image-placeholder.data-v-218cc6db {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #F9F9F9;
+}
+.add-item-page__image-icon.data-v-218cc6db {
+  font-size: 56rpx;
+  color: #CCCCCC;
+  line-height: 1;
+}
+.add-item-page__image-text.data-v-218cc6db {
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 8rpx;
+}
+.add-item-page__price-input-wrap.data-v-218cc6db {
+  display: flex;
+  align-items: center;
+  border: 2rpx solid #EEEEEE;
+  border-radius: 16rpx;
+  padding: 0 24rpx;
+  height: 80rpx;
+  box-sizing: border-box;
+}
+.add-item-page__price-input-wrap.data-v-218cc6db:focus-within {
+  border-color: #FF6B6B;
+}
+.add-item-page__price-symbol.data-v-218cc6db {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #FF6B6B;
+  margin-right: 12rpx;
+}
+.add-item-page__price-input.data-v-218cc6db {
+  flex: 1;
+  height: 100%;
+  font-size: 28rpx;
+  color: #333333;
+}
+.add-item-page__category-wrap.data-v-218cc6db, .add-item-page__priority-wrap.data-v-218cc6db {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+.add-item-page__category-tag.data-v-218cc6db, .add-item-page__priority-tag.data-v-218cc6db {
+  padding: 12rpx 28rpx;
+  border-radius: 999rpx;
+  font-size: 26rpx;
+  color: #666666;
+  background-color: #F5F5F5;
+  border: 2rpx solid transparent;
+  transition: all 0.2s;
+}
+.add-item-page__category-tag--active.data-v-218cc6db, .add-item-page__priority-tag--active.data-v-218cc6db {
+  color: #FF6B6B;
+  background-color: #FFF0F0;
+  border-color: #FF6B6B;
+}
+.add-item-page__parse-btn.data-v-218cc6db {
+  margin-top: 24rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 600;
+  border-radius: 40rpx;
+  border: none;
+}
+.add-item-page__parse-btn.data-v-218cc6db::after {
+  border: none;
+}
+.add-item-page__parsed-preview.data-v-218cc6db {
+  background-color: #ffffff;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  margin-top: 24rpx;
+}
+.add-item-page__parsed-header.data-v-218cc6db {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+.add-item-page__parsed-card.data-v-218cc6db {
+  display: flex;
+  padding: 20rpx;
+  background-color: #F9F9F9;
+  border-radius: 16rpx;
+}
+.add-item-page__parsed-image.data-v-218cc6db {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 12rpx;
+  flex-shrink: 0;
+  background-color: #EEEEEE;
+}
+.add-item-page__parsed-info.data-v-218cc6db {
+  flex: 1;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.add-item-page__parsed-title.data-v-218cc6db {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.add-item-page__parsed-price.data-v-218cc6db {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #FF6B6B;
+}
+.add-item-page__parsed-platform.data-v-218cc6db {
+  font-size: 24rpx;
+  color: #999999;
+}
+.add-item-page__use-btn.data-v-218cc6db {
+  margin-top: 20rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  background-color: #ffffff;
+  color: #FF6B6B;
+  font-size: 28rpx;
+  border-radius: 36rpx;
+  border: 2rpx solid #FF6B6B;
+}
+.add-item-page__use-btn.data-v-218cc6db::after {
+  border: none;
+}
+.add-item-page__footer.data-v-218cc6db {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24rpx;
+  background-color: #ffffff;
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.06);
+  z-index: 100;
+}
+.add-item-page__submit-btn.data-v-218cc6db {
+  width: 100%;
+  height: 96rpx;
+  line-height: 96rpx;
+  background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 600;
+  border-radius: 48rpx;
+  border: none;
+  box-shadow: 0 8rpx 24rpx rgba(255, 107, 107, 0.3);
+}
+.add-item-page__submit-btn.data-v-218cc6db::after {
+  border: none;
+}
+.add-item-page__submit-btn.data-v-218cc6db:active {
+  opacity: 0.9;
+}

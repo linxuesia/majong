@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "好友心愿",
+  "usingComponents": {
+    "price-filter": "../../components/price-filter/price-filter",
+    "wish-card": "../../components/wish-card/wish-card",
+    "empty-state": "../../components/empty-state/empty-state"
+  }
+}

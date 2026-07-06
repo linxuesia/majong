@@ -1,0 +1,53 @@
+{
+  "bsonType": "object",
+  "required": ["openId"],
+  "permission": {
+    "read": true,
+    "create": true,
+    "update": true,
+    "delete": true
+  },
+  "properties": {
+    "_id": {
+      "description": "用户ID"
+    },
+    "openId": {
+      "bsonType": "string",
+      "description": "微信openId"
+    },
+    "unionId": {
+      "bsonType": "string",
+      "description": "微信unionId"
+    },
+    "nickName": {
+      "bsonType": "string",
+      "description": "昵称",
+      "defaultValue": "微信用户"
+    },
+    "avatarUrl": {
+      "bsonType": "string",
+      "description": "头像URL"
+    },
+    "gender": {
+      "bsonType": "number",
+      "description": "性别：0-未知 1-男 2-女",
+      "defaultValue": 0
+    },
+    "phone": {
+      "bsonType": "string",
+      "description": "手机号"
+    },
+    "createdAt": {
+      "bsonType": "string",
+      "description": "注册时间"
+    },
+    "updatedAt": {
+      "bsonType": "string",
+      "description": "更新时间"
+    },
+    "lastLoginAt": {
+      "bsonType": "string",
+      "description": "最后登录时间"
+    }
+  }
+}

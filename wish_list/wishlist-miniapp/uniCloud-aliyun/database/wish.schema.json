@@ -1,0 +1,76 @@
+{
+  "bsonType": "object",
+  "required": ["userId", "title", "status"],
+  "permission": {
+    "read": true,
+    "create": true,
+    "update": true,
+    "delete": true
+  },
+  "properties": {
+    "_id": {
+      "description": "ID"
+    },
+    "userId": {
+      "bsonType": "string",
+      "description": "用户ID"
+    },
+    "title": {
+      "bsonType": "string",
+      "description": "商品名称",
+      "trim": true
+    },
+    "description": {
+      "bsonType": "string",
+      "description": "商品描述",
+      "trim": true
+    },
+    "imageUrl": {
+      "bsonType": "string",
+      "description": "商品图片URL"
+    },
+    "price": {
+      "bsonType": "number",
+      "description": "商品价格",
+      "minimum": 0
+    },
+    "originalUrl": {
+      "bsonType": "string",
+      "description": "原始商品链接"
+    },
+    "category": {
+      "bsonType": "string",
+      "description": "分类",
+      "enum": ["数码", "服饰", "美妆", "家居", "食品", "运动", "图书", "其他"],
+      "defaultValue": "其他"
+    },
+    "priority": {
+      "bsonType": "string",
+      "description": "想要程度",
+      "enum": ["low", "medium", "high"],
+      "defaultValue": "medium"
+    },
+    "status": {
+      "bsonType": "string",
+      "description": "状态",
+      "enum": ["active", "claimed", "completed", "cancelled"],
+      "defaultValue": "active"
+    },
+    "claimedBy": {
+      "bsonType": "string",
+      "description": "认领人ID"
+    },
+    "claimedByName": {
+      "bsonType": "string",
+      "description": "认领人昵称"
+    },
+    "createdAt": {
+      "bsonType": "string",
+      "description": "创建时间"
+    },
+    "updatedAt": {
+      "bsonType": "string",
+      "description": "更新时间"
+    }
+  }
+}

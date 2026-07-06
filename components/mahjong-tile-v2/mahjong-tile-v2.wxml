@@ -1,0 +1,12 @@
+<!-- 3D 外框 + 新版精灵图位图 -->
+<view class="tile-v2 {{customClass}} {{selected ? 'selected' : ''}}" style="width:{{width}}rpx; height:{{height}}rpx;">
+  <!-- 侧边厚度层 (保留 3D 效果) -->
+  <view class="tile-side"></view>
+  
+  <!-- 牌体面层 (位图图片) -->
+  <view class="tile-body">
+    <view class="tile-image-layer" 
+          style="background-image: url({{tilePos.image}}); background-position: {{tilePos.x}}% {{tilePos.y}}%;">
+    </view>
+  </view>
+</view>

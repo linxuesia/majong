@@ -1,0 +1,70 @@
+{
+  "bsonType": "object",
+  "required": ["wishId", "claimerId", "ownerId", "status"],
+  "permission": {
+    "read": true,
+    "create": true,
+    "update": true,
+    "delete": true
+  },
+  "properties": {
+    "_id": {
+      "description": "ID"
+    },
+    "wishId": {
+      "bsonType": "string",
+      "description": "心愿ID"
+    },
+    "wishTitle": {
+      "bsonType": "string",
+      "description": "心愿标题"
+    },
+    "wishImageUrl": {
+      "bsonType": "string",
+      "description": "心愿图片"
+    },
+    "wishPrice": {
+      "bsonType": "number",
+      "description": "心愿价格",
+      "minimum": 0
+    },
+    "claimerId": {
+      "bsonType": "string",
+      "description": "认领人ID"
+    },
+    "claimerName": {
+      "bsonType": "string",
+      "description": "认领人昵称"
+    },
+    "claimerAvatar": {
+      "bsonType": "string",
+      "description": "认领人头像"
+    },
+    "ownerId": {
+      "bsonType": "string",
+      "description": "心愿所有者ID"
+    },
+    "ownerName": {
+      "bsonType": "string",
+      "description": "心愿所有者昵称"
+    },
+    "ownerAvatar": {
+      "bsonType": "string",
+      "description": "心愿所有者头像"
+    },
+    "status": {
+      "bsonType": "string",
+      "description": "认领状态",
+      "enum": ["pending", "completed", "cancelled"],
+      "defaultValue": "pending"
+    },
+    "createdAt": {
+      "bsonType": "string",
+      "description": "创建时间"
+    },
+    "updatedAt": {
+      "bsonType": "string",
+      "description": "更新时间"
+    }
+  }
+}

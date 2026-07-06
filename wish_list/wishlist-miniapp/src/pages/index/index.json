@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "wish-card": "/components/wish-card/wish-card",
+    "empty-state": "/components/empty-state/empty-state"
+  },
+  "enablePullDownRefresh": true
+}
