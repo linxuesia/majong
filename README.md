@@ -10,11 +10,24 @@
 </p>
 
 <p align="center">
+  <a href="https://linxuesia.github.io/majong/"><img src="https://img.shields.io/badge/demo-LIVE-brightgreen?style=for-the-badge" alt="live demo"/></a>
   <img src="https://img.shields.io/badge/platform-WeChat-green" alt="platform"/>
   <img src="https://img.shields.io/badge/tech-WXML_%2B_WXSS_%2B_JS-blue" alt="tech"/>
   <img src="https://img.shields.io/badge/chapters-5-orange" alt="chapters"/>
   <img src="https://img.shields.io/badge/license-MIT-brightgreen" alt="license"/>
 </p>
+
+---
+
+## 🕹️ 在线体验
+
+<p align="center">
+  <a href="https://linxuesia.github.io/majong/">
+    <strong>👉 点击这里立即体验「清一色听牌挑战」Live Demo 👈</strong>
+  </a>
+</p>
+
+Demo 包含了第五章的核心玩法 —— 在浏览器中即可体验精灵图渲染的麻将牌和多选题互动。
 
 ---
 

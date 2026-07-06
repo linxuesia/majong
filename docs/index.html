@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>雀神养成记 - 清一色听牌挑战</title>
+<style>
+  :root {
+    --red: #D32F2F;
+    --red-dark: #B71C1C;
+    --gold: #FBC02D;
+    --bg: #FFF8E1;
+    --card-bg: #FFFFFF;
+    --text: #3E2723;
+    --text-light: #795548;
+    --success: #388E3C;
+    --danger: #D32F2F;
+    --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: linear-gradient(180deg, #FFF8E1 0%, #FFF3CD 50%, #FFE0B2 100%);
+    min-height: 100vh;
+    padding: 16px;
+    color: var(--text);
+  }
+
+  .container { max-width: 640px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 24px 0 8px;
+    position: relative;
+  }
+  .mascot {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    margin-bottom: 8px;
+  }
+  .title {
+    font-size: 28px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #D32F2F, #E53935);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+
+  /* Guide bubble */
+  .guide {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 16px 0;
+    padding: 12px 16px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+  }
+  .guide-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .guide-bubble {
+    background: #FFF3E0;
+    border-radius: 8px 12px 12px 12px;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.6;
+    position: relative;
+    flex: 1;
+  }
+
+  /* Stats bar */
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 0;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .stat-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--card-bg);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .stat-badge.timer { color: var(--danger); }
+  .stat-badge.timer.urgent { animation: pulse 1s infinite; }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  .stat-badge.score { color: var(--success); }
+  .stat-badge.progress { color: #5D4037; }
+
+  /* Progress bar */
+  .progress-wrap {
+    height: 6px;
+    background: #E0E0E0;
+    border-radius: 3px;
+    margin: 8px 0 16px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #FBC02D, #FF5722);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+
+  /* Tiles area */
+  .tiles-section {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px 16px;
+    box-shadow: var(--shadow);
+    margin: 16px 0;
+  }
+  .suit-label {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+  .tiles-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+  }
+  .tile-wrapper {
+    width: 66px; height: 90px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    transition: transform 0.15s;
+  }
+  .tile-wrapper:active { transform: scale(0.95); }
+  .tile {
+    width: 100%; height: 100%;
+    background-size: 600px 400px;
+    background-repeat: no-repeat;
+    image-rendering: auto;
+  }
+
+  /* Options grid */
+  .options-section {
+    margin: 16px 0;
+  }
+  .options-hint {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .option-btn {
+    background: var(--card-bg);
+    border: 2px solid #E0E0E0;
+    border-radius: 12px;
+    padding: 14px 8px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .option-btn:active { transform: scale(0.96); }
+  .option-btn.selected {
+    border-color: var(--red);
+    background: #FFEBEE;
+    color: var(--red);
+    box-shadow: 0 0 0 3px rgba(211,47,47,0.15);
+  }
+
+  /* Submit button */
+  .submit-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #D32F2F, #E53935);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(211,47,47,0.3);
+    transition: all 0.15s;
+    margin: 12px 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .submit-btn:active { transform: scale(0.98); }
+  .submit-btn:disabled {
+    background: #BDBDBD;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  /* Modal overlay */
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    animation: fadeIn 0.2s;
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .modal {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 24px;
+    max-width: 360px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    animation: slideUp 0.25s;
+  }
+  @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  .modal-icon { font-size: 48px; margin-bottom: 8px; }
+  .modal-title { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+  .modal-content { font-size: 14px; line-height: 1.7; color: var(--text-light); margin-bottom: 20px; }
+  .modal-btn {
+    display: inline-block;
+    padding: 12px 36px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--red);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 24px 0;
+    color: var(--text-light);
+    font-size: 12px;
+  }
+  .footer a { color: var(--red); text-decoration: none; }
+
+  /* Celebration particles */
+  .particles {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 200;
+  }
+  .particle {
+    position: absolute;
+    font-size: 32px;
+    animation: fall linear forwards;
+  }
+  @keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    body { background: linear-gradient(180deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%); }
+    .title { background: linear-gradient(135deg, #EF5350, #FF7043); -webkit-background-clip: text; background-clip: text; }
+    .tiles-section, .guide, .stat-badge, .option-btn, .modal { background: #1E1E1E; }
+    .guide-bubble { background: #2A2A2A; }
+    .tiles-section, .guide, .option-btn, .modal { color: #E0E0E0; }
+    .option-btn { border-color: #444; }
+    .option-btn.selected { background: #3E1A1A; }
+    .progress-wrap { background: #333; }
+    .modal { color: #E0E0E0; }
+    .modal-content { color: #BDBDBD; }
+  }
+
+  /* Responsive */
+  @media (max-width: 400px) {
+    .tile-wrapper { width: 54px; height: 74px; }
+    .tile { background-size: 490px 327px; }
+    .options-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .option-btn { padding: 12px 6px; font-size: 14px; }
+    .title { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Header -->
+  <div class="header">
+    <img class="mascot" src="https://images.daojia.com/jz/pic/69c729e5f514f9bfc1c6a25b1f91e6ad.jpg" alt="辣子雀" />
+    <div class="title">雀神养成记</div>
+    <div class="subtitle">长沙风云篇 · 清一色听牌挑战</div>
+  </div>
+
+  <!-- Guide -->
+  <div class="guide" id="guide">
+    <img class="guide-avatar" src="https://images.daojia.com/jz/pic/69c729e5f514f9bfc1c6a25b1f91e6ad.jpg" alt="辣子雀" />
+    <div class="guide-bubble" id="guideText">清一色是长沙麻将的大胡！来看看你是否能一眼看出胡哪几张牌？</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-badge timer" id="timerBadge">⏱ <span id="timer">120</span>s</div>
+    <div class="stat-badge score">⭐ <span id="score">0</span> 分</div>
+    <div class="stat-badge progress">📝 <span id="qIndex">1</span>/<span id="qTotal">5</span></div>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="progress-wrap">
+    <div class="progress-fill" id="progressBar" style="width:0%"></div>
+  </div>
+
+  <!-- Tiles display -->
+  <div class="tiles-section">
+    <div class="suit-label" id="suitLabel">万</div>
+    <div class="tiles-grid" id="tilesGrid"></div>
+  </div>
+
+  <!-- Options -->
+  <div class="options-section">
+    <div class="options-hint">👆 点击下方所有能胡的牌（多选）</div>
+    <div class="options-grid" id="optionsGrid"></div>
+  </div>
+
+  <button class="submit-btn" id="submitBtn" onclick="submitAnswer()">确认提交</button>
+
+  <div class="footer">
+    <a href="https://github.com/linxuesia/majong" target="_blank">GitHub 仓库</a> · 雀神养成记：长沙风云篇
+  </div>
+</div>
+
+<div id="modalContainer"></div>
+<div class="particles" id="particles"></div>
+
+<script>
+// ============ 精灵图系统 ============
+const SPRITE_URL = 'https://images.daojia.com/jz/pic/d5601e8b347ca3f3b4431b8869d786e9.png';
+const TILE_W = 66, TILE_H = 90;
+const ROW_GAP = 5;
+const OFFSET_X = { 0: 0, 1: 3, 2: 0, 3: 0 };
+const OFFSET_Y = { 0: 0, 1: 10, 2: 13, 3: 23 };
+const TOTAL_W = 600, TOTAL_H = 400;
+
+const tileMap = {
+  // 万子 (row 0)
+  '一万':[0,0],'二万':[0,1],'三万':[0,2],'四万':[0,3],'五万':[0,4],'六万':[0,5],'七万':[0,6],'八万':[0,7],'九万':[0,8],
+  // 条子 (row 1)
+  '一条':[1,0],'二条':[1,1],'三条':[1,2],'四条':[1,3],'五条':[1,4],'六条':[1,5],'七条':[1,6],'八条':[1,7],'九条':[1,8],
+  // 筒子 (row 2)
+  '一筒':[2,0],'二筒':[2,1],'三筒':[2,2],'四筒':[2,3],'五筒':[2,4],'六筒':[2,5],'七筒':[2,6],'八筒':[2,7],'九筒':[2,8],
+  // 字牌 (row 3)
+  '北':[3,0],'白':[3,1],'南':[3,2],'中':[3,3],'发':[3,4],'东':[3,5],'西':[3,6]
+};
+
+function getTilePos(tileText) {
+  const pos = tileMap[tileText];
+  if (!pos) return null;
+  const [row, col] = pos;
+  const x = col * TILE_W + (OFFSET_X[row] || 0);
+  const y = row * TILE_H + row * ROW_GAP + (OFFSET_Y[row] || 0);
+  return { x, y };
+}
+
+function renderTile(tileText) {
+  const pos = getTilePos(tileText);
+  if (!pos) return `<div class="tile-wrapper"><div class="tile" style="background-image:none;display:flex;align-items:center;justify-content:center;font-size:12px;">${tileText}</div></div>`;
+  const scaleX = TOTAL_W / TILE_W;
+  const scaleY = TOTAL_H / TILE_H;
+  return `<div class="tile-wrapper">
+    <div class="tile" style="background-image:url('${SPRITE_URL}');background-position:-${pos.x}px -${pos.y}px;background-size:${TOTAL_W}px ${TOTAL_H}px;"></div>
+  </div>`;
+}
+
+// ============ 游戏数据 ============
+const questions = [
+  {
+    suit: '万',
+    tiles: ['一万','一万','一万','二万','三万','四万','五万','六万','七万','八万','九万','九万','九万'],
+    correct: [2,5,8],
+    explanation: '标准「一四七/二五八/三六九」听牌结构。中间二至八万形成了三组顺子预备，听二、五、八万。'
+  },
+  {
+    suit: '条',
+    tiles: ['二条','二条','三条','三条','四条','四条','五条','五条','六条','六条','七条','七条','八条'],
+    correct: [2,5,8],
+    explanation: '手牌全是两两一对（七对预备），当前听二条、五条、八条即可凑成将牌胡牌。'
+  },
+  {
+    suit: '筒',
+    tiles: ['一筒','一筒','一筒','二筒','三筒','四筒','五筒','六筒','七筒','八筒','九筒','九筒','九筒'],
+    correct: [1,2,3,4,5,6,7,8,9],
+    explanation: '恭喜！传说中的「九莲宝灯」！在清一色结构下，1112345678999 这种牌型听该花色的所有牌（1-9通胡）。'
+  },
+  {
+    suit: '万',
+    tiles: ['三万','三万','三万','四万','五万','六万','七万','七万','七万','八万','八万','八万','九万'],
+    correct: [3,6,9],
+    explanation: '三、七、八万都是暗刻。重点在于中间的四五六万顺子，最终听三、六、九万。'
+  },
+  {
+    suit: '条',
+    tiles: ['一条','二条','三条','三条','三条','四条','五条','六条','七条','八条','九条','九条','九条'],
+    correct: [1,4,7],
+    explanation: '典型的长顺子带暗刻结构，听一、四、七条。'
+  }
+];
+
+const numToChinese = {1:'一',2:'二',3:'三',4:'四',5:'五',6:'六',7:'七',8:'八',9:'九'};
+
+// ============ 游戏状态 ============
+let currentQ = 0;
+let score = 0;
+let selected = new Set();
+let timeLeft = 120;
+let timer = null;
+let answered = false;
+
+function init() {
+  currentQ = 0;
+  score = 0;
+  loadQuestion();
+}
+
+function loadQuestion() {
+  const q = questions[currentQ];
+  selected = new Set();
+  answered = false;
+  timeLeft = 120;
+
+  // Update UI
+  document.getElementById('suitLabel').textContent = q.suit;
+  document.getElementById('guideText').textContent = `观察这组${q.suit}子清一色，点击下方所有能胡的牌（多选）：`;
+  document.getElementById('score').textContent = score;
+  document.getElementById('qIndex').textContent = currentQ + 1;
+  document.getElementById('qTotal').textContent = questions.length;
+  document.getElementById('progressBar').style.width = (currentQ / questions.length * 100) + '%';
+  document.getElementById('submitBtn').textContent = '确认提交';
+  document.getElementById('submitBtn').disabled = false;
+  document.getElementById('timer').textContent = timeLeft;
+  document.getElementById('timerBadge').classList.remove('urgent');
+
+  // Render tiles
+  document.getElementById('tilesGrid').innerHTML = q.tiles.map(renderTile).join('');
+
+  // Render options
+  const optsGrid = document.getElementById('optionsGrid');
+  optsGrid.innerHTML = '';
+  for (let i = 1; i <= 9; i++) {
+    const btn = document.createElement('div');
+    btn.className = 'option-btn';
+    btn.textContent = numToChinese[i] + q.suit;
+    btn.dataset.num = i;
+    btn.onclick = () => toggleOption(i, btn);
+    optsGrid.appendChild(btn);
+  }
+
+  startTimer();
+}
+
+function toggleOption(num, btn) {
+  if (answered) return;
+  if (selected.has(num)) {
+    selected.delete(num);
+    btn.classList.remove('selected');
+  } else {
+    selected.add(num);
+    btn.classList.add('selected');
+  }
+}
+
+function startTimer() {
+  if (timer) clearInterval(timer);
+  timer = setInterval(() => {
+    timeLeft--;
+    document.getElementById('timer').textContent = timeLeft;
+    if (timeLeft <= 15) {
+      document.getElementById('timerBadge').classList.add('urgent');
+    }
+    if (timeLeft <= 0) {
+      gameOver();
+    }
+  }, 1000);
+}
+
+function submitAnswer() {
+  if (answered) return;
+  if (selected.size === 0) {
+    showToast('请至少选择一张牌');
+    return;
+  }
+
+  clearInterval(timer);
+  answered = true;
+  document.getElementById('submitBtn').disabled = true;
+
+  const q = questions[currentQ];
+  const correctSet = new Set(q.correct);
+  const isCorrect = selected.size === correctSet.size &&
+    [...selected].every(v => correctSet.has(v));
+
+  if (isCorrect) {
+    score += 20;
+    document.getElementById('score').textContent = score;
+    showModal('🎉', '完全正确！', q.explanation, '下一题', () => nextQuestion());
+    spawnParticles();
+  } else {
+    score = Math.max(0, score - 5);
+    document.getElementById('score').textContent = score;
+    showToast('漏掉了或者选错了哦，再观察一下！');
+    // Reset selection
+    selected = new Set();
+    document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    answered = false;
+    document.getElementById('submitBtn').disabled = false;
+    startTimer();
+  }
+}
+
+function nextQuestion() {
+  currentQ++;
+  if (currentQ >= questions.length) {
+    completeGame();
+  } else {
+    document.getElementById('progressBar').style.width = (currentQ / questions.length * 100) + '%';
+    loadQuestion();
+  }
+}
+
+function gameOver() {
+  clearInterval(timer);
+  answered = true;
+  document.getElementById('submitBtn').disabled = true;
+  showModal('⏰', '时间到！', '清一色需要更敏锐的观察力，再试一次吧！', '重新开始', () => {
+    score = 0;
+    currentQ = 0;
+    loadQuestion();
+  });
+}
+
+function completeGame() {
+  clearInterval(timer);
+  document.getElementById('progressBar').style.width = '100%';
+  showModal('🏆', '挑战成功！', `你已通过清一色听牌测验！\n最终得分：${score} 分`, '再来一次', () => {
+    score = 0;
+    currentQ = 0;
+    loadQuestion();
+  });
+  spawnParticles();
+}
+
+// ============ UI 工具 ============
+function showToast(msg) {
+  const el = document.createElement('div');
+  el.style.cssText = `
+    position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+    background:rgba(0,0,0,0.78);color:#fff;padding:12px 24px;
+    border-radius:8px;font-size:14px;z-index:300;
+    animation: fadeIn 0.2s;
+    pointer-events: none;
+  `;
+  el.textContent = msg;
+  document.body.appendChild(el);
+  setTimeout(() => {
+    el.style.opacity = '0';
+    el.style.transition = 'opacity 0.3s';
+    setTimeout(() => el.remove(), 300);
+  }, 1500);
+}
+
+function showModal(icon, title, content, btnText, callback) {
+  const container = document.getElementById('modalContainer');
+  container.innerHTML = `
+    <div class="modal-overlay" id="overlay">
+      <div class="modal">
+        <div class="modal-icon">${icon}</div>
+        <div class="modal-title">${title}</div>
+        <div class="modal-content">${content.replace(/\n/g, '<br>')}</div>
+        <button class="modal-btn" id="modalBtn">${btnText}</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('modalBtn').onclick = () => {
+    container.innerHTML = '';
+    if (callback) callback();
+  };
+}
+
+function spawnParticles() {
+  const container = document.getElementById('particles');
+  const emojis = ['🎉', '🎊', '🎁', '✨', '🏆', '🌟', '💫'];
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('span');
+    p.className = 'particle';
+    p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (1.5 + Math.random() * 2.5) + 's';
+    p.style.animationDelay = Math.random() * 0.5 + 's';
+    container.appendChild(p);
+  }
+  setTimeout(() => { container.innerHTML = ''; }, 3500);
+}
+
+// ============ 启动 ============
+init();
+</script>
+</body>
+</html>
